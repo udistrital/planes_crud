@@ -1,0 +1,24 @@
+import { ApiProperty} from '@nestjs/swagger';
+
+export class TipoPlanDto{
+
+    @ApiProperty()
+    readonly nombre: string;
+
+    @ApiProperty()
+    readonly decripcion: string;
+
+    @ApiProperty()
+    readonly codigo_abreviacion: string;
+
+    @ApiProperty()
+    activo: boolean;
+
+    @ApiProperty()
+    readonly fecha_creacion: Date;
+
+    @ApiProperty()
+    fecha_modificacion: Date;
+
+}
+
