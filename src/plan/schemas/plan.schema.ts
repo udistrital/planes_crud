@@ -6,19 +6,19 @@ export class Plan extends Document{
 
 
     @Prop({required: true })
-    nombre: String
+    nombre: string
 
     @Prop({required: true })
-    descripcion: String
+    descripcion: string
 
     @Prop({required: true })
-    tipo_plan_id: String
+    tipo_plan_id: string
 
     @Prop({required: true })
-    aplicativo_id: String
+    aplicativo_id: string
 
     @Prop({required: true })
-    activo: Boolean
+    activo: boolean
 
     @Prop({required: true })
     fecha_creacion: Date
