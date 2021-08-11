@@ -1,18 +1,23 @@
 import { ApiProperty} from '@nestjs/swagger';
+import { Subgrupo } from '../schemas/subgrupo.schema';
 
 export class SubgrupoDto{
+
+    _id: string
 
     @ApiProperty()
     readonly nombre: string;
 
     @ApiProperty()
-    readonly decripcion: string;
+    readonly descripcion: string;
 
     @ApiProperty()
     readonly padre: string;
 
     @ApiProperty()
     readonly hijos: string[];
+
+    //children : Object[];
 
     @ApiProperty()
     activo: boolean;
