@@ -45,6 +45,20 @@ export class SubgrupoController {
             });
     }
 
+    @Get('/hijos/:id')
+    async getHijos(@Res() res, @Param('id') id : string){
+
+        const subgrupo = await this.subgrupoService.hijos(id);
+        res.status(HttpStatus.OK).json(
+            {
+                Data: subgrupo,
+                Message: "Registration succesfull",
+                Status: "201",
+                Success: true
+            }
+        );
+    }
+
     @Put('/:id')
     async put(@Res() res, @Param('id') id : string, @Body() subgrupoDto : SubgrupoDto){
 
