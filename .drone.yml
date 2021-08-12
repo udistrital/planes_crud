@@ -187,4 +187,3 @@ name: oas_api_ci
     status:
     - failure
     - success
-    
