@@ -9,6 +9,7 @@ import { Plan, PlanSchema } from "./schemas/plan.schema";
     MongooseModule.forFeature([{name: Plan.name , schema: PlanSchema}])
   ],
   controllers: [PlanController],
-  providers: [PlanService]
+  providers: [PlanService],
+  exports: [PlanService]
 })
 export class PlanModule {}

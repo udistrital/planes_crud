@@ -4,6 +4,7 @@ import { InjectModel } from "@nestjs/mongoose";
 
 import { SubgrupoDto } from "./dto/subgrupo.dto";
 import { Subgrupo, SubgrupoSchema } from "./schemas/subgrupo.schema";
+import { query } from 'express';
 
 @Injectable()
 export class SubgrupoService {
@@ -23,7 +24,7 @@ export class SubgrupoService {
         return await this.subgrupoModel.find()
     }
 
-    async getById(id: string): Promise<Subgrupo>{
+    async getById(id: string): Promise<SubgrupoDto>{
         try{
             return await this.subgrupoModel.findById(id).exec();
         }catch(error){
@@ -50,6 +51,15 @@ export class SubgrupoService {
             return null;
         }
 
+    }
+
+    async hijos(filtro : string): Promise<Subgrupo[]>{
+
+        try{
+            return await  this.subgrupoModel.find({padre: filtro}).exec();
+        }catch(error){
+            return null;
+        }
     }
 
 

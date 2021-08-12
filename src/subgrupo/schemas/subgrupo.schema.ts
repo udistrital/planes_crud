@@ -4,21 +4,23 @@ import { Document } from "mongoose";
 @Schema({collection: 'subgrupo'})
 export class Subgrupo extends Document{
 
+    _id: string;
 
     @Prop({required: true })
-    nombre: String
+    nombre: string
 
     @Prop({required: true })
-    descripcion: String
+    descripcion: string
 
     @Prop({required: true })
-    padre: String
+    padre: string
 
     @Prop()
-    hijos: String[]
+    hijos: string[]
+
 
     @Prop({required: true })
-    activo: Boolean
+    activo: boolean
 
     @Prop({required: true })
     fecha_creacion: Date

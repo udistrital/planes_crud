@@ -6,7 +6,7 @@ export class PlanDto{
     readonly nombre: string;
 
     @ApiProperty()
-    readonly decripcion: string;
+    readonly descripcion: string;
 
     @ApiProperty()
     readonly tipo_plan_id : string;
