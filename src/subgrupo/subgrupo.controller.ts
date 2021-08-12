@@ -49,14 +49,12 @@ export class SubgrupoController {
     async getHijos(@Res() res, @Param('id') id : string){
 
         const subgrupo = await this.subgrupoService.hijos(id);
-        res.status(HttpStatus.OK).json(
-            {
-                Data: subgrupo,
-                Message: "Registration succesfull",
-                Status: "201",
-                Success: true
-            }
-        );
+        res.status(HttpStatus.OK).json({
+            Data: subgrupo,
+            Message: "Registration succesfull",
+            Status: "201",
+            Success: true
+        });
     }
 
     @Put('/:id')
