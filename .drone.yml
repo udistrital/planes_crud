@@ -11,7 +11,7 @@ workspace:
 kind: pipeline
 name: oas_api_ci
 
-# steps:
+steps:
 # - name: check_readme
 #   image: jjvargass/qa_develoment:latest
 #   commands:
