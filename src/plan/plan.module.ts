@@ -4,12 +4,13 @@ import { PlanService } from './plan.service';
 import { MongooseModule } from "@nestjs/mongoose";
 import { Plan, PlanSchema } from "./schemas/plan.schema";
 
+
 @Module({
   imports : [
     MongooseModule.forFeature([{name: Plan.name , schema: PlanSchema}])
   ],
   controllers: [PlanController],
   providers: [PlanService],
-  exports: [PlanService]
+  exports : [PlanService]
 })
 export class PlanModule {}

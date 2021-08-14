@@ -62,6 +62,23 @@ export class SubgrupoService {
         }
     }
 
+    async deleteNodo(subgrupoDto : SubgrupoDto){
+        try{
+            subgrupoDto.activo = false 
+            const nodo =  await this.subgrupoModel.findByIdAndUpdate(subgrupoDto._id, subgrupoDto, {new: true}).exec()
+            if (subgrupoDto.hijos.length > 0){
+                for(var i = 0; i < subgrupoDto.hijos.length; i++){
+                    var hijos = subgrupoDto.hijos
+                    const hijo = await this.getById(hijos[i])
+                    const res2 = await this.deleteNodo(hijo)
+                }
+            }
+            return nodo
+        }catch{
+            return null
+        }
+    }
+
 
 
 

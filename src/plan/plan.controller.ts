@@ -1,6 +1,7 @@
 import { Controller,  Get, Post, Put, Delete, Res, HttpStatus, Body, Param, NotFoundException } from '@nestjs/common';
 import { PlanDto } from "./dto/plan.dto";
 import { PlanService } from "./plan.service";
+import { SubgrupoService } from "../subgrupo/subgrupo.service"
 
 @Controller('plan')
 export class PlanController {
@@ -51,6 +52,27 @@ export class PlanController {
         if (!plan) throw new NotFoundException("not found resource");    
         return res.status(HttpStatus.OK).json({
           Data: plan,
+          Message: "Update successfull",
+          Status: "200",
+          Success: true
+        });
+    }
+
+    @Put('/delete_plan/:id')
+    async deletePlan(@Res() res, @Param('id') id : string){
+        const plan =  await this.planService.getById(id)
+        plan.activo = false
+
+        if (!plan) throw new NotFoundException("not found resource");    
+        /*const hijos = await this.subgrupoService.hijos(id)
+        if (hijos.length > 0){
+          for(var i = 0; i < hijos.length; i++){
+            const hijoDesactivado = this.subgrupoService.deleteNodo(hijos[i])
+          }
+        }*/
+        const respuesta = await this.planService.put(id, plan);
+        return res.status(HttpStatus.OK).json({
+          Data: respuesta,
           Message: "Update successfull",
           Status: "200",
           Success: true
