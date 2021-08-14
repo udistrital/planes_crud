@@ -11,10 +11,10 @@ import { environment } from "./config/configuration";
 
 
 @Module({
-  imports: [ MongooseModule.forRoot('mongodb://localhost/planes'), PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule],
-  /*imports: [ MongooseModule.forRoot(`mongodb://${environment.USER}:${environment.PASS}@`+
+  //imports: [ MongooseModule.forRoot('mongodb://localhost/planes'), PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule],
+  imports: [ MongooseModule.forRoot(`mongodb://${environment.USER}:${environment.PASS}@`+
   `${environment.HOST}:${environment.PORT}/${environment.DB}?authSource=${environment.AUTH_DB}`, 
-  { useFindAndModify: false }) , PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule],*/
+  { useFindAndModify: false }) , PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule],
 
   controllers: [AppController],
   providers: [AppService],
