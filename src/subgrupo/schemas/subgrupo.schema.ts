@@ -4,7 +4,7 @@ import { Document } from "mongoose";
 @Schema({collection: 'subgrupo'})
 export class Subgrupo extends Document{
 
-    _id: string;
+    _id: string
 
     @Prop({required: true })
     nombre: string

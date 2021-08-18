@@ -25,12 +25,10 @@ export class SubgrupoController {
     async postNodo(@Res() res, @Body() subgrupoDto: SubgrupoDto){
         const subgrupo = await this.subgrupoService.post(subgrupoDto);
         const plan = await this.planService.getById(subgrupoDto.padre)
-        console.log(plan)
         if (plan == null){
             var padreSubgrupo = await this.subgrupoService.getById(subgrupoDto.padre)
             await padreSubgrupo.hijos.push(subgrupo._id)
             const padreActualizado = await this.subgrupoService.put(subgrupoDto.padre, padreSubgrupo);
-            console.log(padreActualizado)
         }
 
         res.status(HttpStatus.OK).json(
@@ -95,7 +93,6 @@ export class SubgrupoController {
 
     @Put('/delete_nodo/:id')
     async deleteNodo(@Res() res, @Param('id') id : string){
-
         const nodo = await this.subgrupoService.getById(id)
         nodo.activo = false
         const subgrupo = await this.subgrupoService.put(id, nodo);
