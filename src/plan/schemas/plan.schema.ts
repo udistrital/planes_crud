@@ -4,6 +4,8 @@ import { Document } from "mongoose";
 @Schema({collection: 'plan'})
 export class Plan extends Document{
 
+    
+    _id: string
 
     @Prop({required: true })
     nombre: string
