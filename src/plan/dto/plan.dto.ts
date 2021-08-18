@@ -2,6 +2,8 @@ import { ApiProperty} from '@nestjs/swagger';
 
 export class PlanDto{
 
+    _id: string
+
     @ApiProperty()
     readonly nombre: string;
 

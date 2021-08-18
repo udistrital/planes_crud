@@ -61,15 +61,9 @@ export class PlanController {
     @Put('/delete_plan/:id')
     async deletePlan(@Res() res, @Param('id') id : string){
         const plan =  await this.planService.getById(id)
-        plan.activo = false
 
+        plan.activo = false
         if (!plan) throw new NotFoundException("not found resource");    
-        /*const hijos = await this.subgrupoService.hijos(id)
-        if (hijos.length > 0){
-          for(var i = 0; i < hijos.length; i++){
-            const hijoDesactivado = this.subgrupoService.deleteNodo(hijos[i])
-          }
-        }*/
         const respuesta = await this.planService.put(id, plan);
         return res.status(HttpStatus.OK).json({
           Data: respuesta,
