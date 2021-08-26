@@ -6,7 +6,7 @@ export class TipoPlanDto{
     readonly nombre: string;
 
     @ApiProperty()
-    readonly decripcion: string;
+    readonly descripcion: string;
 
     @ApiProperty()
     readonly codigo_abreviacion: string;

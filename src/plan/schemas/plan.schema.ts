@@ -1,5 +1,6 @@
 import { Schema, Prop, raw, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
+import { animationFrameScheduler } from "rxjs";
 
 @Schema({collection: 'plan'})
 export class Plan extends Document{
@@ -15,6 +16,22 @@ export class Plan extends Document{
 
     @Prop({required: true })
     tipo_plan_id: string
+
+
+    @Prop({required: false })
+    documento_id: string
+
+    @Prop({required: true })
+    formato: boolean
+
+
+    @Prop({required: true })
+    vigencia : string
+
+
+    @Prop({required: true })
+    dependencia_id: string
+
 
     @Prop({required: true })
     aplicativo_id: string
