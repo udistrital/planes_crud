@@ -59,12 +59,13 @@ export class TipoPlanController {
 
     @Delete('/:id')
     async delete(@Res() res, @Param('id') id: string) {
-      const tipoPlan = await this.tipoPlanService.delete(id);
+      const tipoPlan = await this.tipoPlanService.getById(id);
       if (!tipoPlan) throw new NotFoundException("not found resource");    
+
+      tipoPlan.activo = false
+      const respuesta = await this.tipoPlanService.put(id, tipoPlan)
       return res.status(HttpStatus.OK).json({
-        Data: {
-          _id: id
-        },
+        Data: respuesta,
         Message: "Delete successfull",
         Status: "200",
         Success: true

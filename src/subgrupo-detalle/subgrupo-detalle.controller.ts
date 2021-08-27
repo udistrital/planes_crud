@@ -61,12 +61,13 @@ export class SubgrupoDetalleController {
 
     @Delete('/:id')
     async delete(@Res() res, @Param('id') id: string) {
-      const subgrupoDetalle = await this.subgrupoDetalleService.delete(id);
-      if (!subgrupoDetalle) throw new NotFoundException("not found resource");    
+      const subgrupoDetalle =  await this.subgrupoDetalleService.getById(id);
+      if(!subgrupoDetalle) throw new NotFoundException("not found resource")
+
+      subgrupoDetalle.activo = false
+      const respuesta = await this.subgrupoDetalleService.put(id, subgrupoDetalle)
       return res.status(HttpStatus.OK).json({
-        Data: {
-          _id: id
-        },
+        Data: respuesta,
         Message: "Delete successfull",
         Status: "200",
         Success: true
