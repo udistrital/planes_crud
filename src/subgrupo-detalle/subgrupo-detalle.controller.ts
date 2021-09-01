@@ -46,6 +46,18 @@ export class SubgrupoDetalleController {
             });
     }
 
+    @Get('/detalle/:id')
+    async getDetalle(@Res() res, @Param('id') id : string){
+
+        const subgrupo = await this.subgrupoDetalleService.detalle(id);
+        res.status(HttpStatus.OK).json({
+            Data: subgrupo,
+            Message: "Registration succesfull",
+            Status: "201",
+            Success: true
+        });
+    }
+
     @Put('/:id')
     async put(@Res() res, @Param('id') id : string, @Body() subgrupoDetalleDto : SubgrupoDetalleDto){
 

@@ -32,6 +32,15 @@ export class SubgrupoDetalleService {
         
     }
 
+    async detalle(filtro : string): Promise<SubgrupoDetalle[]>{
+
+        try{
+            return await this.subgrupoDetalleModel.find({subgrupo_id: filtro}).exec();
+        }catch(error){
+            return null;
+        }
+    }
+
     async put(id: string, subgrupoDetalleDto: SubgrupoDetalleDto): Promise<SubgrupoDetalle>{
         try{
             subgrupoDetalleDto.fecha_modificacion = new Date();
