@@ -25,11 +25,11 @@ export class Plan extends Document{
     formato: boolean
 
 
-    @Prop({required: true })
+    @Prop({required: false })
     vigencia : string
 
 
-    @Prop({required: true })
+    @Prop({required: false })
     dependencia_id: string
 
 
