@@ -11,8 +11,13 @@ import { environment } from "./config/configuration";
 
 
 @Module({
+<<<<<<< HEAD
   imports: [ MongooseModule.forRoot('mongodb://localhost/planes'), PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule],
   /*imports: [ MongooseModule.forRoot(`mongodb://${environment.USER}:${environment.PASS}@`+
+=======
+  // imports: [ MongooseModule.forRoot('mongodb://localhost/planes'), PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule],
+  imports: [ MongooseModule.forRoot(`mongodb://${environment.USER}:${environment.PASS}@`+
+>>>>>>> c169c9a1616dfe945f4c2fcfeafc72a4ac5535cd
   `${environment.HOST}:${environment.PORT}/${environment.DB}?authSource=${environment.AUTH_DB}`, 
   { useFindAndModify: false }) , PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule],*/
 
