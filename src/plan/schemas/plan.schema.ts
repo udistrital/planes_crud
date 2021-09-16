@@ -21,7 +21,7 @@ export class Plan extends Document{
     @Prop({required: false })
     documento_id: string
 
-    @Prop({required: true })
+    @Prop({required: false })
     formato: boolean
 
 
