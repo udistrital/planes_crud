@@ -17,27 +17,29 @@ export class Plan extends Document{
     @Prop({required: true })
     tipo_plan_id: string
 
-
     @Prop({required: false })
     documento_id: string
 
     @Prop({required: false })
     formato: boolean
 
-
     @Prop({required: false })
     vigencia : string
 
-
     @Prop({required: false })
     dependencia_id: string
-
 
     @Prop({required: true })
     aplicativo_id: string
 
     @Prop({required: true })
     activo: boolean
+
+    @Prop({required: false })
+    estado_plan_id: string
+
+    @Prop({required: false })
+    padre_plan_id: string
 
     @Prop({required: true })
     fecha_creacion: Date
