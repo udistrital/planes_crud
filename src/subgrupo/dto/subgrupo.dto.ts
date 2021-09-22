@@ -17,8 +17,6 @@ export class SubgrupoDto{
     @ApiProperty()
     readonly hijos: string[];
 
-    //children : Object[];
-
     @ApiProperty()
     activo: boolean;
 
