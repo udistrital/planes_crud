@@ -17,6 +17,9 @@ export class SubgrupoDetalle extends Document{
     @Prop({required: true})
     dato: string
 
+    @Prop({required: false})
+    dato_plan: string
+
     @Prop({required: true })
     activo: boolean
 

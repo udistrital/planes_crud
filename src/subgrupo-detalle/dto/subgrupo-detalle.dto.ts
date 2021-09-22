@@ -14,6 +14,10 @@ export class SubgrupoDetalleDto{
     @ApiProperty()
     readonly dato: string;
 
+
+    @ApiProperty()
+    readonly dato_plan: string;
+
     @ApiProperty()
     activo: boolean;
 
