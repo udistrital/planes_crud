@@ -19,11 +19,8 @@ export class PlanDto{
     @ApiProperty()
     formato: boolean;
 
-
     @ApiProperty()
     readonly vigencia: string;
-
-
 
     @ApiProperty()
     readonly dependencia_id: string;
@@ -33,6 +30,12 @@ export class PlanDto{
 
     @ApiProperty()
     activo: boolean;
+
+    @ApiProperty()
+    readonly estado_plan_id : string;
+
+    @ApiProperty()
+    readonly padre_plan_id : string;
 
     @ApiProperty()
     readonly fecha_creacion: Date;
