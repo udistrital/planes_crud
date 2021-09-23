@@ -1,6 +1,6 @@
 import { ApiProperty} from '@nestjs/swagger';
 
-export class SubgrupoDetalleDto{
+export class EstadoPlanDto{
 
     @ApiProperty()
     readonly nombre: string;
@@ -9,14 +9,7 @@ export class SubgrupoDetalleDto{
     readonly descripcion: string;
 
     @ApiProperty()
-    readonly subgrupo_id: string;
-
-    @ApiProperty()
-    readonly dato: string;
-
-
-    @ApiProperty()
-    readonly dato_plan: string;
+    readonly codigo_abreviacion: string;
 
     @ApiProperty()
     activo: boolean;
@@ -26,5 +19,5 @@ export class SubgrupoDetalleDto{
 
     @ApiProperty()
     fecha_modificacion: Date;
-
+    
 }

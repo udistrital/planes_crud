@@ -1,9 +1,8 @@
 import { Schema, Prop, raw, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 
-@Schema({collection: 'subgrupo_detalle'})
-export class SubgrupoDetalle extends Document{
-
+@Schema({collection: 'estado_plan'})
+export class EstadoPlan extends Document{
 
     @Prop({required: true })
     nombre: string
@@ -11,14 +10,8 @@ export class SubgrupoDetalle extends Document{
     @Prop({required: true })
     descripcion: string
 
-    @Prop({required: true })
-    subgrupo_id: string
-
     @Prop({required: true})
-    dato: string
-
-    @Prop({required: false})
-    dato_plan: string
+    codigo_abreviacion: string
 
     @Prop({required: true })
     activo: boolean
@@ -31,4 +24,4 @@ export class SubgrupoDetalle extends Document{
 
 }
 
-export const SubgrupoDetalleSchema = SchemaFactory.createForClass(SubgrupoDetalle);
+export const EstadoPlanSchema = SchemaFactory.createForClass(EstadoPlan);
