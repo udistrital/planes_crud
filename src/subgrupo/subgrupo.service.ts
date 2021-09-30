@@ -6,6 +6,9 @@ import { SubgrupoDto } from "./dto/subgrupo.dto";
 import { Subgrupo, SubgrupoSchema } from "./schemas/subgrupo.schema";
 import { query } from 'express';
 
+import { FilterDto } from '../filters/dto/filter.dto';
+import { FiltersService } from '../filters/filters.service';
+
 @Injectable()
 export class SubgrupoService {
 
@@ -20,8 +23,11 @@ export class SubgrupoService {
         return  subgrupo.save();
     }
     
-    async getAll(): Promise<Subgrupo[]>{
-        return await this.subgrupoModel.find()
+    async getAll(filterDto: FilterDto): Promise<Subgrupo[]>{
+        const filtersService = new FiltersService(filterDto);
+        return await this.subgrupoModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
+        .sort(filtersService.getSortBy())
+        .exec();
     }
 
     async getById(id: string): Promise<SubgrupoDto>{

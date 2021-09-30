@@ -12,10 +12,10 @@ import { EstadoPlanModule } from './estado-plan/estado-plan.module';
 
 
 @Module({
-  //imports: [ MongooseModule.forRoot('mongodb://localhost/planes'), PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule, EstadoPlanModule],
-  imports: [ MongooseModule.forRoot(`mongodb://${environment.USER}:${environment.PASS}@`+
-  `${environment.HOST}:${environment.PORT}/${environment.DB}?authSource=${environment.AUTH_DB}`, 
-  { useFindAndModify: false }) , PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule, EstadoPlanModule],
+  imports: [ MongooseModule.forRoot('mongodb://localhost/planes'), PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule, EstadoPlanModule],
+  // imports: [ MongooseModule.forRoot(`mongodb://${environment.USER}:${environment.PASS}@`+
+  // `${environment.HOST}:${environment.PORT}/${environment.DB}?authSource=${environment.AUTH_DB}`, 
+  // { useFindAndModify: false }) , PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule, EstadoPlanModule],
 
   controllers: [AppController],
   providers: [AppService],

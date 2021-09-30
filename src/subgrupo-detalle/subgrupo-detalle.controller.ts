@@ -1,7 +1,8 @@
-import { Controller,  Get, Post, Put, Delete, Res, HttpStatus, Body, Param, NotFoundException } from '@nestjs/common';
+import { Query, Controller,  Get, Post, Put, Delete, Res, HttpStatus, Body, Param, NotFoundException } from '@nestjs/common';
 
 import { SubgrupoDetalleDto } from "./dto/subgrupo-detalle.dto";
 import { SubgrupoDetalleService } from "./subgrupo-detalle.service";
+import { FilterDto} from '../filters/dto/filter.dto';
 
 @Controller('subgrupo-detalle')
 export class SubgrupoDetalleController {
@@ -22,13 +23,13 @@ export class SubgrupoDetalleController {
     }
 
     @Get()
-    async getAll(@Res() res){
-        const subgrupoDetalle = await this.subgrupoDetalleService.getAll();
+    async getAll(@Res() res, @Query() filterDto: FilterDto){
+        const subgrupoDetalle = await this.subgrupoDetalleService.getAll(filterDto);
         res.status(HttpStatus.OK).json(
             {
                 Data: subgrupoDetalle,
-                Message: "Registration succesfull",
-                Status: "201",
+                Message: "Request succesfull",
+                Status: "200",
                 Success: true
             });
     }
