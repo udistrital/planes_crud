@@ -1,7 +1,8 @@
-import { Controller,  Get, Post, Put, Delete, Res, HttpStatus, Body, Param, NotFoundException } from '@nestjs/common';
+import { Query, Controller,  Get, Post, Put, Delete, Res, HttpStatus, Body, Param, NotFoundException } from '@nestjs/common';
 
 import { EstadoPlanDto } from "./dto/estado-plan.dto";
 import { EstadoPlanService } from "./estado-plan.service";
+import { FilterDto} from '../filters/dto/filter.dto';
 
 @Controller('estado-plan')
 export class EstadoPlanController {
@@ -21,13 +22,13 @@ export class EstadoPlanController {
     }
 
     @Get()
-    async getAll(@Res() res){
-        const estadoPlan = await this.estadoPlanService.getAll();
+    async getAll(@Res() res, @Query() filterDto: FilterDto){
+        const estadoPlan = await this.estadoPlanService.getAll(filterDto);
         res.status(HttpStatus.OK).json(
             {
                 Data: estadoPlan,
-                Message: "Registration succesfull",
-                Status: "201",
+                Message: "Request succesfull",
+                Status: "200",
                 Success: true
             });
     }
