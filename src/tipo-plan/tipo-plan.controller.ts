@@ -1,6 +1,7 @@
-import { Controller, Post, Get, Put, Delete, Body, Param, Res, HttpStatus, NotFoundException } from '@nestjs/common';
+import { Query, Controller, Post, Get, Put, Delete, Body, Param, Res, HttpStatus, NotFoundException } from '@nestjs/common';
 import { TipoPlanDto } from "./dto/tipo-plan.dto";
 import { TipoPlanService } from "./tipo-plan.service";
+import { FilterDto} from '../filters/dto/filter.dto';
 
 @Controller('tipo-plan')
 export class TipoPlanController {
@@ -20,13 +21,13 @@ export class TipoPlanController {
     }
 
     @Get()
-    async getAll(@Res() res){
-        const tipoPlan = await this.tipoPlanService.getAll();
+    async getAll(@Res() res, @Query() filterDto: FilterDto){
+        const tipoPlan = await this.tipoPlanService.getAll(filterDto);
         res.status(HttpStatus.OK).json(
             {
                 Data: tipoPlan,
-                Message: "Registration succesfull",
-                Status: "201",
+                Message: "Request succesfull",
+                Status: "200",
                 Success: true
             });
     }

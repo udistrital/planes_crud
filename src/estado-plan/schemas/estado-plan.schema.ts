@@ -7,10 +7,10 @@ export class EstadoPlan extends Document{
     @Prop({required: true })
     nombre: string
 
-    @Prop({required: true })
+    @Prop({required: false })
     descripcion: string
 
-    @Prop({required: true})
+    @Prop({required: false})
     codigo_abreviacion: string
 
     @Prop({required: true })

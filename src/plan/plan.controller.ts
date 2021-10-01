@@ -1,6 +1,7 @@
-import { Controller,  Get, Post, Put, Delete, Res, HttpStatus, Body, Param, NotFoundException, HttpException } from '@nestjs/common';
+import { Query, Controller, Get, Post, Put, Delete, Res, HttpStatus, Body, Param, NotFoundException, HttpException } from '@nestjs/common';
 import { PlanDto } from "./dto/plan.dto";
 import { PlanService } from "./plan.service";
+import { FilterDto} from '../filters/dto/filter.dto';
 import { SubgrupoService } from "../subgrupo/subgrupo.service"
 import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
 
@@ -22,13 +23,13 @@ export class PlanController {
     }
 
     @Get()
-    async getAll(@Res() res){
-        const plan = await this.planService.getAll();
-        res.status(HttpStatus.OK).json(
+    async getAll(@Res() res, @Query() filterDto: FilterDto){
+        const plan = await this.planService.getAll(filterDto);
+        return res.status(HttpStatus.OK).json(
             {
                 Data: plan,
-                Message: "Registration succesfull",
-                Status: "201",
+                Message: "Request succesfull",
+                Status: "200",
                 Success: true
             });
     }

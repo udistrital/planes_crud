@@ -6,6 +6,9 @@ import { InjectModel } from "@nestjs/mongoose";
 import { EstadoPlanDto } from "./dto/estado-plan.dto";
 import { EstadoPlan } from "./schemas/estado-plan.schema";
 
+import { FilterDto } from '../filters/dto/filter.dto';
+import { FiltersService } from '../filters/filters.service';
+
 @Injectable()
 export class EstadoPlanService {
 
@@ -20,8 +23,11 @@ export class EstadoPlanService {
         return  plan.save();
     }
 
-    async getAll(): Promise<EstadoPlan[]>{
-        return await this.estadoPlanModel.find()
+    async getAll(filterDto: FilterDto): Promise<EstadoPlan[]>{
+        const filtersService = new FiltersService(filterDto);
+        return await this.estadoPlanModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
+        .sort(filtersService.getSortBy())
+        .exec();
     }
 
     async getById(id: string): Promise<EstadoPlan>{
