@@ -18,9 +18,11 @@ export class Subgrupo extends Document{
     @Prop()
     hijos: string[]
 
-
     @Prop({required: true })
     activo: boolean
+
+    @Prop({required: false })
+    bandera_tabla: boolean
 
     @Prop({required: true })
     fecha_creacion: Date
