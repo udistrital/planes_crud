@@ -21,6 +21,9 @@ export class SubgrupoDto{
     activo: boolean;
 
     @ApiProperty()
+    bandera_tabla: boolean;
+
+    @ApiProperty()
     readonly fecha_creacion: Date;
 
     @ApiProperty()
