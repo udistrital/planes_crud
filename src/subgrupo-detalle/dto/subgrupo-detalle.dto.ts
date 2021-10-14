@@ -14,9 +14,11 @@ export class SubgrupoDetalleDto{
     @ApiProperty()
     readonly dato: string;
 
-
     @ApiProperty()
     readonly dato_plan: string;
+
+    @ApiProperty()
+    readonly armonizacion_dato: string;
 
     @ApiProperty()
     activo: boolean;

@@ -20,6 +20,9 @@ export class SubgrupoDetalle extends Document{
     @Prop({required: false})
     dato_plan: string
 
+    @Prop({required: false})
+    armonizacion_dato: string
+
     @Prop({required: true })
     activo: boolean
 
