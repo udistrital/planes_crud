@@ -1,11 +1,8 @@
 import { Injectable } from '@nestjs/common';
-
 import { Model } from "mongoose";
 import { InjectModel } from "@nestjs/mongoose";
-
 import { EstadoPlanDto } from "./dto/estado-plan.dto";
 import { EstadoPlan } from "./schemas/estado-plan.schema";
-
 import { FilterDto } from '../filters/dto/filter.dto';
 import { FiltersService } from '../filters/filters.service';
 
