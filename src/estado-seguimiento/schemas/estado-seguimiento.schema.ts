@@ -1,8 +1,8 @@
 import { Schema, Prop, raw, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 
-@Schema({collection: 'tipo_seguimiento'})
-export class TipoIdentificacion extends Document{
+@Schema({collection: 'estado_seguimiento'})
+export class EstadoSeguimiento extends Document{
 
     @Prop({required: true })
     nombre: string
@@ -24,4 +24,4 @@ export class TipoIdentificacion extends Document{
 
 }
 
-export const TipoIdentificacionSchema = SchemaFactory.createForClass(TipoIdentificacion);
+export const EstadoSeguimientoSchema = SchemaFactory.createForClass(EstadoSeguimiento);

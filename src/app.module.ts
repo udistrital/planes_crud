@@ -10,19 +10,22 @@ import { environment } from "./config/configuration";
 import { EstadoPlanModule } from './estado-plan/estado-plan.module';
 import { IdentificacionModule } from './identificacion/identificacion.module';
 import { TipoIdentificacionModule } from './tipo-identificacion/tipo-identificacion.module';
+import { SeguimientoModule } from './seguimiento/seguimiento.module';
+import { TipoSeguimientoModule } from './tipo-seguimiento/tipo-seguimiento.module';
+import { EstadoSeguimientoModule } from './estado-seguimiento/estado-seguimiento.module';
 
 
 
 @Module({
-  //imports: [ MongooseModule.forRoot('mongodb://localhost/planes'), PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule, EstadoPlanModule, IdentificacionModule, TipoIdentificacionModule],
-  imports: [ MongooseModule.forRoot(`mongodb://${environment.USER}:${environment.PASS}@`+
-  `${environment.HOST}:${environment.PORT}/${environment.DB}?authSource=${environment.AUTH_DB}`, 
-  { useFindAndModify: false }) , PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule, EstadoPlanModule, IdentificacionModule, TipoIdentificacionModule],
+  //imports: [ MongooseModule.forRoot('mongodb://localhost/planes'), PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule, EstadoPlanModule, IdentificacionModule, TipoIdentificacionModule, SeguimientoModule, TipoSeguimientoModule, EstadoSeguimientoModule],
+  imports: [MongooseModule.forRoot(`mongodb://${environment.USER}:${environment.PASS}@` +
+    `${environment.HOST}:${environment.PORT}/${environment.DB}?authSource=${environment.AUTH_DB}`,
+    { useFindAndModify: false }), PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule, EstadoPlanModule, IdentificacionModule, TipoIdentificacionModule, SeguimientoModule, TipoSeguimientoModule, EstadoSeguimientoModule],
 
   controllers: [AppController],
   providers: [AppService],
 })
 
-export class AppModule{}
+export class AppModule { }
 
 
