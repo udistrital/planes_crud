@@ -6,19 +6,25 @@ export class SubgrupoDetalle extends Document{
 
 
     @Prop({required: true })
-    nombre: String
+    nombre: string
 
     @Prop({required: true })
-    descripcion: String
+    descripcion: string
 
     @Prop({required: true })
-    subgrupo_id: String
+    subgrupo_id: string
 
-    @Prop({ type: Object})
-    dato
+    @Prop({required: true})
+    dato: string
+
+    @Prop({required: false})
+    dato_plan: string
+
+    @Prop({required: false})
+    armonizacion_dato: string
 
     @Prop({required: true })
-    activo: Boolean
+    activo: boolean
 
     @Prop({required: true })
     fecha_creacion: Date

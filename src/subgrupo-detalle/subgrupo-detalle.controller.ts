@@ -1,7 +1,8 @@
-import { Controller,  Get, Post, Put, Delete, Res, HttpStatus, Body, Param, NotFoundException } from '@nestjs/common';
+import { Query, Controller,  Get, Post, Put, Delete, Res, HttpStatus, Body, Param, NotFoundException } from '@nestjs/common';
 
 import { SubgrupoDetalleDto } from "./dto/subgrupo-detalle.dto";
 import { SubgrupoDetalleService } from "./subgrupo-detalle.service";
+import { FilterDto} from '../filters/dto/filter.dto';
 
 @Controller('subgrupo-detalle')
 export class SubgrupoDetalleController {
@@ -22,13 +23,13 @@ export class SubgrupoDetalleController {
     }
 
     @Get()
-    async getAll(@Res() res){
-        const subgrupoDetalle = await this.subgrupoDetalleService.getAll();
+    async getAll(@Res() res, @Query() filterDto: FilterDto){
+        const subgrupoDetalle = await this.subgrupoDetalleService.getAll(filterDto);
         res.status(HttpStatus.OK).json(
             {
                 Data: subgrupoDetalle,
-                Message: "Registration succesfull",
-                Status: "201",
+                Message: "Request succesfull",
+                Status: "200",
                 Success: true
             });
     }
@@ -46,6 +47,18 @@ export class SubgrupoDetalleController {
             });
     }
 
+    @Get('/detalle/:id')
+    async getDetalle(@Res() res, @Param('id') id : string){
+
+        const subgrupo = await this.subgrupoDetalleService.detalle(id);
+        res.status(HttpStatus.OK).json({
+            Data: subgrupo,
+            Message: "Registration succesfull",
+            Status: "201",
+            Success: true
+        });
+    }
+
     @Put('/:id')
     async put(@Res() res, @Param('id') id : string, @Body() subgrupoDetalleDto : SubgrupoDetalleDto){
 
@@ -61,12 +74,13 @@ export class SubgrupoDetalleController {
 
     @Delete('/:id')
     async delete(@Res() res, @Param('id') id: string) {
-      const subgrupoDetalle = await this.subgrupoDetalleService.delete(id);
-      if (!subgrupoDetalle) throw new NotFoundException("not found resource");    
+      const subgrupoDetalle =  await this.subgrupoDetalleService.getById(id);
+      if(!subgrupoDetalle) throw new NotFoundException("not found resource")
+
+      subgrupoDetalle.activo = false
+      const respuesta = await this.subgrupoDetalleService.put(id, subgrupoDetalle)
       return res.status(HttpStatus.OK).json({
-        Data: {
-          _id: id
-        },
+        Data: respuesta,
         Message: "Delete successfull",
         Status: "200",
         Success: true

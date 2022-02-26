@@ -1,6 +1,7 @@
-import { Controller, Post, Get, Put, Delete, Body, Param, Res, HttpStatus, NotFoundException } from '@nestjs/common';
+import { Query, Controller, Post, Get, Put, Delete, Body, Param, Res, HttpStatus, NotFoundException } from '@nestjs/common';
 import { TipoPlanDto } from "./dto/tipo-plan.dto";
 import { TipoPlanService } from "./tipo-plan.service";
+import { FilterDto} from '../filters/dto/filter.dto';
 
 @Controller('tipo-plan')
 export class TipoPlanController {
@@ -20,13 +21,13 @@ export class TipoPlanController {
     }
 
     @Get()
-    async getAll(@Res() res){
-        const tipoPlan = await this.tipoPlanService.getAll();
+    async getAll(@Res() res, @Query() filterDto: FilterDto){
+        const tipoPlan = await this.tipoPlanService.getAll(filterDto);
         res.status(HttpStatus.OK).json(
             {
                 Data: tipoPlan,
-                Message: "Registration succesfull",
-                Status: "201",
+                Message: "Request succesfull",
+                Status: "200",
                 Success: true
             });
     }
@@ -59,12 +60,13 @@ export class TipoPlanController {
 
     @Delete('/:id')
     async delete(@Res() res, @Param('id') id: string) {
-      const tipoPlan = await this.tipoPlanService.delete(id);
+      const tipoPlan = await this.tipoPlanService.getById(id);
       if (!tipoPlan) throw new NotFoundException("not found resource");    
+
+      tipoPlan.activo = false
+      const respuesta = await this.tipoPlanService.put(id, tipoPlan)
       return res.status(HttpStatus.OK).json({
-        Data: {
-          _id: id
-        },
+        Data: respuesta,
         Message: "Delete successfull",
         Status: "200",
         Success: true

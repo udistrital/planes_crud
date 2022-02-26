@@ -17,10 +17,11 @@ export class SubgrupoDto{
     @ApiProperty()
     readonly hijos: string[];
 
-    //children : Object[];
-
     @ApiProperty()
     activo: boolean;
+
+    @ApiProperty()
+    bandera_tabla: boolean;
 
     @ApiProperty()
     readonly fecha_creacion: Date;

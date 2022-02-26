@@ -5,6 +5,9 @@ import { InjectModel } from "@nestjs/mongoose";
 import { SubgrupoDetalleDto } from "./dto/subgrupo-detalle.dto";
 import { SubgrupoDetalle, SubgrupoDetalleSchema } from "./schemas/subgrupo-detalle.schema";
 
+import { FilterDto } from '../filters/dto/filter.dto';
+import { FiltersService } from '../filters/filters.service';
+
 @Injectable()
 export class SubgrupoDetalleService {
 
@@ -19,8 +22,11 @@ export class SubgrupoDetalleService {
         return  subgrupoDetalle.save();
     }
     
-    async getAll(): Promise<SubgrupoDetalle[]>{
-        return await this.subgrupoDetalleModel.find()
+    async getAll(filterDto: FilterDto): Promise<SubgrupoDetalle[]>{
+        const filtersService = new FiltersService(filterDto);
+        return await this.subgrupoDetalleModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
+        .sort(filtersService.getSortBy())
+        .exec();
     }
 
     async getById(id: string): Promise<SubgrupoDetalle>{
@@ -30,6 +36,15 @@ export class SubgrupoDetalleService {
             return null;
         };
         
+    }
+
+    async detalle(filtro : string): Promise<SubgrupoDetalle[]>{
+
+        try{
+            return await this.subgrupoDetalleModel.find({subgrupo_id: filtro}).exec();
+        }catch(error){
+            return null;
+        }
     }
 
     async put(id: string, subgrupoDetalleDto: SubgrupoDetalleDto): Promise<SubgrupoDetalle>{

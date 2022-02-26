@@ -6,14 +6,16 @@ export class TipoPlan extends Document{
 
 
     @Prop({required: true })
-    nombre: String
+    nombre: string
 
     @Prop({required: true })
-    descripcion: String
+    descripcion: string
 
+    @Prop({required: true})
+    codigo_abreviacion: string
 
     @Prop({required: true })
-    activo: Boolean
+    activo: boolean
 
     @Prop({required: true })
     fecha_creacion: Date

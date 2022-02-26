@@ -6,13 +6,19 @@ export class SubgrupoDetalleDto{
     readonly nombre: string;
 
     @ApiProperty()
-    readonly decripcion: string;
+    readonly descripcion: string;
 
     @ApiProperty()
     readonly subgrupo_id: string;
 
     @ApiProperty()
-    readonly dato: Object;
+    readonly dato: string;
+
+    @ApiProperty()
+    readonly dato_plan: string;
+
+    @ApiProperty()
+    readonly armonizacion_dato: string;
 
     @ApiProperty()
     activo: boolean;
