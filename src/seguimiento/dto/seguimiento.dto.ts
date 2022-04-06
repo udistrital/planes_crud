@@ -30,6 +30,12 @@ export class SeguimientoDto{
     activo: boolean;
 
     @ApiProperty()
+    fecha_inicio: Date;
+
+    @ApiProperty()
+    fecha_fin: Date;
+
+    @ApiProperty()
     readonly fecha_creacion: Date;
 
     @ApiProperty()
