@@ -20,6 +20,7 @@ AUTH_DB: process.env.PLANES_CRUD_AUTH_DB
 
 ### Ejecución del Proyecto 
 
+
 ```
 # 1. Obtener el repositorio de git
 git clone https://github.com/udistrital/planes_crud.git
