@@ -60,21 +60,6 @@ export class PeriodoSeguimientoController {
         });
     }
 
-    @Put('/delete_plan/:id')
-    async deletePeriodoSeguimiento(@Res() res, @Param('id') id : string){
-        const periodoSeguimiento =  await this.periodoSeguimientoService.getById(id)
-
-        periodoSeguimiento.activo = false
-        if (!periodoSeguimiento) throw new NotFoundException("not found resource");    
-        const respuesta = await this.periodoSeguimientoService.put(id, periodoSeguimiento);
-        return res.status(HttpStatus.OK).json({
-          Data: respuesta,
-          Message: "Update successfull",
-          Status: "200",
-          Success: true
-        });
-    }
-
     @Delete('/:id')
     async delete(@Res() res, @Param('id') id: string) {
       const periodoSeguimiento = await this.periodoSeguimientoService.delete(id);
