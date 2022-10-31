@@ -25,11 +25,17 @@ export class Seguimiento extends Document {
     estado_seguimiento_id: string
 
     @Prop({ required: true })
-    periodo_id: string
+    periodo_seguimiento_id: string
 
     @Prop({ required: true })
     activo: boolean
 
+    @Prop({ required: true })
+    fecha_inicio: Date
+
+    @Prop({required: false })
+    fecha_fin: Date
+    
     @Prop({ required: true })
     fecha_creacion: Date
 
