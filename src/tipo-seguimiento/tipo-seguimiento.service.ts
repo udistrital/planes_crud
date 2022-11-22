@@ -11,48 +11,55 @@ import { TipoSeguimientoDto } from './dto/tipo-seguimiento.dto';
 export class TipoSeguimientoService {
 
 
-    constructor(@InjectModel(TipoSeguimiento.name) private readonly tipoSeguimientoModel: Model<TipoSeguimiento>){
+    constructor(@InjectModel(TipoSeguimiento.name) private readonly tipoSeguimientoModel: Model<TipoSeguimiento>) {
 
     }
 
     async post(tipoSeguimientoDto: TipoSeguimientoDto): Promise<TipoSeguimiento> {
-        const tipoSeguimiento = new this.tipoSeguimientoModel(tipoSeguimientoDto);
-        tipoSeguimiento.fecha_creacion = new Date();
-        tipoSeguimiento.fecha_modificacion = new Date();
-        return tipoSeguimiento.save();
+        try {
+            const tipoSeguimiento = new this.tipoSeguimientoModel(tipoSeguimientoDto);
+            tipoSeguimiento.fecha_creacion = new Date();
+            tipoSeguimiento.fecha_modificacion = new Date();
+            tipoSeguimiento.activo = true;
+            await this.tipoSeguimientoModel.validate(tipoSeguimiento);
+            return tipoSeguimiento.save();
+        } catch (error) {
+            return error;
+        }
     }
-    
-    async getAll(filterDto: FilterDto): Promise<TipoSeguimiento[]>{
+
+    async getAll(filterDto: FilterDto): Promise<TipoSeguimiento[]> {
         const filtersService = new FiltersService(filterDto);
         return await this.tipoSeguimientoModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
-        .sort(filtersService.getSortBy())
-        .exec();
+            .sort(filtersService.getSortBy())
+            .exec();
     }
 
-    async getById(id: string): Promise<TipoSeguimiento>{
-        try{
+    async getById(id: string): Promise<TipoSeguimiento> {
+        try {
             return await this.tipoSeguimientoModel.findById(id).exec();
-        }catch(error){
+        } catch (error) {
             return null;
         };
-        
+
     }
 
-    async put(id: string, tipoDto: TipoSeguimientoDto): Promise<TipoSeguimiento>{
-        try{
+    async put(id: string, tipoDto: TipoSeguimientoDto): Promise<TipoSeguimiento> {
+        try {
             tipoDto.fecha_modificacion = new Date();
-            await this.tipoSeguimientoModel.findByIdAndUpdate(id, tipoDto , {new: true}).exec();
+            await this.tipoSeguimientoModel.validate(tipoDto);
+            await this.tipoSeguimientoModel.findByIdAndUpdate(id, tipoDto, { new: true }).exec();
             return await this.tipoSeguimientoModel.findById(id).exec();
-        }catch(error){
-            return null;
+        } catch (error) {
+            return error;
         }
-        
+
     }
 
-    async delete(id: string): Promise<any>{
-        try{
+    async delete(id: string): Promise<any> {
+        try {
             return await this.tipoSeguimientoModel.findByIdAndRemove(id).exec();
-        }catch(error){
+        } catch (error) {
             return null;
         }
     }

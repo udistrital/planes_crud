@@ -11,48 +11,55 @@ import { FiltersService } from '../filters/filters.service';
 @Injectable()
 export class TipoIdentificacionService {
 
-    constructor(@InjectModel(TipoIdentificacion.name) private readonly tipoModel: Model<TipoIdentificacion>){
+    constructor(@InjectModel(TipoIdentificacion.name) private readonly tipoModel: Model<TipoIdentificacion>) {
 
     }
 
     async post(tipoDto: TipoIdentificacionDto): Promise<TipoIdentificacion> {
-        const tipoIdentificacion = new this.tipoModel(tipoDto);
-        tipoIdentificacion.fecha_creacion = new Date();
-        tipoIdentificacion.fecha_modificacion = new Date();
-        return tipoIdentificacion.save();
+        try {
+            const tipoIdentificacion = new this.tipoModel(tipoDto);
+            tipoIdentificacion.fecha_creacion = new Date();
+            tipoIdentificacion.fecha_modificacion = new Date();
+            tipoIdentificacion.activo = true;
+            await this.tipoModel.validate(tipoIdentificacion);
+            return tipoIdentificacion.save();
+        } catch (error) {
+            return error;
+        }
     }
-    
-    async getAll(filterDto: FilterDto): Promise<TipoIdentificacion[]>{
+
+    async getAll(filterDto: FilterDto): Promise<TipoIdentificacion[]> {
         const filtersService = new FiltersService(filterDto);
         return await this.tipoModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
-        .sort(filtersService.getSortBy())
-        .exec();
+            .sort(filtersService.getSortBy())
+            .exec();
     }
 
-    async getById(id: string): Promise<TipoIdentificacion>{
-        try{
+    async getById(id: string): Promise<TipoIdentificacion> {
+        try {
             return await this.tipoModel.findById(id).exec();
-        }catch(error){
+        } catch (error) {
             return null;
         };
-        
+
     }
 
-    async put(id: string, tipoDto: TipoIdentificacionDto): Promise<TipoIdentificacion>{
-        try{
+    async put(id: string, tipoDto: TipoIdentificacionDto): Promise<TipoIdentificacion> {
+        try {
             tipoDto.fecha_modificacion = new Date();
-            await this.tipoModel.findByIdAndUpdate(id, tipoDto , {new: true}).exec();
+            await this.tipoModel.validate(tipoDto);
+            await this.tipoModel.findByIdAndUpdate(id, tipoDto, { new: true }).exec();
             return await this.tipoModel.findById(id).exec();
-        }catch(error){
-            return null;
+        } catch (error) {
+            return error;
         }
-        
+
     }
 
-    async delete(id: string): Promise<any>{
-        try{
+    async delete(id: string): Promise<any> {
+        try {
             return await this.tipoModel.findByIdAndRemove(id).exec();
-        }catch(error){
+        } catch (error) {
             return null;
         }
     }
