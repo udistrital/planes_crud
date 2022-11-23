@@ -12,76 +12,83 @@ import { FiltersService } from '../filters/filters.service';
 @Injectable()
 export class SubgrupoService {
 
-    constructor(@InjectModel(Subgrupo.name) private readonly subgrupoModel : Model<Subgrupo>){
+    constructor(@InjectModel(Subgrupo.name) private readonly subgrupoModel: Model<Subgrupo>) {
 
     }
 
     async post(subgrupoDto: SubgrupoDto): Promise<Subgrupo> {
-        const subgrupo = new this.subgrupoModel(subgrupoDto);
-        subgrupo.fecha_creacion = new Date();
-        subgrupo.fecha_modificacion = new Date();
-        return  subgrupo.save();
+        try {
+            const subgrupo = new this.subgrupoModel(subgrupoDto);
+            subgrupo.fecha_creacion = new Date();
+            subgrupo.fecha_modificacion = new Date();
+            subgrupo.activo = true;
+            await this.subgrupoModel.validate(subgrupo);
+            return subgrupo.save();
+        } catch (error) {
+            return error;
+        }
     }
-    
-    async getAll(filterDto: FilterDto): Promise<Subgrupo[]>{
+
+    async getAll(filterDto: FilterDto): Promise<Subgrupo[]> {
         const filtersService = new FiltersService(filterDto);
         return await this.subgrupoModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
-        .sort(filtersService.getSortBy())
-        .exec();
+            .sort(filtersService.getSortBy())
+            .exec();
     }
 
-    async getById(id: string): Promise<SubgrupoDto>{
-        try{
+    async getById(id: string): Promise<SubgrupoDto> {
+        try {
             return await this.subgrupoModel.findById(id).exec();
-        }catch(error){
+        } catch (error) {
             return null;
         };
-        
+
     }
 
-    async put(id: string, subgrupoDto: SubgrupoDto): Promise<Subgrupo>{
-        try{
+    async put(id: string, subgrupoDto: SubgrupoDto): Promise<Subgrupo> {
+        try {
             subgrupoDto.fecha_modificacion = new Date();
-            await this.subgrupoModel.findByIdAndUpdate(id, subgrupoDto , {new: true}).exec();
+            await this.subgrupoModel.validate(subgrupoDto);
+            await this.subgrupoModel.findByIdAndUpdate(id, subgrupoDto, { new: true }).exec();
             return await this.subgrupoModel.findById(id).exec();
-        }catch(error){
-            return null;
+        } catch (error) {
+            return error;
         }
-        
+
     }
 
-    async delete(id: string): Promise<any>{
-        try{
+    async delete(id: string): Promise<any> {
+        try {
             return await this.subgrupoModel.findByIdAndRemove(id).exec();
-        }catch(error){
+        } catch (error) {
             return null;
         }
 
     }
 
-    async hijos(filtro : string): Promise<Subgrupo[]>{
+    async hijos(filtro: string): Promise<Subgrupo[]> {
 
-        try{
-            return await  this.subgrupoModel.find({padre: filtro}).exec();
-        }catch(error){
-            return null;
+        try {
+            return await this.subgrupoModel.find({ padre: filtro }).exec();
+        } catch (error) {
+            return error;
         }
     }
 
-    async deleteNodo(subgrupoDto : SubgrupoDto){
-        try{
-            subgrupoDto.activo = false 
-            const nodo =  await this.subgrupoModel.findByIdAndUpdate(subgrupoDto._id, subgrupoDto, {new: true}).exec()
-            if (subgrupoDto.hijos.length > 0){
-                for(var i = 0; i < subgrupoDto.hijos.length; i++){
+    async deleteNodo(subgrupoDto: SubgrupoDto) {
+        try {
+            subgrupoDto.activo = false
+            const nodo = await this.subgrupoModel.findByIdAndUpdate(subgrupoDto._id, subgrupoDto, { new: true }).exec()
+            if (subgrupoDto.hijos.length > 0) {
+                for (var i = 0; i < subgrupoDto.hijos.length; i++) {
                     var hijos = subgrupoDto.hijos
                     const hijo = await this.getById(hijos[i])
                     const res2 = await this.deleteNodo(hijo)
                 }
             }
             return nodo
-        }catch{
-            return null
+        } catch (error) {
+            return error;
         }
     }
 

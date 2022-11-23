@@ -16,10 +16,16 @@ export class PeriodoSeguimientoService {
   }
 
   async post(PeriodoSeguimientoDto: PeriodoSeguimientoDto): Promise<PeriodoSeguimiento> {
-    const PeriodoSeguimiento = new this.periodoSeguimientoModel(PeriodoSeguimientoDto);
-    PeriodoSeguimiento.fecha_creacion = new Date();
-    PeriodoSeguimiento.fecha_modificacion = new Date();
-    return PeriodoSeguimiento.save();
+    try {
+      const PeriodoSeguimiento = new this.periodoSeguimientoModel(PeriodoSeguimientoDto);
+      PeriodoSeguimiento.fecha_creacion = new Date();
+      PeriodoSeguimiento.fecha_modificacion = new Date();
+      PeriodoSeguimiento.activo = true;
+      this.periodoSeguimientoModel.validate(PeriodoSeguimiento);
+      return PeriodoSeguimiento.save();
+    } catch (error) {
+      return error;
+    }
   }
 
   async getAll(filterDto: FilterDto): Promise<PeriodoSeguimiento[]> {
@@ -41,10 +47,11 @@ export class PeriodoSeguimientoService {
   async put(id: string, PeriodoSeguimientoDto: PeriodoSeguimientoDto): Promise<PeriodoSeguimiento> {
     try {
       PeriodoSeguimientoDto.fecha_modificacion = new Date();
+      await this.periodoSeguimientoModel.validate(this.periodoSeguimientoModel);
       await this.periodoSeguimientoModel.findByIdAndUpdate(id, PeriodoSeguimientoDto, { new: true }).exec();
       return await this.periodoSeguimientoModel.findById(id).exec();
     } catch (error) {
-      return null;
+      return error;
     }
 
   }

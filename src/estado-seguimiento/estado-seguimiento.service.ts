@@ -9,48 +9,56 @@ import { FiltersService } from 'src/filters/filters.service';
 
 @Injectable()
 export class EstadoSeguimientoService {
-    constructor(@InjectModel(EstadoSeguimiento.name) private readonly estadoSeguimientoModel: Model<EstadoSeguimiento>){
+    constructor(@InjectModel(EstadoSeguimiento.name) private readonly estadoSeguimientoModel: Model<EstadoSeguimiento>) {
 
     }
 
     async post(estadoSeguimientoDto: EstadoSeguimientoDto): Promise<EstadoSeguimiento> {
-        const estadoSeguimiento = new this.estadoSeguimientoModel(estadoSeguimientoDto);
-        estadoSeguimiento.fecha_creacion = new Date();
-        estadoSeguimiento.fecha_modificacion = new Date();
-        return  estadoSeguimiento.save();
+        try {
+            const estadoSeguimiento = new this.estadoSeguimientoModel(estadoSeguimientoDto);
+            estadoSeguimiento.fecha_creacion = new Date();
+            estadoSeguimiento.fecha_modificacion = new Date();
+            estadoSeguimiento.activo = true;
+            await this.estadoSeguimientoModel.validate(estadoSeguimiento);
+            return estadoSeguimiento.save();
+        } catch (error) {
+            return error;
+        }
+
     }
 
-    async getAll(filterDto: FilterDto): Promise<EstadoSeguimiento[]>{
+    async getAll(filterDto: FilterDto): Promise<EstadoSeguimiento[]> {
         const filtersService = new FiltersService(filterDto);
         return await this.estadoSeguimientoModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
-        .sort(filtersService.getSortBy())
-        .exec();
+            .sort(filtersService.getSortBy())
+            .exec();
     }
 
-    async getById(id: string): Promise<EstadoSeguimiento>{
-        try{
+    async getById(id: string): Promise<EstadoSeguimiento> {
+        try {
             return await this.estadoSeguimientoModel.findById(id).exec();
-        }catch(error){
+        } catch (error) {
             return null;
         };
-        
+
     }
 
-    async put(id: string, estadoSeguimientoDto: EstadoSeguimientoDto): Promise<EstadoSeguimiento>{
-        try{
+    async put(id: string, estadoSeguimientoDto: EstadoSeguimientoDto): Promise<EstadoSeguimiento> {
+        try {
             estadoSeguimientoDto.fecha_modificacion = new Date();
-            await this.estadoSeguimientoModel.findByIdAndUpdate(id, estadoSeguimientoDto, {new: true}).exec();
+            await this.estadoSeguimientoModel.validate(estadoSeguimientoDto);
+            await this.estadoSeguimientoModel.findByIdAndUpdate(id, estadoSeguimientoDto, { new: true }).exec();
             return await this.estadoSeguimientoModel.findById(id).exec();
-        }catch(error){
-            return null;
+        } catch (error) {
+            return error;
         }
-        
+
     }
 
-    async delete(id: string): Promise<any>{
-        try{
+    async delete(id: string): Promise<any> {
+        try {
             return await this.estadoSeguimientoModel.findByIdAndRemove(id).exec();
-        }catch(error){
+        } catch (error) {
             return null;
         }
 
