@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConsoleLogger, Injectable } from '@nestjs/common';
 import { Model } from "mongoose";
 import { InjectModel } from "@nestjs/mongoose";
 
@@ -11,54 +11,57 @@ import { FiltersService } from '../filters/filters.service';
 @Injectable()
 export class PlanService {
 
-    constructor(@InjectModel(Plan.name) private readonly planModel: Model<Plan>){
+    constructor(@InjectModel(Plan.name) private readonly planModel: Model<Plan>) {
 
     }
 
     async post(planDto: PlanDto): Promise<Plan> {
-        const plan = new this.planModel(planDto);
-        plan.fecha_creacion = new Date();
-        plan.fecha_modificacion = new Date();
-        return  plan.save();
+        try {
+            const plan = new this.planModel(planDto);
+            plan.fecha_creacion = new Date();
+            plan.fecha_modificacion = new Date();
+            plan.activo = true;
+            await this.planModel.validate(plan);
+            return plan.save();
+        } catch (error) {
+            return error;
+        }
     }
-    
-    async getAll(filterDto: FilterDto): Promise<Plan[]>{
+
+    async getAll(filterDto: FilterDto): Promise<Plan[]> {
         const filtersService = new FiltersService(filterDto);
         return await this.planModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
-        .sort(filtersService.getSortBy())
-        .exec();
+            .sort(filtersService.getSortBy())
+            .exec();
     }
 
-    async getById(id: string): Promise<Plan>{
-        try{
+    async getById(id: string): Promise<Plan> {
+        try {
             return await this.planModel.findById(id).exec();
-        }catch(error){
+        } catch (error) {
             return null;
         };
-        
+
     }
 
-    async put(id: string, planDto: PlanDto): Promise<Plan>{
-        try{
+    async put(id: string, planDto: PlanDto): Promise<Plan> {
+        try {
             planDto.fecha_modificacion = new Date();
-            await this.planModel.findByIdAndUpdate(id, planDto , {new: true}).exec();
+            await this.planModel.validate(planDto);
+            await this.planModel.findByIdAndUpdate(id, planDto, { new: true }).exec();
             return await this.planModel.findById(id).exec();
-        }catch(error){
-            return null;
+        } catch (error) {
+            return error;
         }
-        
+
     }
 
-    async delete(id: string): Promise<any>{
-        try{
+    async delete(id: string): Promise<any> {
+        try {
             return await this.planModel.findByIdAndRemove(id).exec();
-        }catch(error){
+        } catch (error) {
             return null;
         }
 
     }
-
-
-
-
 }
