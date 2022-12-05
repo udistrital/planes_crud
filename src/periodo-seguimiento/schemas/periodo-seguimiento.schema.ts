@@ -18,6 +18,9 @@ export class PeriodoSeguimiento extends Document {
     periodo_id: String;
 
     @Prop({ required: true })
+    tipo_seguimiento_id: String;
+
+    @Prop({ required: true })
     activo: boolean;
 
     @Prop({ required: true })
