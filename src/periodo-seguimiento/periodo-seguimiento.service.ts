@@ -47,7 +47,7 @@ export class PeriodoSeguimientoService {
   async put(id: string, PeriodoSeguimientoDto: PeriodoSeguimientoDto): Promise<PeriodoSeguimiento> {
     try {
       PeriodoSeguimientoDto.fecha_modificacion = new Date();
-      await this.periodoSeguimientoModel.validate(this.periodoSeguimientoModel);
+      await this.periodoSeguimientoModel.validate(PeriodoSeguimientoDto);
       await this.periodoSeguimientoModel.findByIdAndUpdate(id, PeriodoSeguimientoDto, { new: true }).exec();
       return await this.periodoSeguimientoModel.findById(id).exec();
     } catch (error) {
