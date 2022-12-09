@@ -24,6 +24,9 @@ export class PeriodoSeguimiento extends Document {
     activo: boolean;
 
     @Prop({ required: true })
+    unidades_interes: JSON;
+
+    @Prop({ required: true })
     fecha_creacion: Date;
 
     @Prop({ required: true })
