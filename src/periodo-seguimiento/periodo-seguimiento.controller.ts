@@ -1,28 +1,27 @@
 import { Query, Controller, Get, Post, Put, Delete, Res, HttpStatus, Body, Param, NotFoundException, HttpException } from '@nestjs/common';
-import { TipoIdentificacionDto } from "./dto/tipo-identificacion.dto";
-import { TipoIdentificacionService } from "./tipo-identificacion.service";
+import { PeriodoSeguimientoDto } from './dto/periodo-seguimiento.dto';
+import { PeriodoSeguimientoService } from './periodo-seguimiento.service';
 import { FilterDto } from '../filters/dto/filter.dto';
 import { SubgrupoService } from "../subgrupo/subgrupo.service"
 import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
 
-@Controller('tipo-identificacion')
-export class TipoIdentificacionController {
-
-  constructor(private tipoIdentificacionService: TipoIdentificacionService) { }
+@Controller('periodo-seguimiento')
+export class PeriodoSeguimientoController {
+  constructor(private readonly periodoSeguimientoService: PeriodoSeguimientoService) { }
 
   @Post()
-  async post(@Res() res, @Body() identiDto: TipoIdentificacionDto) {
-    const identi = await this.tipoIdentificacionService.post(identiDto);
-    if (identi instanceof Error) {
+  async post(@Res() res, @Body() periodoSeguimientoDto: PeriodoSeguimientoDto) {
+    const periodoSeguimiento = await this.periodoSeguimientoService.post(periodoSeguimientoDto);
+    if (periodoSeguimiento instanceof Error) {
       return res.status(HttpStatus.OK).json({
         Data: null,
-        Message: identi.message,
+        Message: periodoSeguimiento.message,
         Status: "400",
         Success: false
       });
     } else {
       return res.status(HttpStatus.OK).json({
-        Data: identi,
+        Data: periodoSeguimiento,
         Message: "Registration successfull",
         Status: "201",
         Success: true
@@ -32,10 +31,10 @@ export class TipoIdentificacionController {
 
   @Get()
   async getAll(@Res() res, @Query() filterDto: FilterDto) {
-    const identi = await this.tipoIdentificacionService.getAll(filterDto);
+    const periodoSeguimiento = await this.periodoSeguimientoService.getAll(filterDto);
     return res.status(HttpStatus.OK).json(
       {
-        Data: identi,
+        Data: periodoSeguimiento,
         Message: "Request succesfull",
         Status: "200",
         Success: true
@@ -45,32 +44,32 @@ export class TipoIdentificacionController {
   @Get('/:id')
   async get(@Res() res, @Param('id') id: string) {
 
-    const identi = await this.tipoIdentificacionService.getById(id);
-    //if (!identi) throw new NotFoundException("not found resource")
+    const periodoSeguimiento = await this.periodoSeguimientoService.getById(id);
+    if (!periodoSeguimiento) throw new NotFoundException("not found resource")
     res.status(HttpStatus.OK).json(
       {
-        Data: identi ? identi : null,
-        Message: "Registration succesfull",
-        Status: "201",
+        Data: periodoSeguimiento ? periodoSeguimiento : null,
+        Message: "Request succesfull",
+        Status: "200",
         Success: true
       });
   }
 
   @Put('/:id')
-  async put(@Res() res, @Param('id') id: string, @Body() identiDto: TipoIdentificacionDto) {
+  async put(@Res() res, @Param('id') id: string, @Body() periodoSeguimientoDto: PeriodoSeguimientoDto) {
 
-    const identi = await this.tipoIdentificacionService.put(id, identiDto);
-    //if (!identi) throw new NotFoundException("not found resource");    
-    if (identi instanceof Error) {
+    const periodoSeguimiento = await this.periodoSeguimientoService.put(id, periodoSeguimientoDto);
+    //if (!periodoSeguimiento) throw new NotFoundException("not found resource");    
+    if (periodoSeguimiento instanceof Error) {
       return res.status(HttpStatus.OK).json({
         Data: null,
-        Message: identi.message,
+        Message: periodoSeguimiento.message,
         Status: "400",
         Success: false
       });
     } else {
       return res.status(HttpStatus.OK).json({
-        Data: identi,
+        Data: periodoSeguimiento,
         Message: "Update successfull",
         Status: "200",
         Success: true
@@ -80,11 +79,10 @@ export class TipoIdentificacionController {
 
   @Delete('/:id')
   async delete(@Res() res, @Param('id') id: string) {
-    const identi = await this.tipoIdentificacionService.getById(id);
-    if (identi) {
-      identi.activo = false;
-      //if (!plan) throw new NotFoundException("not found resource");    
-      const respuesta = await this.tipoIdentificacionService.put(id, identi);
+    const periodoSeguimiento = await this.periodoSeguimientoService.getById(id);
+    if (periodoSeguimiento) {
+      periodoSeguimiento.activo = false;
+      const respuesta = await this.periodoSeguimientoService.put(id, periodoSeguimiento);
       if (respuesta instanceof Error) {
         return res.status(HttpStatus.OK).json({
           Data: null,
@@ -105,7 +103,7 @@ export class TipoIdentificacionController {
         Data: null,
         Message: "Record Not found",
         Status: "404",
-        Success: true
+        Success: false
       });
     }
   }

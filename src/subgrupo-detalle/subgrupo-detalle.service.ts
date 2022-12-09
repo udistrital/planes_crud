@@ -11,57 +11,64 @@ import { FiltersService } from '../filters/filters.service';
 @Injectable()
 export class SubgrupoDetalleService {
 
-    constructor(@InjectModel(SubgrupoDetalle.name) private readonly subgrupoDetalleModel : Model<SubgrupoDetalle>){
+    constructor(@InjectModel(SubgrupoDetalle.name) private readonly subgrupoDetalleModel: Model<SubgrupoDetalle>) {
 
     }
 
     async post(subgrupoDetalleDto: SubgrupoDetalleDto): Promise<SubgrupoDetalle> {
-        const subgrupoDetalle = new this.subgrupoDetalleModel(subgrupoDetalleDto);
-        subgrupoDetalle.fecha_creacion = new Date();
-        subgrupoDetalle.fecha_modificacion = new Date();
-        return  subgrupoDetalle.save();
+        try {
+            const subgrupoDetalle = new this.subgrupoDetalleModel(subgrupoDetalleDto);
+            subgrupoDetalle.fecha_creacion = new Date();
+            subgrupoDetalle.fecha_modificacion = new Date();
+            subgrupoDetalle.activo = true;
+            await this.subgrupoDetalleModel.validate(subgrupoDetalle);
+            return subgrupoDetalle.save();
+        } catch (error) {
+            return error;
+        }
     }
-    
-    async getAll(filterDto: FilterDto): Promise<SubgrupoDetalle[]>{
+
+    async getAll(filterDto: FilterDto): Promise<SubgrupoDetalle[]> {
         const filtersService = new FiltersService(filterDto);
         return await this.subgrupoDetalleModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
-        .sort(filtersService.getSortBy())
-        .exec();
+            .sort(filtersService.getSortBy())
+            .exec();
     }
 
-    async getById(id: string): Promise<SubgrupoDetalle>{
-        try{
+    async getById(id: string): Promise<SubgrupoDetalle> {
+        try {
             return await this.subgrupoDetalleModel.findById(id).exec();
-        }catch(error){
+        } catch (error) {
             return null;
         };
-        
+
     }
 
-    async detalle(filtro : string): Promise<SubgrupoDetalle[]>{
+    async detalle(filtro: string): Promise<SubgrupoDetalle[]> {
 
-        try{
-            return await this.subgrupoDetalleModel.find({subgrupo_id: filtro}).exec();
-        }catch(error){
+        try {
+            return await this.subgrupoDetalleModel.find({ subgrupo_id: filtro }).exec();
+        } catch (error) {
             return null;
         }
     }
 
-    async put(id: string, subgrupoDetalleDto: SubgrupoDetalleDto): Promise<SubgrupoDetalle>{
-        try{
+    async put(id: string, subgrupoDetalleDto: SubgrupoDetalleDto): Promise<SubgrupoDetalle> {
+        try {
             subgrupoDetalleDto.fecha_modificacion = new Date();
-            await this.subgrupoDetalleModel.findByIdAndUpdate(id, subgrupoDetalleDto , {new: true}).exec();
+            await this.subgrupoDetalleModel.validate(subgrupoDetalleDto);
+            await this.subgrupoDetalleModel.findByIdAndUpdate(id, subgrupoDetalleDto, { new: true }).exec();
             return await this.subgrupoDetalleModel.findById(id).exec();
-        }catch(error){
-            return null;
+        } catch (error) {
+            return error;
         }
-        
+
     }
 
-    async delete(id: string): Promise<any>{
-        try{
+    async delete(id: string): Promise<any> {
+        try {
             return await this.subgrupoDetalleModel.findByIdAndRemove(id).exec();
-        }catch(error){
+        } catch (error) {
             return null;
         }
 

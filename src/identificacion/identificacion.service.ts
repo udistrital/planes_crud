@@ -11,48 +11,56 @@ import { FiltersService } from '../filters/filters.service';
 @Injectable()
 export class IdentificacionService {
 
-    constructor(@InjectModel(Identificacion.name) private readonly identificacionModel: Model<Identificacion>){
+    constructor(@InjectModel(Identificacion.name) private readonly identificacionModel: Model<Identificacion>) {
 
     }
 
     async post(IdentificacionDto: IdentificacionDto): Promise<Identificacion> {
-        const identi = new this.identificacionModel(IdentificacionDto);
-        identi.fecha_creacion = new Date();
-        identi.fecha_modificacion = new Date();
-        return identi.save();
+        try {
+            const identi = new this.identificacionModel(IdentificacionDto);
+            identi.fecha_creacion = new Date();
+            identi.fecha_modificacion = new Date();
+            identi.activo = true;
+            this.identificacionModel.validate(identi);
+            return identi.save();
+        } catch (error) {
+            return error;
+        }
+
     }
-    
-    async getAll(filterDto: FilterDto): Promise<Identificacion[]>{
+
+    async getAll(filterDto: FilterDto): Promise<Identificacion[]> {
         const filtersService = new FiltersService(filterDto);
         return await this.identificacionModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
-        .sort(filtersService.getSortBy())
-        .exec();
+            .sort(filtersService.getSortBy())
+            .exec();
     }
 
-    async getById(id: string): Promise<Identificacion>{
-        try{
+    async getById(id: string): Promise<Identificacion> {
+        try {
             return await this.identificacionModel.findById(id).exec();
-        }catch(error){
+        } catch (error) {
             return null;
         };
-        
+
     }
 
-    async put(id: string, identiDto: IdentificacionDto): Promise<Identificacion>{
-        try{
+    async put(id: string, identiDto: IdentificacionDto): Promise<Identificacion> {
+        try {
             identiDto.fecha_modificacion = new Date();
-            await this.identificacionModel.findByIdAndUpdate(id, identiDto , {new: true}).exec();
+            await this.identificacionModel.validate(identiDto);
+            await this.identificacionModel.findByIdAndUpdate(id, identiDto, { new: true }).exec();
             return await this.identificacionModel.findById(id).exec();
-        }catch(error){
-            return null;
+        } catch (error) {
+            return error;
         }
-        
+
     }
 
-    async delete(id: string): Promise<any>{
-        try{
+    async delete(id: string): Promise<any> {
+        try {
             return await this.identificacionModel.findByIdAndRemove(id).exec();
-        }catch(error){
+        } catch (error) {
             return null;
         }
 
