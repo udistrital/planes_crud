@@ -21,7 +21,7 @@ export class PeriodoSeguimientoDto {
     activo: boolean;
 
     @ApiProperty()
-    unidades_interes: JSON;
+    unidades_interes: String;
 
     @ApiProperty()
     readonly fecha_creacion: Date;
