@@ -14,14 +14,14 @@ import { SeguimientoModule } from './seguimiento/seguimiento.module';
 import { TipoSeguimientoModule } from './tipo-seguimiento/tipo-seguimiento.module';
 import { EstadoSeguimientoModule } from './estado-seguimiento/estado-seguimiento.module';
 import { PeriodoSeguimientoModule } from './periodo-seguimiento/periodo-seguimiento.module';
-
+import { FuentesApropiacionModule } from './fuentes-apropiacion/fuentes-apropiacion.module';
 
 
 @Module({
-  //imports: [ MongooseModule.forRoot('mongodb://localhost/planes'), PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule, EstadoPlanModule, IdentificacionModule, TipoIdentificacionModule, SeguimientoModule, TipoSeguimientoModule, EstadoSeguimientoModule],
+  //imports: [ MongooseModule.forRoot('mongodb://127.0.0.1:27017/udistrital'), PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule, EstadoPlanModule, IdentificacionModule, TipoIdentificacionModule, SeguimientoModule, TipoSeguimientoModule, EstadoSeguimientoModule, PeriodoSeguimientoModule, FuentesApropiacionModule],
   imports: [MongooseModule.forRoot(`mongodb://${environment.USER}:${environment.PASS}@` +
     `${environment.HOST}:${environment.PORT}/${environment.DB}?authSource=${environment.AUTH_DB}`,
-    { useFindAndModify: false }), PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule, EstadoPlanModule, IdentificacionModule, TipoIdentificacionModule, SeguimientoModule, TipoSeguimientoModule, EstadoSeguimientoModule, PeriodoSeguimientoModule],
+    { useFindAndModify: false }), PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule, EstadoPlanModule, IdentificacionModule, TipoIdentificacionModule, SeguimientoModule, TipoSeguimientoModule, EstadoSeguimientoModule, PeriodoSeguimientoModule, FuentesApropiacionModule],
 
   controllers: [AppController],
   providers: [AppService],
