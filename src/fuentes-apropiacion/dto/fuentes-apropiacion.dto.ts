@@ -14,11 +14,13 @@ export class FuentesApropiacionDto {
     presupuesto: Number;
 
     @ApiProperty()
-    nombre: String;
-
+    presupuestoDisponible: Number;
 
     @ApiProperty()
-    activo: boolean;    
+    nombre: String;
+
+    @ApiProperty()
+    activo: boolean;
 
     @ApiProperty()
     readonly fecha_creacion: Date;
