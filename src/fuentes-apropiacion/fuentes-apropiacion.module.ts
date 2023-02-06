@@ -5,11 +5,11 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { FuentesApropiacion, FuentesApropiacionSchema } from "./schemas/fuentes-apropiacion.schema";
 
 @Module({
-  imports : [
-    MongooseModule.forFeature([{name: FuentesApropiacion.name , schema: FuentesApropiacionSchema}])
+  imports: [
+    MongooseModule.forFeature([{ name: FuentesApropiacion.name, schema: FuentesApropiacionSchema }])
   ],
   controllers: [FuentesApropiacionController],
   providers: [FuentesApropiacionService],
   exports: [FuentesApropiacionService],
 })
-export class FuentesApropiacionModule {}
+export class FuentesApropiacionModule { }
