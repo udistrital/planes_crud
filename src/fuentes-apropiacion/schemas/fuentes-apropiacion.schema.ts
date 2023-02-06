@@ -18,11 +18,14 @@ export class FuentesApropiacion extends Document {
     presupuesto: Number;
 
     @Prop({ required: true })
+    presupuestoDisponible: Number;
+
+    @Prop({ required: true })
     nombre: String
 
     @Prop({ required: true })
     activo: boolean;
-    
+
     @Prop({ required: false })
     fecha_creacion: Date;
 
