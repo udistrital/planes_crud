@@ -4,6 +4,8 @@ import { Document } from "mongoose";
 @Schema({collection: 'tipo_identificacion'})
 export class TipoIdentificacion extends Document{
 
+    _id: string
+
     @Prop({required: true })
     nombre: string
 

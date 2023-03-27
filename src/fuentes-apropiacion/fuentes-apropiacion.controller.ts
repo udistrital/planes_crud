@@ -1,28 +1,27 @@
 import { Query, Controller, Get, Post, Put, Delete, Res, HttpStatus, Body, Param, NotFoundException, HttpException } from '@nestjs/common';
-import { TipoIdentificacionDto } from "./dto/tipo-identificacion.dto";
-import { TipoIdentificacionService } from "./tipo-identificacion.service";
+import { FuentesApropiacionDto } from './dto/fuentes-apropiacion.dto';
+import { FuentesApropiacionService } from './fuentes-apropiacion.service';
 import { FilterDto } from '../filters/dto/filter.dto';
 import { SubgrupoService } from "../subgrupo/subgrupo.service"
 import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
 
-@Controller('tipo-identificacion')
-export class TipoIdentificacionController {
-
-  constructor(private tipoIdentificacionService: TipoIdentificacionService) { }
+@Controller('fuentes-apropiacion')
+export class FuentesApropiacionController {
+  constructor(private readonly fuentesApropiacionService: FuentesApropiacionService) { }
 
   @Post()
-  async post(@Res() res, @Body() identiDto: TipoIdentificacionDto) {
-    const identi = await this.tipoIdentificacionService.post(identiDto);
-    if (identi instanceof Error) {
+  async post(@Res() res, @Body() fuentesApropiacionDto: FuentesApropiacionDto) {
+    const fuentesApropiacion = await this.fuentesApropiacionService.post(fuentesApropiacionDto);
+    if (fuentesApropiacion instanceof Error) {
       return res.status(HttpStatus.OK).json({
         Data: null,
-        Message: identi.message,
+        Message: fuentesApropiacion.message,
         Status: "400",
         Success: false
       });
     } else {
       return res.status(HttpStatus.OK).json({
-        Data: identi,
+        Data: fuentesApropiacion,
         Message: "Registration successfull",
         Status: "201",
         Success: true
@@ -32,10 +31,10 @@ export class TipoIdentificacionController {
 
   @Get()
   async getAll(@Res() res, @Query() filterDto: FilterDto) {
-    const identi = await this.tipoIdentificacionService.getAll(filterDto);
+    const fuentesApropiacion = await this.fuentesApropiacionService.getAll(filterDto);
     return res.status(HttpStatus.OK).json(
       {
-        Data: identi,
+        Data: fuentesApropiacion,
         Message: "Request succesfull",
         Status: "200",
         Success: true
@@ -45,32 +44,32 @@ export class TipoIdentificacionController {
   @Get('/:id')
   async get(@Res() res, @Param('id') id: string) {
 
-    const identi = await this.tipoIdentificacionService.getById(id);
-    //if (!identi) throw new NotFoundException("not found resource")
+    const fuentesApropiacion = await this.fuentesApropiacionService.getById(id);
+    if (!fuentesApropiacion) throw new NotFoundException("not found resource")
     res.status(HttpStatus.OK).json(
       {
-        Data: identi ? identi : null,
-        Message: "Registration succesfull",
-        Status: "201",
+        Data: fuentesApropiacion ? fuentesApropiacion : null,
+        Message: "Request succesfull",
+        Status: "200",
         Success: true
       });
   }
 
   @Put('/:id')
-  async put(@Res() res, @Param('id') id: string, @Body() identiDto: TipoIdentificacionDto) {
+  async put(@Res() res, @Param('id') id: string, @Body() fuentesApropiacionDto: FuentesApropiacionDto) {
 
-    const identi = await this.tipoIdentificacionService.put(id, identiDto);
-    //if (!identi) throw new NotFoundException("not found resource");    
-    if (identi instanceof Error) {
+    const fuentesApropiacion = await this.fuentesApropiacionService.put(id, fuentesApropiacionDto);
+    //if (!fuentesApropiacion) throw new NotFoundException("not found resource");    
+    if (fuentesApropiacion instanceof Error) {
       return res.status(HttpStatus.OK).json({
         Data: null,
-        Message: identi.message,
+        Message: fuentesApropiacion.message,
         Status: "400",
         Success: false
       });
     } else {
       return res.status(HttpStatus.OK).json({
-        Data: identi,
+        Data: fuentesApropiacion,
         Message: "Update successfull",
         Status: "200",
         Success: true
@@ -80,11 +79,10 @@ export class TipoIdentificacionController {
 
   @Delete('/:id')
   async delete(@Res() res, @Param('id') id: string) {
-    const identi = await this.tipoIdentificacionService.getById(id);
-    if (identi) {
-      identi.activo = false;
-      //if (!plan) throw new NotFoundException("not found resource");    
-      const respuesta = await this.tipoIdentificacionService.put(id, identi);
+    const fuentesApropiacion = await this.fuentesApropiacionService.getById(id);
+    if (fuentesApropiacion) {
+      fuentesApropiacion.activo = false;
+      const respuesta = await this.fuentesApropiacionService.put(id, fuentesApropiacion);
       if (respuesta instanceof Error) {
         return res.status(HttpStatus.OK).json({
           Data: null,
@@ -105,7 +103,7 @@ export class TipoIdentificacionController {
         Data: null,
         Message: "Record Not found",
         Status: "404",
-        Success: true
+        Success: false
       });
     }
   }

@@ -24,7 +24,7 @@ export class SeguimientoDto{
     readonly estado_seguimiento_id: string;
 
     @ApiProperty()
-    readonly periodo_id: string;
+    readonly periodo_seguimiento_id: string;
 
     @ApiProperty()
     activo: boolean;
@@ -34,7 +34,7 @@ export class SeguimientoDto{
 
     @ApiProperty()
     fecha_fin: Date;
-
+    
     @ApiProperty()
     readonly fecha_creacion: Date;
 
