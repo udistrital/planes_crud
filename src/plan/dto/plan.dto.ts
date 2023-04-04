@@ -38,6 +38,9 @@ export class PlanDto{
     readonly padre_plan_id : string;
 
     @ApiProperty()
+    readonly arbol_padre_id : string;
+
+    @ApiProperty()
     readonly fecha_creacion: Date;
 
     @ApiProperty()
