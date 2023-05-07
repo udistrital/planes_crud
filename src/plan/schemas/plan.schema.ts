@@ -41,6 +41,9 @@ export class Plan extends Document{
     @Prop({required: false })
     padre_plan_id: string
 
+    @Prop({required: false })
+    arbol_padre_id: string
+
     @Prop({required: true })
     fecha_creacion: Date
 
