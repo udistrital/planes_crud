@@ -16,7 +16,7 @@ async function bootstrap() {
     .addTag('plan')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  fs.writeFileSync("./swagger.json", JSON.stringify(document));
+  fs.writeFileSync("./swagger.json", JSON.stringify(document, null, 4));
   SwaggerModule.setup('api', app, document);
 
   await app.listen( parseInt(environment.HTTP_PORT,10)|| 8080);

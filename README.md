@@ -48,13 +48,13 @@ En proceso
 
 | Develop | Relese 0.0.1 | Master |
 | -- | -- | -- |
-| [![Build Status]()]() | [![Build Status]()]() | [![Build Status]()]() |
+| [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/planes_crud/status.svg?ref=refs/heads/develop)](https://hubci.portaloas.udistrital.edu.co/udistrital/planes_crud) | [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/planes_crud/status.svg?ref=refs/heads/release/0.0.1)](https://hubci.portaloas.udistrital.edu.co/udistrital/planes_crud) | [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/planes_crud/status.svg)](https://hubci.portaloas.udistrital.edu.co/udistrital/planes_crud) |
 
 
 
 ### Modelo de Datos
 
-[Modelo de datos]()
+![Modelo de datos Planes](/database/planes.png)
 
 ### Licencia
 

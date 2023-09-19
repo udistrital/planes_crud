@@ -2,7 +2,8 @@ import { Query, Controller, Get, Post, Put, Delete, Res, HttpStatus, Body, Param
 import { FilterDto } from 'src/filters/dto/filter.dto';
 import { EstadoSeguimientoDto } from './dto/estado-seguimiento.dto';
 import { EstadoSeguimientoService } from './estado-seguimiento.service';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('estado-seguimiento')
 @Controller('estado-seguimiento')
 export class EstadoSeguimientoController {
 
