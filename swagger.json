@@ -1,1 +1,3171 @@
-{"openapi":"3.0.0","paths":{"/":{"get":{"operationId":"AppController_getHello","parameters":[],"responses":{"200":{"description":""}}}},"/plan":{"post":{"operationId":"PlanController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/PlanDto"}}}},"responses":{"201":{"description":""}}},"get":{"operationId":"PlanController_getAll","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/plan/{id}":{"get":{"operationId":"PlanController_get","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}},"put":{"operationId":"PlanController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/PlanDto"}}}},"responses":{"200":{"description":""}}},"delete":{"operationId":"PlanController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/plan/delete_plan/{id}":{"put":{"operationId":"PlanController_deletePlan","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/tipo-plan":{"post":{"operationId":"TipoPlanController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/TipoPlanDto"}}}},"responses":{"201":{"description":""}}},"get":{"operationId":"TipoPlanController_getAll","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/tipo-plan/{id}":{"get":{"operationId":"TipoPlanController_get","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}},"put":{"operationId":"TipoPlanController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/TipoPlanDto"}}}},"responses":{"200":{"description":""}}},"delete":{"operationId":"TipoPlanController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/subgrupo":{"post":{"operationId":"SubgrupoController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SubgrupoDto"}}}},"responses":{"201":{"description":""}}},"get":{"operationId":"SubgrupoController_getAll","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/subgrupo/registrar_nodo":{"post":{"operationId":"SubgrupoController_postNodo","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SubgrupoDto"}}}},"responses":{"201":{"description":""}}}},"/subgrupo/{id}":{"get":{"operationId":"SubgrupoController_get","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}},"put":{"operationId":"SubgrupoController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SubgrupoDto"}}}},"responses":{"200":{"description":""}}},"delete":{"operationId":"SubgrupoController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/subgrupo/hijos/{id}":{"get":{"operationId":"SubgrupoController_getHijos","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/subgrupo/delete_nodo/{id}":{"put":{"operationId":"SubgrupoController_deleteNodo","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/subgrupo-detalle":{"post":{"operationId":"SubgrupoDetalleController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SubgrupoDetalleDto"}}}},"responses":{"201":{"description":""}}},"get":{"operationId":"SubgrupoDetalleController_getAll","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/subgrupo-detalle/{id}":{"get":{"operationId":"SubgrupoDetalleController_get","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}},"put":{"operationId":"SubgrupoDetalleController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SubgrupoDetalleDto"}}}},"responses":{"200":{"description":""}}},"delete":{"operationId":"SubgrupoDetalleController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/subgrupo-detalle/detalle/{id}":{"get":{"operationId":"SubgrupoDetalleController_getDetalle","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/estado-plan":{"post":{"operationId":"EstadoPlanController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/EstadoPlanDto"}}}},"responses":{"201":{"description":""}}},"get":{"operationId":"EstadoPlanController_getAll","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/estado-plan/{id}":{"get":{"operationId":"EstadoPlanController_get","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}},"put":{"operationId":"EstadoPlanController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/EstadoPlanDto"}}}},"responses":{"200":{"description":""}}},"delete":{"operationId":"EstadoPlanController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/identificacion":{"post":{"operationId":"IdentificacionController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/IdentificacionDto"}}}},"responses":{"201":{"description":""}}},"get":{"operationId":"IdentificacionController_getAll","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/identificacion/{id}":{"get":{"operationId":"IdentificacionController_get","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}},"put":{"operationId":"IdentificacionController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/IdentificacionDto"}}}},"responses":{"200":{"description":""}}},"delete":{"operationId":"IdentificacionController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/tipo-identificacion":{"post":{"operationId":"TipoIdentificacionController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/TipoIdentificacionDto"}}}},"responses":{"201":{"description":""}}},"get":{"operationId":"TipoIdentificacionController_getAll","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/tipo-identificacion/{id}":{"get":{"operationId":"TipoIdentificacionController_get","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}},"put":{"operationId":"TipoIdentificacionController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/TipoIdentificacionDto"}}}},"responses":{"200":{"description":""}}},"delete":{"operationId":"TipoIdentificacionController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/seguimiento":{"post":{"operationId":"SeguimientoController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SeguimientoDto"}}}},"responses":{"201":{"description":""}}},"get":{"operationId":"SeguimientoController_getAll","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/seguimiento/{id}":{"get":{"operationId":"SeguimientoController_get","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}},"put":{"operationId":"SeguimientoController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SeguimientoDto"}}}},"responses":{"200":{"description":""}}},"delete":{"operationId":"SeguimientoController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/tipo-seguimiento":{"post":{"operationId":"TipoSeguimientoController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/TipoSeguimientoDto"}}}},"responses":{"201":{"description":""}}},"get":{"operationId":"TipoSeguimientoController_getAll","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/tipo-seguimiento/{id}":{"get":{"operationId":"TipoSeguimientoController_get","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}},"put":{"operationId":"TipoSeguimientoController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/TipoSeguimientoDto"}}}},"responses":{"200":{"description":""}}},"delete":{"operationId":"TipoSeguimientoController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/estado-seguimiento":{"post":{"operationId":"EstadoSeguimientoController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/EstadoSeguimientoDto"}}}},"responses":{"201":{"description":""}}},"get":{"operationId":"EstadoSeguimientoController_getAll","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/estado-seguimiento/{id}":{"get":{"operationId":"EstadoSeguimientoController_get","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}},"put":{"operationId":"EstadoSeguimientoController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/EstadoSeguimientoDto"}}}},"responses":{"200":{"description":""}}},"delete":{"operationId":"EstadoSeguimientoController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/periodo-seguimiento":{"post":{"operationId":"PeriodoSeguimientoController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/PeriodoSeguimientoDto"}}}},"responses":{"201":{"description":""}}},"get":{"operationId":"PeriodoSeguimientoController_getAll","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/periodo-seguimiento/{id}":{"get":{"operationId":"PeriodoSeguimientoController_get","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}},"put":{"operationId":"PeriodoSeguimientoController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/PeriodoSeguimientoDto"}}}},"responses":{"200":{"description":""}}},"delete":{"operationId":"PeriodoSeguimientoController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/fuentes-apropiacion":{"post":{"operationId":"FuentesApropiacionController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/FuentesApropiacionDto"}}}},"responses":{"201":{"description":""}}},"get":{"operationId":"FuentesApropiacionController_getAll","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/fuentes-apropiacion/{id}":{"get":{"operationId":"FuentesApropiacionController_get","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}},"put":{"operationId":"FuentesApropiacionController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/FuentesApropiacionDto"}}}},"responses":{"200":{"description":""}}},"delete":{"operationId":"FuentesApropiacionController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/seguimiento-detalle":{"post":{"operationId":"SeguimientoDetalleController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SeguimientoDetalleDto"}}}},"responses":{"201":{"description":""}}},"get":{"operationId":"SeguimientoDetalleController_getAll","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}},"/seguimiento-detalle/{id}":{"get":{"operationId":"SeguimientoDetalleController_get","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}},"put":{"operationId":"SeguimientoDetalleController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SeguimientoDetalleDto"}}}},"responses":{"200":{"description":""}}},"delete":{"operationId":"SeguimientoDetalleController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}}}}},"info":{"title":"plan_crud","description":"API CRUD para el registro de planes para el cliente de planeacion","version":"1.0","contact":{}},"tags":[{"name":"plan","description":""}],"servers":[],"components":{"schemas":{"PlanDto":{"type":"object","properties":{"nombre":{"type":"string"},"descripcion":{"type":"string"},"tipo_plan_id":{"type":"string"},"documento_id":{"type":"string"},"formato":{"type":"boolean"},"vigencia":{"type":"string"},"dependencia_id":{"type":"string"},"aplicativo_id":{"type":"string"},"activo":{"type":"boolean"},"estado_plan_id":{"type":"string"},"padre_plan_id":{"type":"string"},"arbol_padre_id":{"type":"string"},"fecha_creacion":{"format":"date-time","type":"string"},"fecha_modificacion":{"format":"date-time","type":"string"}},"required":["nombre","descripcion","tipo_plan_id","documento_id","formato","vigencia","dependencia_id","aplicativo_id","activo","estado_plan_id","padre_plan_id","arbol_padre_id","fecha_creacion","fecha_modificacion"]},"TipoPlanDto":{"type":"object","properties":{"nombre":{"type":"string"},"descripcion":{"type":"string"},"codigo_abreviacion":{"type":"string"},"activo":{"type":"boolean"},"fecha_creacion":{"format":"date-time","type":"string"},"fecha_modificacion":{"format":"date-time","type":"string"}},"required":["nombre","descripcion","codigo_abreviacion","activo","fecha_creacion","fecha_modificacion"]},"SubgrupoDto":{"type":"object","properties":{"nombre":{"type":"string"},"descripcion":{"type":"string"},"padre":{"type":"string"},"hijos":{"type":"array","items":{"type":"string"}},"activo":{"type":"boolean"},"bandera_tabla":{"type":"boolean"},"fecha_creacion":{"format":"date-time","type":"string"},"fecha_modificacion":{"format":"date-time","type":"string"}},"required":["nombre","descripcion","padre","hijos","activo","bandera_tabla","fecha_creacion","fecha_modificacion"]},"SubgrupoDetalleDto":{"type":"object","properties":{"nombre":{"type":"string"},"descripcion":{"type":"string"},"subgrupo_id":{"type":"string"},"dato":{"type":"string"},"dato_plan":{"type":"string"},"armonizacion_dato":{"type":"string"},"activo":{"type":"boolean"},"fecha_creacion":{"format":"date-time","type":"string"},"fecha_modificacion":{"format":"date-time","type":"string"}},"required":["nombre","descripcion","subgrupo_id","dato","dato_plan","armonizacion_dato","activo","fecha_creacion","fecha_modificacion"]},"EstadoPlanDto":{"type":"object","properties":{"nombre":{"type":"string"},"descripcion":{"type":"string"},"codigo_abreviacion":{"type":"string"},"activo":{"type":"boolean"},"fecha_creacion":{"format":"date-time","type":"string"},"fecha_modificacion":{"format":"date-time","type":"string"}},"required":["nombre","descripcion","codigo_abreviacion","activo","fecha_creacion","fecha_modificacion"]},"IdentificacionDto":{"type":"object","properties":{"nombre":{"type":"string"},"descripcion":{"type":"string"},"plan_id":{"type":"string"},"dato":{"type":"string"},"tipo_identificacion_id":{"type":"string"},"activo":{"type":"boolean"},"fecha_creacion":{"format":"date-time","type":"string"},"fecha_modificacion":{"format":"date-time","type":"string"}},"required":["nombre","descripcion","plan_id","dato","tipo_identificacion_id","activo","fecha_creacion","fecha_modificacion"]},"TipoIdentificacionDto":{"type":"object","properties":{"nombre":{"type":"string"},"descripcion":{"type":"string"},"codigo_abreviacion":{"type":"string"},"activo":{"type":"boolean"},"fecha_creacion":{"format":"date-time","type":"string"},"fecha_modificacion":{"format":"date-time","type":"string"}},"required":["nombre","descripcion","codigo_abreviacion","activo","fecha_creacion","fecha_modificacion"]},"SeguimientoDto":{"type":"object","properties":{"nombre":{"type":"string"},"descripcion":{"type":"string"},"plan_id":{"type":"string"},"dato":{"type":"string"},"tipo_seguimiento_id":{"type":"string"},"estado_seguimiento_id":{"type":"string"},"periodo_seguimiento_id":{"type":"string"},"activo":{"type":"boolean"},"fecha_inicio":{"format":"date-time","type":"string"},"fecha_fin":{"format":"date-time","type":"string"},"fecha_creacion":{"format":"date-time","type":"string"},"fecha_modificacion":{"format":"date-time","type":"string"}},"required":["nombre","descripcion","plan_id","dato","tipo_seguimiento_id","estado_seguimiento_id","periodo_seguimiento_id","activo","fecha_inicio","fecha_fin","fecha_creacion","fecha_modificacion"]},"TipoSeguimientoDto":{"type":"object","properties":{"nombre":{"type":"string"},"descripcion":{"type":"string"},"codigo_abreviacion":{"type":"string"},"activo":{"type":"boolean"},"fecha_creacion":{"format":"date-time","type":"string"},"fecha_modificacion":{"format":"date-time","type":"string"}},"required":["nombre","descripcion","codigo_abreviacion","activo","fecha_creacion","fecha_modificacion"]},"EstadoSeguimientoDto":{"type":"object","properties":{"nombre":{"type":"string"},"descripcion":{"type":"string"},"codigo_abreviacion":{"type":"string"},"activo":{"type":"boolean"},"fecha_creacion":{"format":"date-time","type":"string"},"fecha_modificacion":{"format":"date-time","type":"string"}},"required":["nombre","descripcion","codigo_abreviacion","activo","fecha_creacion","fecha_modificacion"]},"PeriodoSeguimientoDto":{"type":"object","properties":{"fecha_inicio":{"format":"date-time","type":"string"},"fecha_fin":{"format":"date-time","type":"string"},"periodo_id":{"type":"string"},"tipo_seguimiento_id":{"type":"string"},"activo":{"type":"boolean"},"unidades_interes":{"type":"string"},"fecha_creacion":{"format":"date-time","type":"string"},"fecha_modificacion":{"format":"date-time","type":"string"}},"required":["fecha_inicio","fecha_fin","periodo_id","tipo_seguimiento_id","activo","unidades_interes","fecha_creacion","fecha_modificacion"]},"FuentesApropiacionDto":{"type":"object","properties":{"codigo_abreviacion":{"type":"string"},"descripcion":{"type":"string"},"presupuesto":{"type":"number"},"presupuestoDisponible":{"type":"number"},"nombre":{"type":"string"},"activo":{"type":"boolean"},"fecha_creacion":{"format":"date-time","type":"string"},"fecha_modificacion":{"format":"date-time","type":"string"}},"required":["codigo_abreviacion","descripcion","presupuesto","presupuestoDisponible","nombre","activo","fecha_creacion","fecha_modificacion"]},"SeguimientoDetalleDto":{"type":"object","properties":{"cualitativo":{"type":"string"},"cuantitativo":{"type":"string"},"estado":{"type":"string"},"evidencia":{"type":"string"},"informacion":{"type":"string"},"activo":{"type":"boolean"},"fecha_creacion":{"format":"date-time","type":"string"},"fecha_modificacion":{"format":"date-time","type":"string"}},"required":["cualitativo","cuantitativo","estado","evidencia","informacion","activo","fecha_creacion","fecha_modificacion"]}}}}
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/": {
+            "get": {
+                "operationId": "AppController_getHello",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "healthCheck"
+                ]
+            }
+        },
+        "/plan": {
+            "post": {
+                "operationId": "PlanController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PlanDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "plan"
+                ]
+            },
+            "get": {
+                "operationId": "PlanController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "plan"
+                ]
+            }
+        },
+        "/plan/{id}": {
+            "get": {
+                "operationId": "PlanController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "plan"
+                ]
+            },
+            "put": {
+                "operationId": "PlanController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PlanDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "plan"
+                ]
+            },
+            "delete": {
+                "operationId": "PlanController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "plan"
+                ]
+            }
+        },
+        "/plan/delete_plan/{id}": {
+            "put": {
+                "operationId": "PlanController_deletePlan",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "plan"
+                ]
+            }
+        },
+        "/tipo-plan": {
+            "post": {
+                "operationId": "TipoPlanController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TipoPlanDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tipo-plan"
+                ]
+            },
+            "get": {
+                "operationId": "TipoPlanController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tipo-plan"
+                ]
+            }
+        },
+        "/tipo-plan/{id}": {
+            "get": {
+                "operationId": "TipoPlanController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tipo-plan"
+                ]
+            },
+            "put": {
+                "operationId": "TipoPlanController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TipoPlanDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tipo-plan"
+                ]
+            },
+            "delete": {
+                "operationId": "TipoPlanController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tipo-plan"
+                ]
+            }
+        },
+        "/subgrupo": {
+            "post": {
+                "operationId": "SubgrupoController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SubgrupoDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "subgrupo"
+                ]
+            },
+            "get": {
+                "operationId": "SubgrupoController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "subgrupo"
+                ]
+            }
+        },
+        "/subgrupo/registrar_nodo": {
+            "post": {
+                "operationId": "SubgrupoController_postNodo",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SubgrupoDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "subgrupo"
+                ]
+            }
+        },
+        "/subgrupo/{id}": {
+            "get": {
+                "operationId": "SubgrupoController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "subgrupo"
+                ]
+            },
+            "put": {
+                "operationId": "SubgrupoController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SubgrupoDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "subgrupo"
+                ]
+            },
+            "delete": {
+                "operationId": "SubgrupoController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "subgrupo"
+                ]
+            }
+        },
+        "/subgrupo/hijos/{id}": {
+            "get": {
+                "operationId": "SubgrupoController_getHijos",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "subgrupo"
+                ]
+            }
+        },
+        "/subgrupo/delete_nodo/{id}": {
+            "put": {
+                "operationId": "SubgrupoController_deleteNodo",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "subgrupo"
+                ]
+            }
+        },
+        "/subgrupo-detalle": {
+            "post": {
+                "operationId": "SubgrupoDetalleController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SubgrupoDetalleDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "subgrupo-detalle"
+                ]
+            },
+            "get": {
+                "operationId": "SubgrupoDetalleController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "subgrupo-detalle"
+                ]
+            }
+        },
+        "/subgrupo-detalle/{id}": {
+            "get": {
+                "operationId": "SubgrupoDetalleController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "subgrupo-detalle"
+                ]
+            },
+            "put": {
+                "operationId": "SubgrupoDetalleController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SubgrupoDetalleDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "subgrupo-detalle"
+                ]
+            },
+            "delete": {
+                "operationId": "SubgrupoDetalleController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "subgrupo-detalle"
+                ]
+            }
+        },
+        "/subgrupo-detalle/detalle/{id}": {
+            "get": {
+                "operationId": "SubgrupoDetalleController_getDetalle",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "subgrupo-detalle"
+                ]
+            }
+        },
+        "/estado-plan": {
+            "post": {
+                "operationId": "EstadoPlanController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EstadoPlanDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "estado-plan"
+                ]
+            },
+            "get": {
+                "operationId": "EstadoPlanController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "estado-plan"
+                ]
+            }
+        },
+        "/estado-plan/{id}": {
+            "get": {
+                "operationId": "EstadoPlanController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "estado-plan"
+                ]
+            },
+            "put": {
+                "operationId": "EstadoPlanController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EstadoPlanDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "estado-plan"
+                ]
+            },
+            "delete": {
+                "operationId": "EstadoPlanController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "estado-plan"
+                ]
+            }
+        },
+        "/identificacion": {
+            "post": {
+                "operationId": "IdentificacionController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/IdentificacionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "identificacion"
+                ]
+            },
+            "get": {
+                "operationId": "IdentificacionController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "identificacion"
+                ]
+            }
+        },
+        "/identificacion/{id}": {
+            "get": {
+                "operationId": "IdentificacionController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "identificacion"
+                ]
+            },
+            "put": {
+                "operationId": "IdentificacionController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/IdentificacionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "identificacion"
+                ]
+            },
+            "delete": {
+                "operationId": "IdentificacionController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "identificacion"
+                ]
+            }
+        },
+        "/tipo-identificacion": {
+            "post": {
+                "operationId": "TipoIdentificacionController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TipoIdentificacionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tipo-identificacion"
+                ]
+            },
+            "get": {
+                "operationId": "TipoIdentificacionController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tipo-identificacion"
+                ]
+            }
+        },
+        "/tipo-identificacion/{id}": {
+            "get": {
+                "operationId": "TipoIdentificacionController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tipo-identificacion"
+                ]
+            },
+            "put": {
+                "operationId": "TipoIdentificacionController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TipoIdentificacionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tipo-identificacion"
+                ]
+            },
+            "delete": {
+                "operationId": "TipoIdentificacionController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tipo-identificacion"
+                ]
+            }
+        },
+        "/seguimiento": {
+            "post": {
+                "operationId": "SeguimientoController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SeguimientoDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "seguimiento"
+                ]
+            },
+            "get": {
+                "operationId": "SeguimientoController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "seguimiento"
+                ]
+            }
+        },
+        "/seguimiento/{id}": {
+            "get": {
+                "operationId": "SeguimientoController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "seguimiento"
+                ]
+            },
+            "put": {
+                "operationId": "SeguimientoController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SeguimientoDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "seguimiento"
+                ]
+            },
+            "delete": {
+                "operationId": "SeguimientoController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "seguimiento"
+                ]
+            }
+        },
+        "/tipo-seguimiento": {
+            "post": {
+                "operationId": "TipoSeguimientoController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TipoSeguimientoDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tipo-seguimiento"
+                ]
+            },
+            "get": {
+                "operationId": "TipoSeguimientoController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tipo-seguimiento"
+                ]
+            }
+        },
+        "/tipo-seguimiento/{id}": {
+            "get": {
+                "operationId": "TipoSeguimientoController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tipo-seguimiento"
+                ]
+            },
+            "put": {
+                "operationId": "TipoSeguimientoController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TipoSeguimientoDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tipo-seguimiento"
+                ]
+            },
+            "delete": {
+                "operationId": "TipoSeguimientoController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tipo-seguimiento"
+                ]
+            }
+        },
+        "/estado-seguimiento": {
+            "post": {
+                "operationId": "EstadoSeguimientoController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EstadoSeguimientoDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "estado-seguimiento"
+                ]
+            },
+            "get": {
+                "operationId": "EstadoSeguimientoController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "estado-seguimiento"
+                ]
+            }
+        },
+        "/estado-seguimiento/{id}": {
+            "get": {
+                "operationId": "EstadoSeguimientoController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "estado-seguimiento"
+                ]
+            },
+            "put": {
+                "operationId": "EstadoSeguimientoController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EstadoSeguimientoDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "estado-seguimiento"
+                ]
+            },
+            "delete": {
+                "operationId": "EstadoSeguimientoController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "estado-seguimiento"
+                ]
+            }
+        },
+        "/periodo-seguimiento": {
+            "post": {
+                "operationId": "PeriodoSeguimientoController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PeriodoSeguimientoDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento"
+                ]
+            },
+            "get": {
+                "operationId": "PeriodoSeguimientoController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento"
+                ]
+            }
+        },
+        "/periodo-seguimiento/{id}": {
+            "get": {
+                "operationId": "PeriodoSeguimientoController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento"
+                ]
+            },
+            "put": {
+                "operationId": "PeriodoSeguimientoController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PeriodoSeguimientoDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento"
+                ]
+            },
+            "delete": {
+                "operationId": "PeriodoSeguimientoController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento"
+                ]
+            }
+        },
+        "/fuentes-apropiacion": {
+            "post": {
+                "operationId": "FuentesApropiacionController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FuentesApropiacionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "fuentes-apropiacion"
+                ]
+            },
+            "get": {
+                "operationId": "FuentesApropiacionController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "fuentes-apropiacion"
+                ]
+            }
+        },
+        "/fuentes-apropiacion/{id}": {
+            "get": {
+                "operationId": "FuentesApropiacionController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "fuentes-apropiacion"
+                ]
+            },
+            "put": {
+                "operationId": "FuentesApropiacionController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FuentesApropiacionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "fuentes-apropiacion"
+                ]
+            },
+            "delete": {
+                "operationId": "FuentesApropiacionController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "fuentes-apropiacion"
+                ]
+            }
+        },
+        "/seguimiento-detalle": {
+            "post": {
+                "operationId": "SeguimientoDetalleController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SeguimientoDetalleDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "seguimiento-detalle"
+                ]
+            },
+            "get": {
+                "operationId": "SeguimientoDetalleController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "seguimiento-detalle"
+                ]
+            }
+        },
+        "/seguimiento-detalle/{id}": {
+            "get": {
+                "operationId": "SeguimientoDetalleController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "seguimiento-detalle"
+                ]
+            },
+            "put": {
+                "operationId": "SeguimientoDetalleController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SeguimientoDetalleDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "seguimiento-detalle"
+                ]
+            },
+            "delete": {
+                "operationId": "SeguimientoDetalleController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "seguimiento-detalle"
+                ]
+            }
+        },
+        "/identificacion-detalle": {
+            "post": {
+                "operationId": "IdentificacionDetalleController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/IdentificacionDetalleDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "identificacion-detalle"
+                ]
+            },
+            "get": {
+                "operationId": "IdentificacionDetalleController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "identificacion-detalle"
+                ]
+            }
+        },
+        "/identificacion-detalle/{id}": {
+            "get": {
+                "operationId": "IdentificacionDetalleController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "identificacion-detalle"
+                ]
+            },
+            "put": {
+                "operationId": "IdentificacionDetalleController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/IdentificacionDetalleDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "identificacion-detalle"
+                ]
+            },
+            "delete": {
+                "operationId": "IdentificacionDetalleController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "identificacion-detalle"
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "plan_crud",
+        "description": "API CRUD para el registro de planes para el cliente de planeacion",
+        "version": "1.0",
+        "contact": {}
+    },
+    "tags": [
+        {
+            "name": "plan",
+            "description": ""
+        }
+    ],
+    "servers": [],
+    "components": {
+        "schemas": {
+            "PlanDto": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "tipo_plan_id": {
+                        "type": "string"
+                    },
+                    "documento_id": {
+                        "type": "string"
+                    },
+                    "formato": {
+                        "type": "boolean"
+                    },
+                    "vigencia": {
+                        "type": "string"
+                    },
+                    "dependencia_id": {
+                        "type": "string"
+                    },
+                    "aplicativo_id": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "estado_plan_id": {
+                        "type": "string"
+                    },
+                    "padre_plan_id": {
+                        "type": "string"
+                    },
+                    "arbol_padre_id": {
+                        "type": "string"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "descripcion",
+                    "tipo_plan_id",
+                    "documento_id",
+                    "formato",
+                    "vigencia",
+                    "dependencia_id",
+                    "aplicativo_id",
+                    "activo",
+                    "estado_plan_id",
+                    "padre_plan_id",
+                    "arbol_padre_id",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
+            },
+            "TipoPlanDto": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "codigo_abreviacion": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "descripcion",
+                    "codigo_abreviacion",
+                    "activo",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
+            },
+            "SubgrupoDto": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "padre": {
+                        "type": "string"
+                    },
+                    "hijos": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "bandera_tabla": {
+                        "type": "boolean"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "descripcion",
+                    "padre",
+                    "hijos",
+                    "activo",
+                    "bandera_tabla",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
+            },
+            "SubgrupoDetalleDto": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "subgrupo_id": {
+                        "type": "string"
+                    },
+                    "dato": {
+                        "type": "string"
+                    },
+                    "dato_plan": {
+                        "type": "string"
+                    },
+                    "armonizacion_dato": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "descripcion",
+                    "subgrupo_id",
+                    "dato",
+                    "dato_plan",
+                    "armonizacion_dato",
+                    "activo",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
+            },
+            "EstadoPlanDto": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "codigo_abreviacion": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "descripcion",
+                    "codigo_abreviacion",
+                    "activo",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
+            },
+            "IdentificacionDto": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "plan_id": {
+                        "type": "string"
+                    },
+                    "dato": {
+                        "type": "string"
+                    },
+                    "tipo_identificacion_id": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "descripcion",
+                    "plan_id",
+                    "dato",
+                    "tipo_identificacion_id",
+                    "activo",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
+            },
+            "TipoIdentificacionDto": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "codigo_abreviacion": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "descripcion",
+                    "codigo_abreviacion",
+                    "activo",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
+            },
+            "SeguimientoDto": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "plan_id": {
+                        "type": "string"
+                    },
+                    "dato": {
+                        "type": "string"
+                    },
+                    "tipo_seguimiento_id": {
+                        "type": "string"
+                    },
+                    "estado_seguimiento_id": {
+                        "type": "string"
+                    },
+                    "periodo_seguimiento_id": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "fecha_inicio": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_fin": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "descripcion",
+                    "plan_id",
+                    "dato",
+                    "tipo_seguimiento_id",
+                    "estado_seguimiento_id",
+                    "periodo_seguimiento_id",
+                    "activo",
+                    "fecha_inicio",
+                    "fecha_fin",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
+            },
+            "TipoSeguimientoDto": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "codigo_abreviacion": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "descripcion",
+                    "codigo_abreviacion",
+                    "activo",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
+            },
+            "EstadoSeguimientoDto": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "codigo_abreviacion": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "descripcion",
+                    "codigo_abreviacion",
+                    "activo",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
+            },
+            "PeriodoSeguimientoDto": {
+                "type": "object",
+                "properties": {
+                    "fecha_inicio": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_fin": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "periodo_id": {
+                        "type": "string"
+                    },
+                    "tipo_seguimiento_id": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "unidades_interes": {
+                        "type": "string"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "fecha_inicio",
+                    "fecha_fin",
+                    "periodo_id",
+                    "tipo_seguimiento_id",
+                    "activo",
+                    "unidades_interes",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
+            },
+            "FuentesApropiacionDto": {
+                "type": "object",
+                "properties": {
+                    "codigo_abreviacion": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "presupuesto": {
+                        "type": "number"
+                    },
+                    "presupuestoDisponible": {
+                        "type": "number"
+                    },
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "codigo_abreviacion",
+                    "descripcion",
+                    "presupuesto",
+                    "presupuestoDisponible",
+                    "nombre",
+                    "activo",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
+            },
+            "SeguimientoDetalleDto": {
+                "type": "object",
+                "properties": {
+                    "cualitativo": {
+                        "type": "string"
+                    },
+                    "cuantitativo": {
+                        "type": "string"
+                    },
+                    "estado": {
+                        "type": "string"
+                    },
+                    "evidencia": {
+                        "type": "string"
+                    },
+                    "informacion": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "cualitativo",
+                    "cuantitativo",
+                    "estado",
+                    "evidencia",
+                    "informacion",
+                    "activo",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
+            },
+            "IdentificacionDetalleDto": {
+                "type": "object",
+                "properties": {
+                    "dato": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "dato",
+                    "activo",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
+            }
+        }
+    }
+}

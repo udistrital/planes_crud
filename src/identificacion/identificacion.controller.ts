@@ -4,7 +4,9 @@ import { IdentificacionService } from "./identificacion.service";
 import { FilterDto } from '../filters/dto/filter.dto';
 import { SubgrupoService } from "../subgrupo/subgrupo.service"
 import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('identificacion')
 @Controller('identificacion')
 export class IdentificacionController {
 
