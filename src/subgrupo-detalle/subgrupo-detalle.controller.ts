@@ -3,7 +3,9 @@ import { Query, Controller, Get, Post, Put, Delete, Res, HttpStatus, Body, Param
 import { SubgrupoDetalleDto } from "./dto/subgrupo-detalle.dto";
 import { SubgrupoDetalleService } from "./subgrupo-detalle.service";
 import { FilterDto } from '../filters/dto/filter.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('subgrupo-detalle')
 @Controller('subgrupo-detalle')
 export class SubgrupoDetalleController {
 

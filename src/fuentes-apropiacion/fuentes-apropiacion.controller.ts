@@ -4,7 +4,9 @@ import { FuentesApropiacionService } from './fuentes-apropiacion.service';
 import { FilterDto } from '../filters/dto/filter.dto';
 import { SubgrupoService } from "../subgrupo/subgrupo.service"
 import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('fuentes-apropiacion')
 @Controller('fuentes-apropiacion')
 export class FuentesApropiacionController {
   constructor(private readonly fuentesApropiacionService: FuentesApropiacionService) { }
