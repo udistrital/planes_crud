@@ -4,7 +4,9 @@ import { PeriodoSeguimientoService } from './periodo-seguimiento.service';
 import { FilterDto } from '../filters/dto/filter.dto';
 import { SubgrupoService } from "../subgrupo/subgrupo.service"
 import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('periodo-seguimiento')
 @Controller('periodo-seguimiento')
 export class PeriodoSeguimientoController {
   constructor(private readonly periodoSeguimientoService: PeriodoSeguimientoService) { }

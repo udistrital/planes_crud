@@ -4,7 +4,9 @@ import { SubgrupoDto } from "./dto/subgrupo.dto";
 import { SubgrupoService } from "./subgrupo.service";
 import { PlanService } from "../plan/plan.service";
 import { FilterDto } from '../filters/dto/filter.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('subgrupo')
 @Controller('subgrupo')
 export class SubgrupoController {
 

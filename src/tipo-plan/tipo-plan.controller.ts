@@ -2,7 +2,9 @@ import { Query, Controller, Post, Get, Put, Delete, Body, Param, Res, HttpStatus
 import { TipoPlanDto } from "./dto/tipo-plan.dto";
 import { TipoPlanService } from "./tipo-plan.service";
 import { FilterDto } from '../filters/dto/filter.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('tipo-plan')
 @Controller('tipo-plan')
 export class TipoPlanController {
 
