@@ -21,6 +21,7 @@ export class SubgrupoService {
             const subgrupo = new this.subgrupoModel(subgrupoDto);
             subgrupo.fecha_creacion = new Date();
             subgrupo.fecha_modificacion = new Date();
+            subgrupo.activo = true;
             await this.subgrupoModel.validate(subgrupo);
             return subgrupo.save();
         } catch (error) {
