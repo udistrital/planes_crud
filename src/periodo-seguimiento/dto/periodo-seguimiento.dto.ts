@@ -24,6 +24,9 @@ export class PeriodoSeguimientoDto {
     unidades_interes: String;
 
     @ApiProperty()
+    planes_interes: String;
+
+    @ApiProperty()
     readonly fecha_creacion: Date;
 
     @ApiProperty()
