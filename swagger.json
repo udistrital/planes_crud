@@ -3039,6 +3039,9 @@
                     "unidades_interes": {
                         "type": "string"
                     },
+                    "planes_interes": {
+                        "type": "string"
+                    },
                     "fecha_creacion": {
                         "format": "date-time",
                         "type": "string"
@@ -3055,6 +3058,7 @@
                     "tipo_seguimiento_id",
                     "activo",
                     "unidades_interes",
+                    "planes_interes",
                     "fecha_creacion",
                     "fecha_modificacion"
                 ]
