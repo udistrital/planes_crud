@@ -2056,6 +2056,29 @@
                 ]
             }
         },
+        "/periodo-seguimiento/buscar-unidad/{unidadId}": {
+            "get": {
+                "operationId": "PeriodoSeguimientoController_buscarRegistrosPorUnidad",
+                "parameters": [
+                    {
+                        "name": "unidadId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento"
+                ]
+            }
+        },
         "/fuentes-apropiacion": {
             "post": {
                 "operationId": "FuentesApropiacionController_post",
