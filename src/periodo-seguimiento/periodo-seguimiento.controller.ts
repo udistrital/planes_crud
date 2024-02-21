@@ -57,6 +57,21 @@ export class PeriodoSeguimientoController {
       });
   }
 
+  @Get('buscar-unidad/:unidadId')
+  // @ApiParam({ name: 'unidadId', description: 'ID de la unidad a buscar' })
+  async buscarRegistrosPorUnidad(@Res() res, @Param('unidadId') unidadId: string) {
+    const registrosEncontrados = await this.periodoSeguimientoService.buscarRegistrosPorUnidadInteres(unidadId);
+    if (!registrosEncontrados || registrosEncontrados.length === 0) throw new NotFoundException("not found resource")
+
+    res.status(HttpStatus.OK).json(
+      {
+        Data: registrosEncontrados ? registrosEncontrados : null,
+        Message: "Request succesfull",
+        Status: "200",
+        Success: true
+      });
+  }
+
   @Put('/:id')
   async put(@Res() res, @Param('id') id: string, @Body() periodoSeguimientoDto: PeriodoSeguimientoDto) {
 

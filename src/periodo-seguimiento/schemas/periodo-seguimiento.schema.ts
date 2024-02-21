@@ -24,7 +24,10 @@ export class PeriodoSeguimiento extends Document {
     activo: boolean;
 
     @Prop({ required: true })
-    unidades_interes: String;
+    unidades_interes: string;
+
+    @Prop({ required: true })
+    planes_interes: string;
 
     @Prop({ required: true })
     fecha_creacion: Date;

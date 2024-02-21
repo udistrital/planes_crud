@@ -41,7 +41,19 @@ export class PeriodoSeguimientoService {
     } catch (error) {
       return null;
     };
+  }
 
+  async buscarRegistrosPorUnidadInteres(unidadId: string) {
+    try {
+      const registrosEncontrados = await this.periodoSeguimientoModel.find({
+        unidades_interes: new RegExp(`.*"Id":${unidadId}.*`),
+        activo: true,
+        planes_interes: { $exists: true, $ne: null},
+      }).exec();
+      return registrosEncontrados;
+    } catch (error) {
+      return null;
+    }
   }
 
   async put(id: string, PeriodoSeguimientoDto: PeriodoSeguimientoDto): Promise<PeriodoSeguimiento> {
