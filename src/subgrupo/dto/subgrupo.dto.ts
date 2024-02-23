@@ -24,6 +24,9 @@ export class SubgrupoDto{
     bandera_tabla: boolean;
 
     @ApiProperty()
+    readonly ref: string;
+
+    @ApiProperty()
     readonly fecha_creacion: Date;
 
     @ApiProperty()
