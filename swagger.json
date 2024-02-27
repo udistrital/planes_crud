@@ -2742,6 +2742,9 @@
                     "bandera_tabla": {
                         "type": "boolean"
                     },
+                    "ref": {
+                        "type": "string"
+                    },
                     "fecha_creacion": {
                         "format": "date-time",
                         "type": "string"
@@ -2758,6 +2761,7 @@
                     "hijos",
                     "activo",
                     "bandera_tabla",
+                    "ref",
                     "fecha_creacion",
                     "fecha_modificacion"
                 ]
