@@ -23,6 +23,9 @@ export class Subgrupo extends Document{
 
     @Prop({required: false })
     bandera_tabla: boolean
+    
+    @Prop({required: false })
+    ref: string
 
     @Prop({required: true })
     fecha_creacion: Date
