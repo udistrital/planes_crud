@@ -1,10 +1,10 @@
-import { Query, Controller, Get, Post, Put, Delete, Res, HttpStatus, Body, Param, NotFoundException, HttpException } from '@nestjs/common';
-import { PeriodoSeguimientoDto } from './dto/periodo-seguimiento.dto';
+import { Query, Controller, Get, Post, Put, Delete, Res, HttpStatus, Body, Param, NotFoundException, HttpException, ParseIntPipe } from '@nestjs/common';
 import { PeriodoSeguimientoService } from './periodo-seguimiento.service';
 import { FilterDto } from '../filters/dto/filter.dto';
 import { SubgrupoService } from "../subgrupo/subgrupo.service"
 import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiParam, ApiTags } from '@nestjs/swagger';
+import { PeriodoSeguimientoDto } from './dto/periodo-seguimiento.dto';
 
 @ApiTags('periodo-seguimiento')
 @Controller('periodo-seguimiento')
@@ -61,6 +61,21 @@ export class PeriodoSeguimientoController {
   // @ApiParam({ name: 'unidadId', description: 'ID de la unidad a buscar' })
   async buscarRegistrosPorUnidad(@Res() res, @Param('unidadId') unidadId: string) {
     const registrosEncontrados = await this.periodoSeguimientoService.buscarRegistrosPorUnidadInteres(unidadId);
+    if (!registrosEncontrados || registrosEncontrados.length === 0) throw new NotFoundException("not found resource")
+
+    res.status(HttpStatus.OK).json(
+      {
+        Data: registrosEncontrados ? registrosEncontrados : null,
+        Message: "Request succesfull",
+        Status: "200",
+        Success: true
+      });
+  }
+
+  @Post('buscar-unidad-planes/:numeroCaso')
+  @ApiParam({ name: 'numeroCaso', description: 'Numero de caso para buscar registros' })
+  async buscarRegistrosPorUnidad_Plan(@Res() res, @Body() data: PeriodoSeguimientoDto, @Param('numeroCaso', ParseIntPipe) numeroCaso: number) {
+    const registrosEncontrados = await this.periodoSeguimientoService.obtenerRegistrosExistencia(data,numeroCaso);
     if (!registrosEncontrados || registrosEncontrados.length === 0) throw new NotFoundException("not found resource")
 
     res.status(HttpStatus.OK).json(

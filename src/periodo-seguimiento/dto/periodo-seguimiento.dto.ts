@@ -11,7 +11,7 @@ export class PeriodoSeguimientoDto {
     fecha_fin: Date;
 
     @ApiProperty()
-    readonly periodo_id: String;
+    periodo_id: String;
 
     @ApiProperty()
     tipo_seguimiento_id: String;
