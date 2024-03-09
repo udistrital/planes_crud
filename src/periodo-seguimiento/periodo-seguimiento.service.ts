@@ -82,7 +82,6 @@ export class PeriodoSeguimientoService {
     } else if (caso === 3 ) { // Busca el registro que permita la formulación de un plan para una unidad específica
       condiciones.unidades_interes = { $in: unidades.map((u) => new RegExp(u, 'i')) }; // Utilizando expresiones regulares para la comparación
       if (plan) {
-        console.log("Plan: ", plan);
         condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };
       }
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
