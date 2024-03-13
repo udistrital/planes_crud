@@ -1,0 +1,2991 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "contact": {},
+    "description": "API CRUD para el registro de planes para el cliente de planeacion",
+    "title": "plan_crud",
+    "version": "1.0"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "healthCheck"
+        ],
+        "operationId": "AppController_getHello"
+      }
+    },
+    "/estado-plan": {
+      "get": {
+        "parameters": [
+          {
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "in": "query",
+            "name": "sortby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "offset - Start position of result set. Must be an integer",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "populate - show subqueries. Must be a boolean",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "estado-plan"
+        ],
+        "operationId": "EstadoPlanController_getAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EstadoPlanDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "estado-plan"
+        ],
+        "operationId": "EstadoPlanController_post"
+      }
+    },
+    "/estado-plan/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "estado-plan"
+        ],
+        "operationId": "EstadoPlanController_delete"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "estado-plan"
+        ],
+        "operationId": "EstadoPlanController_get"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EstadoPlanDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "estado-plan"
+        ],
+        "operationId": "EstadoPlanController_put"
+      }
+    },
+    "/estado-seguimiento": {
+      "get": {
+        "parameters": [
+          {
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "in": "query",
+            "name": "sortby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "offset - Start position of result set. Must be an integer",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "populate - show subqueries. Must be a boolean",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "estado-seguimiento"
+        ],
+        "operationId": "EstadoSeguimientoController_getAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EstadoSeguimientoDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "estado-seguimiento"
+        ],
+        "operationId": "EstadoSeguimientoController_post"
+      }
+    },
+    "/estado-seguimiento/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "estado-seguimiento"
+        ],
+        "operationId": "EstadoSeguimientoController_delete"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "estado-seguimiento"
+        ],
+        "operationId": "EstadoSeguimientoController_get"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EstadoSeguimientoDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "estado-seguimiento"
+        ],
+        "operationId": "EstadoSeguimientoController_put"
+      }
+    },
+    "/fuentes-apropiacion": {
+      "get": {
+        "parameters": [
+          {
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "in": "query",
+            "name": "sortby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "offset - Start position of result set. Must be an integer",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "populate - show subqueries. Must be a boolean",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "fuentes-apropiacion"
+        ],
+        "operationId": "FuentesApropiacionController_getAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FuentesApropiacionDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "fuentes-apropiacion"
+        ],
+        "operationId": "FuentesApropiacionController_post"
+      }
+    },
+    "/fuentes-apropiacion/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "fuentes-apropiacion"
+        ],
+        "operationId": "FuentesApropiacionController_delete"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "fuentes-apropiacion"
+        ],
+        "operationId": "FuentesApropiacionController_get"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FuentesApropiacionDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "fuentes-apropiacion"
+        ],
+        "operationId": "FuentesApropiacionController_put"
+      }
+    },
+    "/identificacion": {
+      "get": {
+        "parameters": [
+          {
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "in": "query",
+            "name": "sortby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "offset - Start position of result set. Must be an integer",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "populate - show subqueries. Must be a boolean",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "identificacion"
+        ],
+        "operationId": "IdentificacionController_getAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IdentificacionDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "identificacion"
+        ],
+        "operationId": "IdentificacionController_post"
+      }
+    },
+    "/identificacion-detalle": {
+      "get": {
+        "parameters": [
+          {
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "in": "query",
+            "name": "sortby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "offset - Start position of result set. Must be an integer",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "populate - show subqueries. Must be a boolean",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "identificacion-detalle"
+        ],
+        "operationId": "IdentificacionDetalleController_getAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IdentificacionDetalleDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "identificacion-detalle"
+        ],
+        "operationId": "IdentificacionDetalleController_post"
+      }
+    },
+    "/identificacion-detalle/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "identificacion-detalle"
+        ],
+        "operationId": "IdentificacionDetalleController_delete"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "identificacion-detalle"
+        ],
+        "operationId": "IdentificacionDetalleController_get"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IdentificacionDetalleDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "identificacion-detalle"
+        ],
+        "operationId": "IdentificacionDetalleController_put"
+      }
+    },
+    "/identificacion/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "identificacion"
+        ],
+        "operationId": "IdentificacionController_delete"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "identificacion"
+        ],
+        "operationId": "IdentificacionController_get"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IdentificacionDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "identificacion"
+        ],
+        "operationId": "IdentificacionController_put"
+      }
+    },
+    "/periodo-seguimiento": {
+      "get": {
+        "parameters": [
+          {
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "in": "query",
+            "name": "sortby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "offset - Start position of result set. Must be an integer",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "populate - show subqueries. Must be a boolean",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "periodo-seguimiento"
+        ],
+        "operationId": "PeriodoSeguimientoController_getAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PeriodoSeguimientoDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "periodo-seguimiento"
+        ],
+        "operationId": "PeriodoSeguimientoController_post"
+      }
+    },
+    "/periodo-seguimiento/buscar-unidad-planes/{numeroCaso}": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Numero de caso para buscar registros",
+            "in": "path",
+            "name": "numeroCaso",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PeriodoSeguimientoDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "periodo-seguimiento"
+        ],
+        "operationId": "PeriodoSeguimientoController_buscarRegistrosPorUnidad_Plan"
+      }
+    },
+    "/periodo-seguimiento/buscar-unidad/{unidadId}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "unidadId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "periodo-seguimiento"
+        ],
+        "operationId": "PeriodoSeguimientoController_buscarRegistrosPorUnidad"
+      }
+    },
+    "/periodo-seguimiento/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "periodo-seguimiento"
+        ],
+        "operationId": "PeriodoSeguimientoController_delete"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "periodo-seguimiento"
+        ],
+        "operationId": "PeriodoSeguimientoController_get"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PeriodoSeguimientoDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "periodo-seguimiento"
+        ],
+        "operationId": "PeriodoSeguimientoController_put"
+      }
+    },
+    "/plan": {
+      "get": {
+        "parameters": [
+          {
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "in": "query",
+            "name": "sortby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "offset - Start position of result set. Must be an integer",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "populate - show subqueries. Must be a boolean",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "plan"
+        ],
+        "operationId": "PlanController_getAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlanDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "plan"
+        ],
+        "operationId": "PlanController_post"
+      }
+    },
+    "/plan/delete_plan/{id}": {
+      "put": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "plan"
+        ],
+        "operationId": "PlanController_deletePlan"
+      }
+    },
+    "/plan/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "plan"
+        ],
+        "operationId": "PlanController_delete"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "plan"
+        ],
+        "operationId": "PlanController_get"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlanDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "plan"
+        ],
+        "operationId": "PlanController_put"
+      }
+    },
+    "/seguimiento": {
+      "get": {
+        "parameters": [
+          {
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "in": "query",
+            "name": "sortby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "offset - Start position of result set. Must be an integer",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "populate - show subqueries. Must be a boolean",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "seguimiento"
+        ],
+        "operationId": "SeguimientoController_getAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SeguimientoDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "seguimiento"
+        ],
+        "operationId": "SeguimientoController_post"
+      }
+    },
+    "/seguimiento-detalle": {
+      "get": {
+        "parameters": [
+          {
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "in": "query",
+            "name": "sortby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "offset - Start position of result set. Must be an integer",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "populate - show subqueries. Must be a boolean",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "seguimiento-detalle"
+        ],
+        "operationId": "SeguimientoDetalleController_getAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SeguimientoDetalleDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "seguimiento-detalle"
+        ],
+        "operationId": "SeguimientoDetalleController_post"
+      }
+    },
+    "/seguimiento-detalle/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "seguimiento-detalle"
+        ],
+        "operationId": "SeguimientoDetalleController_delete"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "seguimiento-detalle"
+        ],
+        "operationId": "SeguimientoDetalleController_get"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SeguimientoDetalleDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "seguimiento-detalle"
+        ],
+        "operationId": "SeguimientoDetalleController_put"
+      }
+    },
+    "/seguimiento/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "seguimiento"
+        ],
+        "operationId": "SeguimientoController_delete"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "seguimiento"
+        ],
+        "operationId": "SeguimientoController_get"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SeguimientoDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "seguimiento"
+        ],
+        "operationId": "SeguimientoController_put"
+      }
+    },
+    "/subgrupo": {
+      "get": {
+        "parameters": [
+          {
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "in": "query",
+            "name": "sortby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "offset - Start position of result set. Must be an integer",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "populate - show subqueries. Must be a boolean",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "subgrupo"
+        ],
+        "operationId": "SubgrupoController_getAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SubgrupoDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "subgrupo"
+        ],
+        "operationId": "SubgrupoController_post"
+      }
+    },
+    "/subgrupo-detalle": {
+      "get": {
+        "parameters": [
+          {
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "in": "query",
+            "name": "sortby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "offset - Start position of result set. Must be an integer",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "populate - show subqueries. Must be a boolean",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "subgrupo-detalle"
+        ],
+        "operationId": "SubgrupoDetalleController_getAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SubgrupoDetalleDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "subgrupo-detalle"
+        ],
+        "operationId": "SubgrupoDetalleController_post"
+      }
+    },
+    "/subgrupo-detalle/detalle/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "subgrupo-detalle"
+        ],
+        "operationId": "SubgrupoDetalleController_getDetalle"
+      }
+    },
+    "/subgrupo-detalle/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "subgrupo-detalle"
+        ],
+        "operationId": "SubgrupoDetalleController_delete"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "subgrupo-detalle"
+        ],
+        "operationId": "SubgrupoDetalleController_get"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SubgrupoDetalleDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "subgrupo-detalle"
+        ],
+        "operationId": "SubgrupoDetalleController_put"
+      }
+    },
+    "/subgrupo/delete_nodo/{id}": {
+      "put": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "subgrupo"
+        ],
+        "operationId": "SubgrupoController_deleteNodo"
+      }
+    },
+    "/subgrupo/hijos/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "subgrupo"
+        ],
+        "operationId": "SubgrupoController_getHijos"
+      }
+    },
+    "/subgrupo/registrar_nodo": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SubgrupoDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "subgrupo"
+        ],
+        "operationId": "SubgrupoController_postNodo"
+      }
+    },
+    "/subgrupo/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "subgrupo"
+        ],
+        "operationId": "SubgrupoController_delete"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "subgrupo"
+        ],
+        "operationId": "SubgrupoController_get"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SubgrupoDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "subgrupo"
+        ],
+        "operationId": "SubgrupoController_put"
+      }
+    },
+    "/tipo-identificacion": {
+      "get": {
+        "parameters": [
+          {
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "in": "query",
+            "name": "sortby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "offset - Start position of result set. Must be an integer",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "populate - show subqueries. Must be a boolean",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "tipo-identificacion"
+        ],
+        "operationId": "TipoIdentificacionController_getAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TipoIdentificacionDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "tipo-identificacion"
+        ],
+        "operationId": "TipoIdentificacionController_post"
+      }
+    },
+    "/tipo-identificacion/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "tipo-identificacion"
+        ],
+        "operationId": "TipoIdentificacionController_delete"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "tipo-identificacion"
+        ],
+        "operationId": "TipoIdentificacionController_get"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TipoIdentificacionDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "tipo-identificacion"
+        ],
+        "operationId": "TipoIdentificacionController_put"
+      }
+    },
+    "/tipo-plan": {
+      "get": {
+        "parameters": [
+          {
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "in": "query",
+            "name": "sortby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "offset - Start position of result set. Must be an integer",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "populate - show subqueries. Must be a boolean",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "tipo-plan"
+        ],
+        "operationId": "TipoPlanController_getAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TipoPlanDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "tipo-plan"
+        ],
+        "operationId": "TipoPlanController_post"
+      }
+    },
+    "/tipo-plan/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "tipo-plan"
+        ],
+        "operationId": "TipoPlanController_delete"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "tipo-plan"
+        ],
+        "operationId": "TipoPlanController_get"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TipoPlanDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "tipo-plan"
+        ],
+        "operationId": "TipoPlanController_put"
+      }
+    },
+    "/tipo-seguimiento": {
+      "get": {
+        "parameters": [
+          {
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "in": "query",
+            "name": "sortby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "offset - Start position of result set. Must be an integer",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "populate - show subqueries. Must be a boolean",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "tipo-seguimiento"
+        ],
+        "operationId": "TipoSeguimientoController_getAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TipoSeguimientoDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "tipo-seguimiento"
+        ],
+        "operationId": "TipoSeguimientoController_post"
+      }
+    },
+    "/tipo-seguimiento/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "tipo-seguimiento"
+        ],
+        "operationId": "TipoSeguimientoController_delete"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "tipo-seguimiento"
+        ],
+        "operationId": "TipoSeguimientoController_get"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TipoSeguimientoDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "tipo-seguimiento"
+        ],
+        "operationId": "TipoSeguimientoController_put"
+      }
+    }
+  },
+  "definitions": {
+    "EstadoPlanDto": {
+      "properties": {
+        "activo": {
+          "type": "boolean"
+        },
+        "codigo_abreviacion": {
+          "type": "string"
+        },
+        "descripcion": {
+          "type": "string"
+        },
+        "fecha_creacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_modificacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "nombre": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nombre",
+        "descripcion",
+        "codigo_abreviacion",
+        "activo",
+        "fecha_creacion",
+        "fecha_modificacion"
+      ],
+      "type": "object"
+    },
+    "EstadoSeguimientoDto": {
+      "properties": {
+        "activo": {
+          "type": "boolean"
+        },
+        "codigo_abreviacion": {
+          "type": "string"
+        },
+        "descripcion": {
+          "type": "string"
+        },
+        "fecha_creacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_modificacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "nombre": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nombre",
+        "descripcion",
+        "codigo_abreviacion",
+        "activo",
+        "fecha_creacion",
+        "fecha_modificacion"
+      ],
+      "type": "object"
+    },
+    "FuentesApropiacionDto": {
+      "properties": {
+        "activo": {
+          "type": "boolean"
+        },
+        "codigo_abreviacion": {
+          "type": "string"
+        },
+        "descripcion": {
+          "type": "string"
+        },
+        "fecha_creacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_modificacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "nombre": {
+          "type": "string"
+        },
+        "presupuesto": {
+          "type": "number"
+        },
+        "presupuestoDisponible": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "codigo_abreviacion",
+        "descripcion",
+        "presupuesto",
+        "presupuestoDisponible",
+        "nombre",
+        "activo",
+        "fecha_creacion",
+        "fecha_modificacion"
+      ],
+      "type": "object"
+    },
+    "IdentificacionDetalleDto": {
+      "properties": {
+        "activo": {
+          "type": "boolean"
+        },
+        "dato": {
+          "type": "string"
+        },
+        "fecha_creacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_modificacion": {
+          "format": "date-time",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dato",
+        "activo",
+        "fecha_creacion",
+        "fecha_modificacion"
+      ],
+      "type": "object"
+    },
+    "IdentificacionDto": {
+      "properties": {
+        "activo": {
+          "type": "boolean"
+        },
+        "dato": {
+          "type": "string"
+        },
+        "descripcion": {
+          "type": "string"
+        },
+        "fecha_creacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_modificacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "nombre": {
+          "type": "string"
+        },
+        "plan_id": {
+          "type": "string"
+        },
+        "tipo_identificacion_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nombre",
+        "descripcion",
+        "plan_id",
+        "dato",
+        "tipo_identificacion_id",
+        "activo",
+        "fecha_creacion",
+        "fecha_modificacion"
+      ],
+      "type": "object"
+    },
+    "PeriodoSeguimientoDto": {
+      "properties": {
+        "activo": {
+          "type": "boolean"
+        },
+        "fecha_creacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_fin": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_inicio": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_modificacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "periodo_id": {
+          "type": "string"
+        },
+        "planes_interes": {
+          "type": "string"
+        },
+        "tipo_seguimiento_id": {
+          "type": "string"
+        },
+        "unidades_interes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "fecha_inicio",
+        "fecha_fin",
+        "periodo_id",
+        "tipo_seguimiento_id",
+        "activo",
+        "unidades_interes",
+        "planes_interes",
+        "fecha_creacion",
+        "fecha_modificacion"
+      ],
+      "type": "object"
+    },
+    "PlanDto": {
+      "properties": {
+        "activo": {
+          "type": "boolean"
+        },
+        "aplicativo_id": {
+          "type": "string"
+        },
+        "arbol_padre_id": {
+          "type": "string"
+        },
+        "dependencia_id": {
+          "type": "string"
+        },
+        "descripcion": {
+          "type": "string"
+        },
+        "documento_id": {
+          "type": "string"
+        },
+        "estado_plan_id": {
+          "type": "string"
+        },
+        "fecha_creacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_modificacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "formato": {
+          "type": "boolean"
+        },
+        "formato_id": {
+          "type": "string"
+        },
+        "nombre": {
+          "type": "string"
+        },
+        "nueva_estructura": {
+          "type": "boolean"
+        },
+        "padre_plan_id": {
+          "type": "string"
+        },
+        "tipo_plan_id": {
+          "type": "string"
+        },
+        "vigencia": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nombre",
+        "descripcion",
+        "tipo_plan_id",
+        "documento_id",
+        "formato",
+        "vigencia",
+        "dependencia_id",
+        "aplicativo_id",
+        "activo",
+        "estado_plan_id",
+        "padre_plan_id",
+        "arbol_padre_id",
+        "fecha_creacion",
+        "formato_id",
+        "nueva_estructura",
+        "fecha_modificacion"
+      ],
+      "type": "object"
+    },
+    "SeguimientoDetalleDto": {
+      "properties": {
+        "activo": {
+          "type": "boolean"
+        },
+        "cualitativo": {
+          "type": "string"
+        },
+        "cuantitativo": {
+          "type": "string"
+        },
+        "estado": {
+          "type": "string"
+        },
+        "evidencia": {
+          "type": "string"
+        },
+        "fecha_creacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_modificacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "informacion": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "cualitativo",
+        "cuantitativo",
+        "estado",
+        "evidencia",
+        "informacion",
+        "activo",
+        "fecha_creacion",
+        "fecha_modificacion"
+      ],
+      "type": "object"
+    },
+    "SeguimientoDto": {
+      "properties": {
+        "activo": {
+          "type": "boolean"
+        },
+        "dato": {
+          "type": "string"
+        },
+        "descripcion": {
+          "type": "string"
+        },
+        "estado_seguimiento_id": {
+          "type": "string"
+        },
+        "fecha_creacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_fin": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_inicio": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_modificacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "nombre": {
+          "type": "string"
+        },
+        "periodo_seguimiento_id": {
+          "type": "string"
+        },
+        "plan_id": {
+          "type": "string"
+        },
+        "tipo_seguimiento_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nombre",
+        "descripcion",
+        "plan_id",
+        "dato",
+        "tipo_seguimiento_id",
+        "estado_seguimiento_id",
+        "periodo_seguimiento_id",
+        "activo",
+        "fecha_inicio",
+        "fecha_fin",
+        "fecha_creacion",
+        "fecha_modificacion"
+      ],
+      "type": "object"
+    },
+    "SubgrupoDetalleDto": {
+      "properties": {
+        "activo": {
+          "type": "boolean"
+        },
+        "armonizacion_dato": {
+          "type": "string"
+        },
+        "dato": {
+          "type": "string"
+        },
+        "dato_plan": {
+          "type": "string"
+        },
+        "descripcion": {
+          "type": "string"
+        },
+        "fecha_creacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_modificacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "nombre": {
+          "type": "string"
+        },
+        "subgrupo_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nombre",
+        "descripcion",
+        "subgrupo_id",
+        "dato",
+        "dato_plan",
+        "armonizacion_dato",
+        "activo",
+        "fecha_creacion",
+        "fecha_modificacion"
+      ],
+      "type": "object"
+    },
+    "SubgrupoDto": {
+      "properties": {
+        "activo": {
+          "type": "boolean"
+        },
+        "bandera_tabla": {
+          "type": "boolean"
+        },
+        "descripcion": {
+          "type": "string"
+        },
+        "fecha_creacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_modificacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "hijos": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "nombre": {
+          "type": "string"
+        },
+        "padre": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nombre",
+        "descripcion",
+        "padre",
+        "hijos",
+        "activo",
+        "bandera_tabla",
+        "fecha_creacion",
+        "fecha_modificacion"
+      ],
+      "type": "object"
+    },
+    "TipoIdentificacionDto": {
+      "properties": {
+        "activo": {
+          "type": "boolean"
+        },
+        "codigo_abreviacion": {
+          "type": "string"
+        },
+        "descripcion": {
+          "type": "string"
+        },
+        "fecha_creacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_modificacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "nombre": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nombre",
+        "descripcion",
+        "codigo_abreviacion",
+        "activo",
+        "fecha_creacion",
+        "fecha_modificacion"
+      ],
+      "type": "object"
+    },
+    "TipoPlanDto": {
+      "properties": {
+        "activo": {
+          "type": "boolean"
+        },
+        "codigo_abreviacion": {
+          "type": "string"
+        },
+        "descripcion": {
+          "type": "string"
+        },
+        "fecha_creacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_modificacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "nombre": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nombre",
+        "descripcion",
+        "codigo_abreviacion",
+        "activo",
+        "fecha_creacion",
+        "fecha_modificacion"
+      ],
+      "type": "object"
+    },
+    "TipoSeguimientoDto": {
+      "properties": {
+        "activo": {
+          "type": "boolean"
+        },
+        "codigo_abreviacion": {
+          "type": "string"
+        },
+        "descripcion": {
+          "type": "string"
+        },
+        "fecha_creacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "fecha_modificacion": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "nombre": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nombre",
+        "descripcion",
+        "codigo_abreviacion",
+        "activo",
+        "fecha_creacion",
+        "fecha_modificacion"
+      ],
+      "type": "object"
+    }
+  },
+  "tags": [
+    {
+      "description": "",
+      "name": "plan"
+    }
+  ],
+  "x-components": {}
+}

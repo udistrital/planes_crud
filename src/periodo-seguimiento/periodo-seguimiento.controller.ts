@@ -76,11 +76,10 @@ export class PeriodoSeguimientoController {
   @ApiParam({ name: 'numeroCaso', description: 'Numero de caso para buscar registros' })
   async buscarRegistrosPorUnidad_Plan(@Res() res, @Body() data: PeriodoSeguimientoDto, @Param('numeroCaso', ParseIntPipe) numeroCaso: number) {
     const registrosEncontrados = await this.periodoSeguimientoService.obtenerRegistrosExistencia(data,numeroCaso);
-    if (!registrosEncontrados || registrosEncontrados.length === 0) throw new NotFoundException("not found resource")
-
+    if (!registrosEncontrados) throw new NotFoundException("not found resource")
     res.status(HttpStatus.OK).json(
       {
-        Data: registrosEncontrados ? registrosEncontrados : null,
+        Data: registrosEncontrados.length > 0 ? registrosEncontrados : null,
         Message: "Request succesfull",
         Status: "200",
         Success: true
