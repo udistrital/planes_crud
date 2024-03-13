@@ -88,14 +88,10 @@ export class PeriodoSeguimientoService {
         condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };
       }
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
-    } else if (caso === 4) { // Busca el registro para los planes con estructura antigua
-      condiciones.planes_interes = '[]';
-      condiciones.unidades_interes = '[]';
-      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
     } else if (caso === 5) { // Filtro de unidad
       condiciones.unidades_interes = data.unidades_interes;
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
-    } else if (caso === 6 ) { //TODO: Implementar filtro de plan
+    } else if (caso === 6 ) { // Filtro de plan/proyecto
       condiciones.planes_interes = { $in: planes.map((p) => new RegExp(p, 'i')) };
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
       if(registros.length > 0 && registros.length < planes_interes.length) {
