@@ -57,19 +57,22 @@ export class PeriodoSeguimientoService {
   }
 
   async obtenerRegistrosExistencia(data: PeriodoSeguimientoDto, caso: number): Promise<any[]> {
-    const unidades_interes = JSON.parse(data.unidades_interes)
-    const unidades = unidades_interes.map((unidad) => JSON.stringify(unidad));
+    var registros;
     var condiciones: any = {
       periodo_id: data.periodo_id,
       tipo_seguimiento_id: data.tipo_seguimiento_id,
       activo: true,
     };
+    if(data.unidades_interes){
+      var unidades_interes = JSON.parse(data.unidades_interes)
+      var unidades = unidades_interes.map((unidad) => JSON.stringify(unidad));
+    }    
     if(data.planes_interes) {
       var planes_interes = JSON.parse(data.planes_interes)
+      var planes = planes_interes.map((plan) => JSON.stringify(plan));
       var plan = planes_interes[0];
     }
     
-    var registros;
     if(caso === 1) { // Busca el registro por periodo y unidades
       condiciones.unidades_interes = { $in: unidades.map((u) => new RegExp(u, 'i')) }; // Utilizando expresiones regulares para la comparación
       condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };     // Esto hace la búsqueda más flexible y no sensible a mayúsculas/minúsculas
@@ -85,9 +88,22 @@ export class PeriodoSeguimientoService {
         condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };
       }
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+    } else if (caso === 4) { // Busca el registro para los planes con estructura antigua
+      condiciones.planes_interes = '[]';
+      condiciones.unidades_interes = '[]';
+      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+    } else if (caso === 5) { // Filtro de unidad
+      condiciones.unidades_interes = data.unidades_interes;
+      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+    } else if (caso === 6 ) { //TODO: Implementar filtro de plan
+      condiciones.planes_interes = { $in: planes.map((p) => new RegExp(p, 'i')) };
+      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+      if(registros.length > 0 && registros.length < planes_interes.length) {
+        registros = [];
+      }
     }
-    
-    return registros.length > 0 ? registros : null;
+    console.log('Registros encontrados: ', registros);
+    return registros;
   }
 
 
@@ -109,6 +125,5 @@ export class PeriodoSeguimientoService {
     } catch (error) {
       return null;
     }
-
   }
 }

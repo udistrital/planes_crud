@@ -44,6 +44,12 @@ export class PlanDto{
     readonly fecha_creacion: Date;
 
     @ApiProperty()
+    formato_id: string;
+
+    @ApiProperty()
+    nueva_estructura: boolean;
+
+    @ApiProperty()
     fecha_modificacion: Date;
 
 }
