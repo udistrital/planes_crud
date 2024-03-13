@@ -2079,6 +2079,40 @@
                 ]
             }
         },
+        "/periodo-seguimiento/buscar-unidad-planes/{numeroCaso}": {
+            "post": {
+                "operationId": "PeriodoSeguimientoController_buscarRegistrosPorUnidad_Plan",
+                "parameters": [
+                    {
+                        "name": "numeroCaso",
+                        "required": true,
+                        "in": "path",
+                        "description": "Numero de caso para buscar registros",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PeriodoSeguimientoDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento"
+                ]
+            }
+        },
         "/fuentes-apropiacion": {
             "post": {
                 "operationId": "FuentesApropiacionController_post",
@@ -2663,6 +2697,12 @@
                         "format": "date-time",
                         "type": "string"
                     },
+                    "formato_id": {
+                        "type": "string"
+                    },
+                    "nueva_estructura": {
+                        "type": "boolean"
+                    },
                     "fecha_modificacion": {
                         "format": "date-time",
                         "type": "string"
@@ -2682,6 +2722,8 @@
                     "padre_plan_id",
                     "arbol_padre_id",
                     "fecha_creacion",
+                    "formato_id",
+                    "nueva_estructura",
                     "fecha_modificacion"
                 ]
             },
