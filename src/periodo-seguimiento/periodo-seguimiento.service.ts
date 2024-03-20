@@ -56,6 +56,53 @@ export class PeriodoSeguimientoService {
     }
   }
 
+  async obtenerRegistrosExistencia(data: PeriodoSeguimientoDto, caso: number): Promise<any[]> {
+    var registros;
+    var condiciones: any = {
+      periodo_id: data.periodo_id,
+      tipo_seguimiento_id: data.tipo_seguimiento_id,
+      activo: true,
+    };
+    if(data.unidades_interes){
+      var unidades_interes = JSON.parse(data.unidades_interes)
+      var unidades = unidades_interes.map((unidad) => JSON.stringify(unidad));
+    }    
+    if(data.planes_interes) {
+      var planes_interes = JSON.parse(data.planes_interes)
+      var planes = planes_interes.map((plan) => JSON.stringify(plan));
+      var plan = planes_interes[0];
+    }
+    
+    if(caso === 1) { // Busca el registro por periodo y unidades
+      condiciones.unidades_interes = { $in: unidades.map((u) => new RegExp(u, 'i')) }; // Utilizando expresiones regulares para la comparación
+      condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };     // Esto hace la búsqueda más flexible y no sensible a mayúsculas/minúsculas
+      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+    } else if(caso === 2) { // Busca el registro por periodo, fecha_inicio y fecha_fin
+      condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };     // Esto hace la búsqueda más flexible y no sensible a mayúsculas/minúsculas
+      condiciones.fecha_inicio = data.fecha_inicio;
+      condiciones.fecha_fin = data.fecha_fin;
+      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+    } else if (caso === 3 ) { // Busca el registro que permita la formulación de un plan para una unidad específica
+      condiciones.unidades_interes = { $in: unidades.map((u) => new RegExp(u, 'i')) }; // Utilizando expresiones regulares para la comparación
+      if (plan) {
+        condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };
+      }
+      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+    } else if (caso === 5) { // Filtro de unidad
+      condiciones.unidades_interes = data.unidades_interes;
+      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+    } else if (caso === 6 ) { // Filtro de plan/proyecto
+      condiciones.planes_interes = { $in: planes.map((p) => new RegExp(p, 'i')) };
+      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+      if(registros.length > 0 && registros.length < planes_interes.length) {
+        registros = [];
+      }
+    }
+    console.log('Registros encontrados: ', registros);
+    return registros;
+  }
+
+
   async put(id: string, PeriodoSeguimientoDto: PeriodoSeguimientoDto): Promise<PeriodoSeguimiento> {
     try {
       PeriodoSeguimientoDto.fecha_modificacion = new Date();
@@ -74,6 +121,5 @@ export class PeriodoSeguimientoService {
     } catch (error) {
       return null;
     }
-
   }
 }

@@ -44,6 +44,12 @@ export class Plan extends Document{
     @Prop({required: false })
     arbol_padre_id: string
 
+    @Prop({required: false })
+    formato_id: string
+
+    @Prop({required: false })
+    nueva_estructura: boolean
+
     @Prop({required: true })
     fecha_creacion: Date
 
