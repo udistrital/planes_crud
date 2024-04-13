@@ -29,6 +29,9 @@ export class PeriodoSeguimiento extends Document {
     @Prop({ required: true })
     planes_interes: string;
 
+    @Prop({ required: false })
+    usuario_modificacion: string;
+
     @Prop({ required: true })
     fecha_creacion: Date;
 
