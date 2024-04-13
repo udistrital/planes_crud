@@ -2604,6 +2604,9 @@
         },
         "unidades_interes": {
           "type": "string"
+        },
+        "usuario_modificacion": {
+          "type": "string"
         }
       },
       "required": [
@@ -2614,6 +2617,7 @@
         "activo",
         "unidades_interes",
         "planes_interes",
+        "usuario_modificacion",
         "fecha_creacion",
         "fecha_modificacion"
       ],
@@ -2867,6 +2871,9 @@
         },
         "padre": {
           "type": "string"
+        },
+        "ref": {
+          "type": "string"
         }
       },
       "required": [
@@ -2876,6 +2883,7 @@
         "hijos",
         "activo",
         "bandera_tabla",
+        "ref",
         "fecha_creacion",
         "fecha_modificacion"
       ],
