@@ -91,12 +91,15 @@ export class PeriodoSeguimientoService {
     } else if (caso === 5) { // Filtro de unidad
       condiciones.unidades_interes = data.unidades_interes;
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
-    } else if (caso === 6 ) { // Filtro de plan/proyecto
+    } else if (caso === 6 ) { // Filtro de plan/proyecto por _id y nombre
       condiciones.planes_interes = { $in: planes.map((p) => new RegExp(p, 'i')) };
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
       if(registros.length > 0 && registros.length < planes_interes.length) {
         registros = [];
       }
+    } else if (caso === 7) { // Filtro de plan/proyecto por _id
+      condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };     // Esto hace la búsqueda más flexible y no sensible a mayúsculas/minúsculas
+      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
     }
     console.log('Registros encontrados: ', registros);
     return registros;
