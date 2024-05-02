@@ -30,6 +30,9 @@ export class PeriodoSeguimiento extends Document {
     planes_interes: string;
 
     @Prop({ required: false })
+    nueva_estructura: boolean;
+
+    @Prop({ required: false })
     usuario_modificacion: string;
 
     @Prop({ required: true })

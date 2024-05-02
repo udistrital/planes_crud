@@ -18,6 +18,7 @@ export class PeriodoSeguimientoService {
   async post(PeriodoSeguimientoDto: PeriodoSeguimientoDto): Promise<PeriodoSeguimiento> {
     try {
       const PeriodoSeguimiento = new this.periodoSeguimientoModel(PeriodoSeguimientoDto);
+      PeriodoSeguimiento.nueva_estructura = true;
       PeriodoSeguimiento.fecha_creacion = new Date();
       PeriodoSeguimiento.fecha_modificacion = new Date();
       PeriodoSeguimiento.activo = true;
@@ -105,6 +106,9 @@ export class PeriodoSeguimientoService {
         $options: 'i'
       };
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+    } else if (caso === 8) { // Caso para consultar registros de periodo-seguimiento antiguos
+      condiciones.nueva_estructura = null;
+      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
     }
     console.log('Registros encontrados: ', registros);
     return registros;
@@ -114,6 +118,7 @@ export class PeriodoSeguimientoService {
   async put(id: string, PeriodoSeguimientoDto: PeriodoSeguimientoDto): Promise<PeriodoSeguimiento> {
     try {
       PeriodoSeguimientoDto.fecha_modificacion = new Date();
+      PeriodoSeguimientoDto.nueva_estructura = true;
       await this.periodoSeguimientoModel.validate(PeriodoSeguimientoDto);
       await this.periodoSeguimientoModel.findByIdAndUpdate(id, PeriodoSeguimientoDto, { new: true }).exec();
       return await this.periodoSeguimientoModel.findById(id).exec();
