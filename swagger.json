@@ -3111,6 +3111,9 @@
                     "planes_interes": {
                         "type": "string"
                     },
+                    "nueva_estructura": {
+                        "type": "boolean"
+                    },
                     "usuario_modificacion": {
                         "type": "string"
                     },
@@ -3131,6 +3134,7 @@
                     "activo",
                     "unidades_interes",
                     "planes_interes",
+                    "nueva_estructura",
                     "usuario_modificacion",
                     "fecha_creacion",
                     "fecha_modificacion"
