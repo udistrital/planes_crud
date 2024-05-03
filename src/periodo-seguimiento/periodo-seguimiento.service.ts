@@ -18,6 +18,7 @@ export class PeriodoSeguimientoService {
   async post(PeriodoSeguimientoDto: PeriodoSeguimientoDto): Promise<PeriodoSeguimiento> {
     try {
       const PeriodoSeguimiento = new this.periodoSeguimientoModel(PeriodoSeguimientoDto);
+      PeriodoSeguimiento.nueva_estructura = true;
       PeriodoSeguimiento.fecha_creacion = new Date();
       PeriodoSeguimiento.fecha_modificacion = new Date();
       PeriodoSeguimiento.activo = true;
@@ -66,6 +67,7 @@ export class PeriodoSeguimientoService {
     if(data.unidades_interes){
       var unidades_interes = JSON.parse(data.unidades_interes)
       var unidades = unidades_interes.map((unidad) => JSON.stringify(unidad));
+      var unidad = unidades_interes[0];
     }    
     if(data.planes_interes) {
       var planes_interes = JSON.parse(data.planes_interes)
@@ -74,16 +76,16 @@ export class PeriodoSeguimientoService {
     }
     
     if(caso === 1) { // Busca el registro por periodo y unidades
-      condiciones.unidades_interes = { $in: unidades.map((u) => new RegExp(u, 'i')) }; // Utilizando expresiones regulares para la comparación
-      condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };     // Esto hace la búsqueda más flexible y no sensible a mayúsculas/minúsculas
+      condiciones.unidades_interes = { $in: unidades.map((u) => new RegExp(u, 'i')) };        // Utilizando expresiones regulares para la comparación
+      condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };    // Esto hace la búsqueda más flexible y no sensible a mayúsculas/minúsculas
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
     } else if(caso === 2) { // Busca el registro por periodo, fecha_inicio y fecha_fin
-      condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };     // Esto hace la búsqueda más flexible y no sensible a mayúsculas/minúsculas
+      condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };
       condiciones.fecha_inicio = data.fecha_inicio;
       condiciones.fecha_fin = data.fecha_fin;
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
     } else if (caso === 3 ) { // Busca el registro que permita la formulación de un plan para una unidad específica
-      condiciones.unidades_interes = { $in: unidades.map((u) => new RegExp(u, 'i')) }; // Utilizando expresiones regulares para la comparación
+      condiciones.unidades_interes = { $in: unidades.map((u) => new RegExp(u, 'i')) };
       if (plan) {
         condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };
       }
@@ -98,7 +100,14 @@ export class PeriodoSeguimientoService {
         registros = [];
       }
     } else if (caso === 7) { // Filtro de plan/proyecto por _id
-      condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };     // Esto hace la búsqueda más flexible y no sensible a mayúsculas/minúsculas
+      condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };
+      condiciones.unidades_interes = {
+        $regex: new RegExp(`"Id":${unidad.Id}.*"${unidad.Nombre}"`),
+        $options: 'i'
+      };
+      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+    } else if (caso === 8) { // Caso para consultar registros de periodo-seguimiento antiguos
+      condiciones.nueva_estructura = null;
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
     }
     console.log('Registros encontrados: ', registros);
@@ -109,6 +118,7 @@ export class PeriodoSeguimientoService {
   async put(id: string, PeriodoSeguimientoDto: PeriodoSeguimientoDto): Promise<PeriodoSeguimiento> {
     try {
       PeriodoSeguimientoDto.fecha_modificacion = new Date();
+      PeriodoSeguimientoDto.nueva_estructura = true;
       await this.periodoSeguimientoModel.validate(PeriodoSeguimientoDto);
       await this.periodoSeguimientoModel.findByIdAndUpdate(id, PeriodoSeguimientoDto, { new: true }).exec();
       return await this.periodoSeguimientoModel.findById(id).exec();
