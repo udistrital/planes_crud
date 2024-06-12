@@ -2637,6 +2637,204 @@
                     "identificacion-detalle"
                 ]
             }
+        },
+        "/reformulacion": {
+            "post": {
+                "operationId": "ReformulacionController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ReformulacionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "reformulacion"
+                ]
+            },
+            "get": {
+                "operationId": "ReformulacionController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "reformulacion"
+                ]
+            }
+        },
+        "/reformulacion/{id}": {
+            "get": {
+                "operationId": "ReformulacionController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "reformulacion"
+                ]
+            },
+            "put": {
+                "operationId": "ReformulacionController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ReformulacionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "reformulacion"
+                ]
+            },
+            "delete": {
+                "operationId": "ReformulacionController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "reformulacion"
+                ]
+            }
+        },
+        "/reformulacion/delete_reformulacion/{id}": {
+            "put": {
+                "operationId": "ReformulacionController_deletePlan",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "reformulacion"
+                ]
+            }
         }
     },
     "info": {
@@ -3243,6 +3441,39 @@
                 "required": [
                     "dato",
                     "activo",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
+            },
+            "ReformulacionDto": {
+                "type": "object",
+                "properties": {
+                    "observaciones": {
+                        "type": "string"
+                    },
+                    "archivos": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "plan_id": {
+                        "type": "string"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "observaciones",
+                    "archivos",
+                    "activo",
+                    "plan_id",
                     "fecha_creacion",
                     "fecha_modificacion"
                 ]
