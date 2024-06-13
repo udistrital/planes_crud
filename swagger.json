@@ -2812,29 +2812,6 @@
                     "reformulacion"
                 ]
             }
-        },
-        "/reformulacion/delete_reformulacion/{id}": {
-            "put": {
-                "operationId": "ReformulacionController_deletePlan",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "required": true,
-                        "in": "path",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                },
-                "tags": [
-                    "reformulacion"
-                ]
-            }
         }
     },
     "info": {

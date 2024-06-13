@@ -93,39 +93,6 @@ export class ReformulacionController {
     }
   }
 
-  @Put('/delete_reformulacion/:id')
-  async deletePlan(@Res() res, @Param('id') id: string) {
-    const reformulacion = await this.reformulacionService.getById(id);
-
-    if (reformulacion) {
-      reformulacion.activo = false;
-      //if (!reformulacion) throw new NotFoundException("not found resource");
-      const respuesta = await this.reformulacionService.put(id, reformulacion);
-      if (respuesta instanceof Error) {
-        return res.status(HttpStatus.OK).json({
-          Data: null,
-          Message: respuesta.message,
-          Status: '400',
-          Success: false,
-        });
-      } else {
-        return res.status(HttpStatus.OK).json({
-          Data: respuesta,
-          Message: 'Delete successfull',
-          Status: '200',
-          Success: true,
-        });
-      }
-    } else {
-      return res.status(HttpStatus.OK).json({
-        Data: null,
-        Message: 'Record Not found',
-        Status: '404',
-        Success: true,
-      });
-    }
-  }
-
   @Delete('/:id')
   async delete(@Res() res, @Param('id') id: string) {
     const reformulacion = await this.reformulacionService.getById(id);
