@@ -17,17 +17,18 @@ import { SubgrupoModule } from './subgrupo/subgrupo.module';
 import { TipoIdentificacionModule } from './tipo-identificacion/tipo-identificacion.module';
 import { TipoPlanModule } from './tipo-plan/tipo-plan.module';
 import { TipoSeguimientoModule } from './tipo-seguimiento/tipo-seguimiento.module';
+import { environment } from './config/configuration';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb://root:example@127.0.0.1:27017/udistrital?authSource=admin',
-    ),
     // MongooseModule.forRoot(
-    //   `mongodb://${environment.USER}:${environment.PASS}@` +
-    //     `${environment.HOST}:${environment.PORT}/${environment.DB}?authSource=${environment.AUTH_DB}`,
-    //   { useFindAndModify: false },
+    //   'mongodb://root:example@127.0.0.1:27017/udistrital?authSource=admin',
     // ),
+    MongooseModule.forRoot(
+      `mongodb://${environment.USER}:${environment.PASS}@` +
+        `${environment.HOST}:${environment.PORT}/${environment.DB}?authSource=${environment.AUTH_DB}`,
+      { useFindAndModify: false },
+    ),
     PlanModule,
     TipoPlanModule,
     SubgrupoModule,

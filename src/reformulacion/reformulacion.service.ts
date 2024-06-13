@@ -59,7 +59,7 @@ export class ReformulacionService {
     }
   }
 
-  async delete(id: string): Promise<any> {
+  async delete(id: string): Promise<Reformulacion> {
     try {
       return await this.reformulacionModel.findByIdAndRemove(id).exec();
     } catch (error) {

@@ -15,6 +15,9 @@ export class Reformulacion extends Document {
   archivos: string;
 
   @Prop({ required: true })
+  estado_id: string;
+
+  @Prop({ required: true })
   activo: boolean;
 
   @Prop({ required: true })

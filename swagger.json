@@ -3431,6 +3431,9 @@
                     "archivos": {
                         "type": "string"
                     },
+                    "estado_id": {
+                        "type": "string"
+                    },
                     "activo": {
                         "type": "boolean"
                     },
@@ -3449,6 +3452,7 @@
                 "required": [
                     "observaciones",
                     "archivos",
+                    "estado_id",
                     "activo",
                     "plan_id",
                     "fecha_creacion",
