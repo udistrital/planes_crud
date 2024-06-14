@@ -10,7 +10,7 @@ export class ReformulacionDto {
   readonly archivos: string;
 
   @ApiProperty()
-  readonly estado_id: string;
+  readonly estado_id: number;
 
   @ApiProperty()
   activo: boolean;

@@ -3432,7 +3432,7 @@
                         "type": "string"
                     },
                     "estado_id": {
-                        "type": "string"
+                        "type": "number"
                     },
                     "activo": {
                         "type": "boolean"
