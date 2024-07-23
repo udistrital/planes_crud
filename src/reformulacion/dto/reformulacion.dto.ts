@@ -23,4 +23,7 @@ export class ReformulacionDto {
 
   @ApiProperty()
   fecha_modificacion: Date;
+  
+  @ApiProperty()
+  readonly periodo: string;
 }

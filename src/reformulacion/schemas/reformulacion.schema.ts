@@ -25,6 +25,9 @@ export class Reformulacion extends Document {
 
   @Prop({ required: true })
   fecha_modificacion: Date;
+  
+  @Prop({ required: true })
+  periodo: string;
 }
 
 export const ReformulacionSchema = SchemaFactory.createForClass(Reformulacion);

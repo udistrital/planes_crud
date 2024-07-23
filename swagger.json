@@ -3447,6 +3447,9 @@
                     "fecha_modificacion": {
                         "format": "date-time",
                         "type": "string"
+                    },
+                    "periodo": {
+                        "type": "string"
                     }
                 },
                 "required": [
@@ -3456,7 +3459,8 @@
                     "activo",
                     "plan_id",
                     "fecha_creacion",
-                    "fecha_modificacion"
+                    "fecha_modificacion",
+                    "periodo"
                 ]
             }
         }
