@@ -23,6 +23,9 @@ export class PlanDto{
     readonly vigencia: string;
 
     @ApiProperty()
+    vigencia_aplica: string;
+
+    @ApiProperty()
     readonly dependencia_id: string;
 
     @ApiProperty()
