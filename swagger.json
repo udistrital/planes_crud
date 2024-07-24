@@ -2675,6 +2675,9 @@
                     "vigencia": {
                         "type": "string"
                     },
+                    "vigencia_aplica": {
+                        "type": "string"
+                    },
                     "dependencia_id": {
                         "type": "string"
                     },
@@ -2715,6 +2718,7 @@
                     "documento_id",
                     "formato",
                     "vigencia",
+                    "vigencia_aplica",
                     "dependencia_id",
                     "aplicativo_id",
                     "activo",
