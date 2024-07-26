@@ -27,6 +27,9 @@ export class Plan extends Document{
     vigencia : string
 
     @Prop({required: false })
+    vigencia_aplica: string
+
+    @Prop({required: false })
     dependencia_id: string
 
     @Prop({required: true })
