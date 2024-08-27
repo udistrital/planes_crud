@@ -63,6 +63,7 @@ export class PeriodoSeguimientoService {
       periodo_id: data.periodo_id,
       tipo_seguimiento_id: data.tipo_seguimiento_id,
       activo: true,
+      nueva_estructura: true,
     };
     if(data.unidades_interes){
       var unidades_interes = JSON.parse(data.unidades_interes)
@@ -110,7 +111,6 @@ export class PeriodoSeguimientoService {
       condiciones.nueva_estructura = null;
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
     }
-    console.log('Registros encontrados: ', registros);
     return registros;
   }
 
@@ -118,7 +118,6 @@ export class PeriodoSeguimientoService {
   async put(id: string, PeriodoSeguimientoDto: PeriodoSeguimientoDto): Promise<PeriodoSeguimiento> {
     try {
       PeriodoSeguimientoDto.fecha_modificacion = new Date();
-      PeriodoSeguimientoDto.nueva_estructura = true;
       await this.periodoSeguimientoModel.validate(PeriodoSeguimientoDto);
       await this.periodoSeguimientoModel.findByIdAndUpdate(id, PeriodoSeguimientoDto, { new: true }).exec();
       return await this.periodoSeguimientoModel.findById(id).exec();
