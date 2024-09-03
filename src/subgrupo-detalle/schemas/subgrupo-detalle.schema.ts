@@ -12,6 +12,9 @@ export class SubgrupoDetalle extends Document{
     descripcion: string
 
     @Prop({required: true })
+    requisitos: string
+
+    @Prop({required: true })
     subgrupo_id: string
 
     @Prop({required: true})
