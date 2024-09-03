@@ -2821,6 +2821,9 @@
                     "descripcion": {
                         "type": "string"
                     },
+                    "requisitos": {
+                        "type": "string"
+                    },
                     "subgrupo_id": {
                         "type": "string"
                     },
@@ -2848,6 +2851,7 @@
                 "required": [
                     "nombre",
                     "descripcion",
+                    "requisitos",
                     "subgrupo_id",
                     "dato",
                     "dato_plan",
