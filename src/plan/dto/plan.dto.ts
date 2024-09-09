@@ -23,6 +23,9 @@ export class PlanDto{
     readonly vigencia: string;
 
     @ApiProperty()
+    vigencia_aplica: string;
+
+    @ApiProperty()
     readonly dependencia_id: string;
 
     @ApiProperty()
@@ -42,6 +45,12 @@ export class PlanDto{
 
     @ApiProperty()
     readonly fecha_creacion: Date;
+
+    @ApiProperty()
+    formato_id: string;
+
+    @ApiProperty()
+    nueva_estructura: boolean;
 
     @ApiProperty()
     fecha_modificacion: Date;

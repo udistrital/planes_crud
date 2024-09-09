@@ -27,6 +27,9 @@ export class Plan extends Document{
     vigencia : string
 
     @Prop({required: false })
+    vigencia_aplica: string
+
+    @Prop({required: false })
     dependencia_id: string
 
     @Prop({required: true })
@@ -43,6 +46,12 @@ export class Plan extends Document{
 
     @Prop({required: false })
     arbol_padre_id: string
+
+    @Prop({required: false })
+    formato_id: string
+
+    @Prop({required: false })
+    nueva_estructura: boolean
 
     @Prop({required: true })
     fecha_creacion: Date

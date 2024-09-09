@@ -2056,6 +2056,63 @@
                 ]
             }
         },
+        "/periodo-seguimiento/buscar-unidad/{unidadId}": {
+            "get": {
+                "operationId": "PeriodoSeguimientoController_buscarRegistrosPorUnidad",
+                "parameters": [
+                    {
+                        "name": "unidadId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento"
+                ]
+            }
+        },
+        "/periodo-seguimiento/buscar-unidad-planes/{numeroCaso}": {
+            "post": {
+                "operationId": "PeriodoSeguimientoController_buscarRegistrosPorUnidad_Plan",
+                "parameters": [
+                    {
+                        "name": "numeroCaso",
+                        "required": true,
+                        "in": "path",
+                        "description": "Numero de caso para buscar registros",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PeriodoSeguimientoDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento"
+                ]
+            }
+        },
         "/fuentes-apropiacion": {
             "post": {
                 "operationId": "FuentesApropiacionController_post",
@@ -2618,6 +2675,9 @@
                     "vigencia": {
                         "type": "string"
                     },
+                    "vigencia_aplica": {
+                        "type": "string"
+                    },
                     "dependencia_id": {
                         "type": "string"
                     },
@@ -2640,6 +2700,12 @@
                         "format": "date-time",
                         "type": "string"
                     },
+                    "formato_id": {
+                        "type": "string"
+                    },
+                    "nueva_estructura": {
+                        "type": "boolean"
+                    },
                     "fecha_modificacion": {
                         "format": "date-time",
                         "type": "string"
@@ -2652,6 +2718,7 @@
                     "documento_id",
                     "formato",
                     "vigencia",
+                    "vigencia_aplica",
                     "dependencia_id",
                     "aplicativo_id",
                     "activo",
@@ -2659,6 +2726,8 @@
                     "padre_plan_id",
                     "arbol_padre_id",
                     "fecha_creacion",
+                    "formato_id",
+                    "nueva_estructura",
                     "fecha_modificacion"
                 ]
             },
@@ -2719,6 +2788,9 @@
                     "bandera_tabla": {
                         "type": "boolean"
                     },
+                    "ref": {
+                        "type": "string"
+                    },
                     "fecha_creacion": {
                         "format": "date-time",
                         "type": "string"
@@ -2735,6 +2807,7 @@
                     "hijos",
                     "activo",
                     "bandera_tabla",
+                    "ref",
                     "fecha_creacion",
                     "fecha_modificacion"
                 ]
@@ -2746,6 +2819,9 @@
                         "type": "string"
                     },
                     "descripcion": {
+                        "type": "string"
+                    },
+                    "requisitos": {
                         "type": "string"
                     },
                     "subgrupo_id": {
@@ -2775,6 +2851,7 @@
                 "required": [
                     "nombre",
                     "descripcion",
+                    "requisitos",
                     "subgrupo_id",
                     "dato",
                     "dato_plan",
@@ -3039,6 +3116,15 @@
                     "unidades_interes": {
                         "type": "string"
                     },
+                    "planes_interes": {
+                        "type": "string"
+                    },
+                    "nueva_estructura": {
+                        "type": "boolean"
+                    },
+                    "usuario_modificacion": {
+                        "type": "string"
+                    },
                     "fecha_creacion": {
                         "format": "date-time",
                         "type": "string"
@@ -3055,6 +3141,9 @@
                     "tipo_seguimiento_id",
                     "activo",
                     "unidades_interes",
+                    "planes_interes",
+                    "nueva_estructura",
+                    "usuario_modificacion",
                     "fecha_creacion",
                     "fecha_modificacion"
                 ]
