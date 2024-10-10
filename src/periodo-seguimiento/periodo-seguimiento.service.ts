@@ -90,7 +90,9 @@ export class PeriodoSeguimientoService {
       if (plan) {
         condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };
       }
-      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+      registros = await this.periodoSeguimientoModel.find(condiciones)
+        .sort([['fecha_modificacion', -1]])
+        .exec();
     } else if (caso === 5) { // Filtro de unidad
       condiciones.unidades_interes = data.unidades_interes;
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
@@ -106,7 +108,9 @@ export class PeriodoSeguimientoService {
         $regex: new RegExp(`"Id":${unidad.Id}.*"${unidad.Nombre}"`),
         $options: 'i'
       };
-      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+      registros = await this.periodoSeguimientoModel.find(condiciones)
+        .sort([['fecha_modificacion', -1]])
+        .exec();
     } else if (caso === 8) { // Caso para consultar registros de periodo-seguimiento antiguos
       condiciones.nueva_estructura = null;
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
