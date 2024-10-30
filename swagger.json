@@ -2850,6 +2850,9 @@
                     "vigencia": {
                         "type": "string"
                     },
+                    "vigencia_aplica": {
+                        "type": "string"
+                    },
                     "dependencia_id": {
                         "type": "string"
                     },
@@ -2890,6 +2893,7 @@
                     "documento_id",
                     "formato",
                     "vigencia",
+                    "vigencia_aplica",
                     "dependencia_id",
                     "aplicativo_id",
                     "activo",
@@ -2992,6 +2996,9 @@
                     "descripcion": {
                         "type": "string"
                     },
+                    "requisitos": {
+                        "type": "string"
+                    },
                     "subgrupo_id": {
                         "type": "string"
                     },
@@ -3019,6 +3026,7 @@
                 "required": [
                     "nombre",
                     "descripcion",
+                    "requisitos",
                     "subgrupo_id",
                     "dato",
                     "dato_plan",

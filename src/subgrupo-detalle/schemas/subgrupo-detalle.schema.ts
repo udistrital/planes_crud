@@ -5,31 +5,34 @@ import { Document } from "mongoose";
 export class SubgrupoDetalle extends Document{
 
 
-    @Prop({required: true })
+    @Prop({ required: true })
     nombre: string
 
-    @Prop({required: true })
+    @Prop({ required: true })
     descripcion: string
 
-    @Prop({required: true })
+    @Prop({ required: false })
+    requisitos: string
+
+    @Prop({ required: true })
     subgrupo_id: string
 
-    @Prop({required: true})
+    @Prop({ required: true })
     dato: string
 
-    @Prop({required: false})
+    @Prop({ required: false })
     dato_plan: string
 
-    @Prop({required: false})
+    @Prop({ required: false })
     armonizacion_dato: string
 
-    @Prop({required: true })
+    @Prop({ required: true })
     activo: boolean
 
-    @Prop({required: true })
+    @Prop({ required: true })
     fecha_creacion: Date
 
-    @Prop({required: true })
+    @Prop({ required: true })
     fecha_modificacion: Date
 
 }

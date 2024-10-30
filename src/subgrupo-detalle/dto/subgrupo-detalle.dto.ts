@@ -9,6 +9,9 @@ export class SubgrupoDetalleDto{
     readonly descripcion: string;
 
     @ApiProperty()
+    readonly requisitos: string;
+
+    @ApiProperty()
     readonly subgrupo_id: string;
 
     @ApiProperty()
