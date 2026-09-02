@@ -1,7 +1,7 @@
 import { Query, Controller, Get, Post, Put, Delete, Res, HttpStatus, Body, Param, NotFoundException } from '@nestjs/common';
 
 import { SubgrupoDto } from "./dto/subgrupo.dto";
-import { SubgrupoService } from "./subgrupo.service";
+import { SubgrupoOrderError, SubgrupoService } from "./subgrupo.service";
 import { PlanService } from "../plan/plan.service";
 import { FilterDto } from '../filters/dto/filter.dto';
 import { ApiTags } from '@nestjs/swagger';
@@ -107,6 +107,28 @@ export class SubgrupoController {
 
     @Put('/:id')
     async put(@Res() res, @Param('id') id: string, @Body() subgrupoDto: SubgrupoDto) {
+
+        if (Object.prototype.hasOwnProperty.call(subgrupoDto, 'hijos')) {
+            try {
+                const subgrupo = await this.subgrupoService.reorderChildren(id, subgrupoDto.hijos);
+                return res.status(HttpStatus.OK).json({
+                    Data: subgrupo,
+                    Message: "Orden actualizado correctamente",
+                    Status: 200,
+                    Success: true
+                });
+            } catch (error) {
+                const status = error instanceof SubgrupoOrderError
+                    ? error.status
+                    : HttpStatus.INTERNAL_SERVER_ERROR;
+                return res.status(status).json({
+                    Data: null,
+                    Message: error.message || "Error interno actualizando el orden",
+                    Status: status,
+                    Success: false
+                });
+            }
+        }
 
         const subgrupo = await this.subgrupoService.put(id, subgrupoDto);
         //if (!subgrupo) throw new NotFoundException("not found resource");
