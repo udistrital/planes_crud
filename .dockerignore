@@ -1,0 +1,12 @@
+.git
+.gitignore
+.drone.yml
+.dockerignore
+README.md
+database
+documentacion
+src
+test
+coverage
+*.log
+swagger*.json

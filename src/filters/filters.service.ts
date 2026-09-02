@@ -4,7 +4,7 @@ import { FilterDto } from './dto/filter.dto';
 export class FiltersService {
     constructor(private readonly filterDto: FilterDto) { }
 
-    getQuery(): Object {
+    getQuery(): Record<string, any> {
         //Filtro de consulta campo:valor (selección)
         let queryObj = {};
         if (this.filterDto.query) {
@@ -17,7 +17,7 @@ export class FiltersService {
         return queryObj;
     }
 
-    getFields(): Object {
+    getFields(): Record<string, any> {
         //Filtro de consulta por campo (proyección)
         let fieldsObj = {};
         if (this.filterDto.fields) {
@@ -59,7 +59,7 @@ export class FiltersService {
         return sortbyArray;
     }
 
-    getLimitAndOffset(): Object{            
+    getLimitAndOffset(): { skip: number; limit: number } {
         return { skip: parseInt(this.filterDto.offset), limit: parseInt(this.filterDto.limit) };
     }
 

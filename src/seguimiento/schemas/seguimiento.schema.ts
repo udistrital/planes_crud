@@ -1,8 +1,7 @@
 import { Schema, Prop, raw, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from "mongoose";
 
 @Schema({ collection: 'seguimiento' })
-export class Seguimiento extends Document {
+export class Seguimiento {
 
     _id: string
 

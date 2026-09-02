@@ -57,7 +57,7 @@ export class EstadoPlanService {
 
     async delete(id: string): Promise<any> {
         try {
-            return await this.estadoPlanModel.findByIdAndRemove(id).exec();
+            return await this.estadoPlanModel.findByIdAndDelete(id).exec();
         } catch (error) {
             return null;
         }

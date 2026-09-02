@@ -58,7 +58,7 @@ export class PlanService {
 
     async delete(id: string): Promise<any> {
         try {
-            return await this.planModel.findByIdAndRemove(id).exec();
+            return await this.planModel.findByIdAndDelete(id).exec();
         } catch (error) {
             return null;
         }

@@ -135,7 +135,7 @@ export class PeriodoSeguimientoService {
 
   async delete(id: string): Promise<any> {
     try {
-      return await this.periodoSeguimientoModel.findByIdAndRemove(id).exec();
+      return await this.periodoSeguimientoModel.findByIdAndDelete(id).exec();
     } catch (error) {
       return null;
     }

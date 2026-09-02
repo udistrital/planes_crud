@@ -59,7 +59,7 @@ export class IdentificacionService {
 
     async delete(id: string): Promise<any> {
         try {
-            return await this.identificacionModel.findByIdAndRemove(id).exec();
+            return await this.identificacionModel.findByIdAndDelete(id).exec();
         } catch (error) {
             return null;
         }
