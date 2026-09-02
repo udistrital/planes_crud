@@ -1,8 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from "mongoose";
 
 @Schema({collection: 'identificacion-detalle'})
-export class IdentificacionDetalle extends Document {
+export class IdentificacionDetalle {
 
     _id: string
 

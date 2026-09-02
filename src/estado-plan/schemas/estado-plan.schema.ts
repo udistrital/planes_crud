@@ -1,8 +1,7 @@
 import { Schema, Prop, raw, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from "mongoose";
 
 @Schema({collection: 'estado_plan'})
-export class EstadoPlan extends Document{
+export class EstadoPlan {
 
     @Prop({required: true })
     nombre: string

@@ -59,7 +59,7 @@ export class TipoPlanService {
 
     async delete(id: string): Promise<any> {
         try {
-            return await this.tipoPlanModel.findByIdAndRemove(id).exec();
+            return await this.tipoPlanModel.findByIdAndDelete(id).exec();
         } catch (error) {
             return null;
         }

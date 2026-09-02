@@ -65,7 +65,7 @@ export class SubgrupoService {
 
     async delete(id: string): Promise<any> {
         try {
-            return await this.subgrupoModel.findByIdAndRemove(id).exec();
+            return await this.subgrupoModel.findByIdAndDelete(id).exec();
         } catch (error) {
             return null;
         }

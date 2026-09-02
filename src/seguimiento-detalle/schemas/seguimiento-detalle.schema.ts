@@ -1,8 +1,7 @@
 import { Schema, Prop, raw, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from "mongoose";
 
 @Schema({ collection: 'seguimiento_detalle' })
-export class SeguimientoDetalle extends Document {
+export class SeguimientoDetalle {
 
 
     @Prop({ required: true })
