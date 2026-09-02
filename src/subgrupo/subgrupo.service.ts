@@ -8,6 +8,7 @@ import { query } from 'express';
 
 import { FilterDto } from '../filters/dto/filter.dto';
 import { FiltersService } from '../filters/filters.service';
+import { UpdateSubgrupoDto } from './dto/update-subgrupo.dto';
 
 export class SubgrupoOrderError extends Error {
     constructor(public readonly status: number, message: string) {
@@ -51,12 +52,38 @@ export class SubgrupoService {
 
     }
 
-    async put(id: string, subgrupoDto: SubgrupoDto): Promise<Subgrupo> {
+    async put(id: string, subgrupoDto: UpdateSubgrupoDto): Promise<Subgrupo> {
         try {
-            subgrupoDto.fecha_modificacion = new Date();
-            await this.subgrupoModel.validate(subgrupoDto);
-            await this.subgrupoModel.findByIdAndUpdate(id, subgrupoDto, { new: true }).exec();
-            return await this.subgrupoModel.findById(id).exec();
+            const camposPermitidos = [
+                'nombre',
+                'descripcion',
+                'padre',
+                'hijos',
+                'activo',
+                'bandera_tabla',
+                'ref',
+                'fecha_creacion',
+            ];
+            const cambios = camposPermitidos.reduce((resultado, campo) => {
+                if (subgrupoDto[campo] !== undefined) {
+                    resultado[campo] = subgrupoDto[campo];
+                }
+                return resultado;
+            }, {} as Record<string, any>);
+
+            return await this.subgrupoModel.findByIdAndUpdate(
+                id,
+                {
+                    $set: {
+                        ...cambios,
+                        fecha_modificacion: new Date(),
+                    },
+                },
+                {
+                    new: true,
+                    runValidators: true,
+                },
+            ).exec();
         } catch (error) {
             return error;
         }

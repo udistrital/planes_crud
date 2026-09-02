@@ -79,7 +79,32 @@ describe('SubgrupoService order', () => {
     const service = new SubgrupoService(model);
 
     await expect(service.hijos('plan')).resolves.toEqual(hijos);
+    expect(model.find).toHaveBeenCalledWith({ padre: 'plan' });
     expect(sort).toHaveBeenCalledWith({ fecha_creacion: 1, _id: 1 });
+  });
+
+  it('allows a partial update of creation date without validating a complete document', async () => {
+    const fecha = new Date('2026-09-02T10:00:00.000Z');
+    const actualizado = { _id: 'nodo', fecha_creacion: fecha };
+    const model: any = {
+      validate: jest.fn(),
+      findByIdAndUpdate: jest.fn().mockReturnValue(query(actualizado)),
+    };
+    const service = new SubgrupoService(model);
+
+    await expect(service.put('nodo', { fecha_creacion: fecha }))
+      .resolves.toEqual(actualizado);
+    expect(model.validate).not.toHaveBeenCalled();
+    expect(model.findByIdAndUpdate).toHaveBeenCalledWith(
+      'nodo',
+      {
+        $set: {
+          fecha_creacion: fecha,
+          fecha_modificacion: expect.any(Date),
+        },
+      },
+      { new: true, runValidators: true },
+    );
   });
 
   it('uses the parent child array for nested levels', async () => {

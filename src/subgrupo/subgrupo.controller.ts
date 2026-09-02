@@ -5,6 +5,7 @@ import { SubgrupoOrderError, SubgrupoService } from "./subgrupo.service";
 import { PlanService } from "../plan/plan.service";
 import { FilterDto } from '../filters/dto/filter.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { UpdateSubgrupoDto } from './dto/update-subgrupo.dto';
 
 @ApiTags('subgrupo')
 @Controller('subgrupo')
@@ -106,9 +107,11 @@ export class SubgrupoController {
     }
 
     @Put('/:id')
-    async put(@Res() res, @Param('id') id: string, @Body() subgrupoDto: SubgrupoDto) {
+    async put(@Res() res, @Param('id') id: string, @Body() subgrupoDto: UpdateSubgrupoDto) {
 
-        if (Object.prototype.hasOwnProperty.call(subgrupoDto, 'hijos')) {
+        const campos = Object.keys(subgrupoDto);
+        const esReordenamientoInterno = campos.length === 1 && campos[0] === 'hijos';
+        if (esReordenamientoInterno) {
             try {
                 const subgrupo = await this.subgrupoService.reorderChildren(id, subgrupoDto.hijos);
                 return res.status(HttpStatus.OK).json({
