@@ -6,7 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { TipoPlanModule } from './tipo-plan/tipo-plan.module';
 import { SubgrupoModule } from './subgrupo/subgrupo.module';
 import { SubgrupoDetalleModule } from './subgrupo-detalle/subgrupo-detalle.module';
-import { environment } from "./config/configuration";
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EstadoPlanModule } from './estado-plan/estado-plan.module';
 import { IdentificacionModule } from './identificacion/identificacion.module';
 import { TipoIdentificacionModule } from './tipo-identificacion/tipo-identificacion.module';
@@ -21,14 +21,34 @@ import { IdentificacionDetalleModule } from './identificacion-detalle/identifica
 
 @Module({
   //imports: [ MongooseModule.forRoot('mongodb://127.0.0.1:27017/udistrital'), PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule, EstadoPlanModule, IdentificacionModule, TipoIdentificacionModule, SeguimientoModule, TipoSeguimientoModule, EstadoSeguimientoModule, PeriodoSeguimientoModule, FuentesApropiacionModule],
-  imports: [MongooseModule.forRoot(`mongodb://${environment.USER}:${environment.PASS}@` +
-    `${environment.HOST}:${environment.PORT}/${environment.DB}?authSource=${environment.AUTH_DB}`,
-    { useFindAndModify: false }), PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule, EstadoPlanModule, IdentificacionModule, TipoIdentificacionModule, SeguimientoModule, TipoSeguimientoModule, EstadoSeguimientoModule, PeriodoSeguimientoModule, FuentesApropiacionModule, SeguimientoDetalleModule, IdentificacionDetalleModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => {
+        const user = encodeURIComponent(configService.get<string>('PLANES_CRUD_USER') || '');
+        const pass = encodeURIComponent(configService.get<string>('PLANES_CRUD_PASS') || '');
+        const host = configService.get<string>('PLANES_CRUD_HOST');
+        const port = configService.get<string>('PLANES_CRUD_PORT');
+        const db = configService.get<string>('PLANES_CRUD_DB');
+        const authDb = configService.get<string>('PLANES_CRUD_AUTH_DB');
+
+        return {
+          uri: `mongodb://${user}:${pass}@${host}:${port}/${db}?authSource=${authDb}`,
+        };
+      },
+    }),
+    PlanModule, TipoPlanModule, SubgrupoModule, SubgrupoDetalleModule,
+    EstadoPlanModule, IdentificacionModule, TipoIdentificacionModule,
+    SeguimientoModule, TipoSeguimientoModule, EstadoSeguimientoModule,
+    PeriodoSeguimientoModule, FuentesApropiacionModule,
+    SeguimientoDetalleModule, IdentificacionDetalleModule,
+  ],
 
   controllers: [AppController],
   providers: [AppService],
 })
 
 export class AppModule { }
-
 

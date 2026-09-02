@@ -1,9 +1,8 @@
 import { Schema, Prop, raw, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from "mongoose";
 import { animationFrameScheduler } from "rxjs";
 
 @Schema({ collection: 'fuentes_apropiacion' })
-export class FuentesApropiacion extends Document {
+export class FuentesApropiacion {
 
 
     _id: string

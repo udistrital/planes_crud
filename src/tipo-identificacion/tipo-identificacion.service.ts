@@ -58,7 +58,7 @@ export class TipoIdentificacionService {
 
     async delete(id: string): Promise<any> {
         try {
-            return await this.tipoModel.findByIdAndRemove(id).exec();
+            return await this.tipoModel.findByIdAndDelete(id).exec();
         } catch (error) {
             return null;
         }

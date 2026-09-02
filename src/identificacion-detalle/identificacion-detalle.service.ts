@@ -56,7 +56,7 @@ export class IdentificacionDetalleService {
 
     async delete(id: string): Promise<any> {
         try {
-            return await this.identificacionDetalleModel.findByIdAndRemove(id).exec();
+            return await this.identificacionDetalleModel.findByIdAndDelete(id).exec();
         } catch (error) {
             return null;
         }

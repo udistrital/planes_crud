@@ -59,7 +59,7 @@ export class SeguimientoService {
 
     async delete(id: string): Promise<any> {
         try {
-            return await this.seguimientoModel.findByIdAndRemove(id).exec();
+            return await this.seguimientoModel.findByIdAndDelete(id).exec();
         } catch (error) {
             return null;
         }

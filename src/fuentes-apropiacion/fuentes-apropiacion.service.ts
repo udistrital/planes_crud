@@ -58,7 +58,7 @@ export class FuentesApropiacionService {
 
   async delete(id: string): Promise<any> {
     try {
-      return await this.fuentesApropiacionModel.findByIdAndRemove(id).exec();
+      return await this.fuentesApropiacionModel.findByIdAndDelete(id).exec();
     } catch (error) {
       return null;
     }
