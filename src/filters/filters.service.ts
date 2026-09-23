@@ -1,70 +1,160 @@
-import { ParseBoolPipe } from '@nestjs/common';
+import { BadRequestException } from '@nestjs/common';
 import { FilterDto } from './dto/filter.dto';
 
+type FindOptions = {
+  skip: number;
+  limit?: number;
+};
+
 export class FiltersService {
-    constructor(private readonly filterDto: FilterDto) { }
+  constructor(private readonly filterDto: FilterDto = {} as FilterDto) {}
 
-    getQuery(): Record<string, any> {
-        //Filtro de consulta campo:valor (selección)
-        let queryObj = {};
-        if (this.filterDto.query) {
-        let queryProperties = this.filterDto.query.split(',');
-        queryProperties.forEach(function (property) {
-            let tup = property.split(/:(.+)/);
-            queryObj[tup[0]] = tup[1];
-        });
+  getQuery(): Record<string, string> {
+    const queryObj: Record<string, string> = {};
+    if (!this.filterDto.query) {
+      return queryObj;
+    }
+
+    this.filterDto.query.split(',').forEach((property) => {
+      const separatorIndex = property.indexOf(':');
+      if (separatorIndex <= 0 || separatorIndex === property.length - 1) {
+        throw new BadRequestException(
+          `El filtro query "${property}" no es valido. Use el formato campo:valor.`,
+        );
+      }
+
+      const field = property.slice(0, separatorIndex).trim();
+      const value = property.slice(separatorIndex + 1).trim();
+      this.validateField(field, 'query');
+
+      if (!value) {
+        throw new BadRequestException(
+          `El campo "${field}" del parametro query debe tener un valor.`,
+        );
+      }
+
+      queryObj[field] = value;
+    });
+
+    return queryObj;
+  }
+
+  getFields(): Record<string, 1> {
+    const fieldsObj: Record<string, 1> = {};
+    if (!this.filterDto.fields) {
+      return fieldsObj;
+    }
+
+    this.filterDto.fields.split(',').forEach((property) => {
+      const field = property.trim();
+      this.validateField(field, 'fields');
+      fieldsObj[field] = 1;
+    });
+
+    return fieldsObj;
+  }
+
+  getSortBy(): Array<[string, 1 | -1]> {
+    if (!this.filterDto.sortby) {
+      if (this.filterDto.order) {
+        throw new BadRequestException(
+          'El parametro order requiere el parametro sortby.',
+        );
+      }
+      return [];
+    }
+
+    const sortFields = this.filterDto.sortby.split(',').map((field) => {
+      const normalizedField = field.trim();
+      this.validateField(normalizedField, 'sortby');
+      return normalizedField;
+    });
+
+    if (!this.filterDto.order) {
+      return sortFields.map((field): [string, 1 | -1] => [field, 1]);
+    }
+
+    const orders: Array<1 | -1> = this.filterDto.order
+      .split(',')
+      .map((order) => {
+        const normalizedOrder = order.trim().toLowerCase();
+        if (normalizedOrder !== 'asc' && normalizedOrder !== 'desc') {
+          throw new BadRequestException(
+            `El valor "${order}" de order no es valido. Use asc o desc.`,
+          );
         }
-        return queryObj;
+        return normalizedOrder === 'desc' ? -1 : 1;
+      });
+
+    if (orders.length !== 1 && orders.length !== sortFields.length) {
+      throw new BadRequestException(
+        'order debe tener un unico valor o la misma cantidad de valores que sortby.',
+      );
     }
 
-    getFields(): Record<string, any> {
-        //Filtro de consulta por campo (proyección)
-        let fieldsObj = {};
-        if (this.filterDto.fields) {
-        let fieldsProperties = this.filterDto.fields.split(',');
-        fieldsProperties.forEach(function (property) {
-            fieldsObj[property] = 1;
-        });
-        }
-        return fieldsObj
+    return sortFields.map(
+      (field, index): [string, 1 | -1] => [
+        field,
+        orders.length === 1 ? orders[0] : orders[index],
+      ],
+    );
+  }
+
+  getLimitAndOffset(): FindOptions {
+    const options: FindOptions = { skip: 0 };
+
+    if (this.filterDto.offset !== undefined && this.filterDto.offset !== '') {
+      options.skip = this.parseNonNegativeInteger(
+        'offset',
+        this.filterDto.offset,
+      );
     }
 
-    getSortBy(): any[]{
-        //Filtro de ordenamiento
-        let sortbyArray = [];
-        if (this.filterDto.sortby) {
-        let sortbyProperties = this.filterDto.sortby.split(',');
-        if (this.filterDto.order) {
-            let orderProperties = this.filterDto.order.split(',');
-            if (orderProperties.length == 1) {//Si order solo contiene un valor ordena todos los campos de acuerdo al mismo
-            let orderTerm = (this.filterDto.order == 'desc') ? -1 : 1;
-            sortbyProperties.forEach(function (property) {
-                sortbyArray.push([property, orderTerm]);
-            });
-            } else if (sortbyProperties.length == orderProperties.length) {//Si order y sortby tienen el mismo tamaño, se ordena cada campo de acuerdo al orden específico
-            for (let i = 0; i < sortbyProperties.length; i++) {
-                sortbyArray.push([sortbyProperties[i], (orderProperties[i] == 'desc' ? -1 : 1)]);
-            }
-            } else {//Si order y sortby tienen tamaños diferentes, se ignora el orden definido y se ordena de forma ascendente
-            sortbyProperties.forEach(function (property) {
-                sortbyArray.push([property, 1]);
-            });
-            }
-        } else {//Si order no está definido, por defecto todos los campos son ordenados ascendentemente
-            sortbyProperties.forEach(function (property) {
-            sortbyArray.push([property, 1]);
-            });
-        }
-        }
-        return sortbyArray;
+    if (this.filterDto.limit !== undefined && this.filterDto.limit !== '') {
+      options.limit = this.parseNonNegativeInteger(
+        'limit',
+        this.filterDto.limit,
+      );
     }
 
-    getLimitAndOffset(): { skip: number; limit: number } {
-        return { skip: parseInt(this.filterDto.offset), limit: parseInt(this.filterDto.limit) };
+    return options;
+  }
+
+  isPopulated(): boolean {
+    if (
+      this.filterDto.populate !== undefined &&
+      this.filterDto.populate !== 'true' &&
+      this.filterDto.populate !== 'false'
+    ) {
+      throw new BadRequestException(
+        'El parametro populate debe ser true o false.',
+      );
+    }
+    return this.filterDto.populate === 'true';
+  }
+
+  private parseNonNegativeInteger(parameter: string, value: string): number {
+    if (!/^\d+$/.test(value)) {
+      throw new BadRequestException(
+        `El parametro ${parameter} debe ser un numero entero mayor o igual a 0.`,
+      );
     }
 
-    isPopulated(): boolean{            
-        return this.filterDto.populate === 'true';
+    const parsedValue = Number(value);
+    if (!Number.isSafeInteger(parsedValue)) {
+      throw new BadRequestException(
+        `El parametro ${parameter} excede el valor maximo permitido.`,
+      );
     }
 
+    return parsedValue;
+  }
+
+  private validateField(field: string, parameter: string): void {
+    if (!/^[a-zA-Z_][a-zA-Z0-9_.]*$/.test(field)) {
+      throw new BadRequestException(
+        `El campo "${field}" del parametro ${parameter} no es valido.`,
+      );
+    }
+  }
 }
