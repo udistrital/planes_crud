@@ -79,7 +79,9 @@ export class PeriodoSeguimientoService {
     if(caso === 1) { // Busca el registro por periodo y unidades
       condiciones.unidades_interes = { $in: unidades.map((u) => new RegExp(u, 'i')) };        // Utilizando expresiones regulares para la comparación
       condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };    // Esto hace la búsqueda más flexible y no sensible a mayúsculas/minúsculas
-      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+      registros = await this.periodoSeguimientoModel.find(condiciones)
+        .sort([['fecha_modificacion', -1]])
+        .exec();
     } else if(caso === 2) { // Busca el registro por periodo, fecha_inicio y fecha_fin
       condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };
       condiciones.fecha_inicio = data.fecha_inicio;
@@ -90,7 +92,9 @@ export class PeriodoSeguimientoService {
       if (plan) {
         condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };
       }
-      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+      registros = await this.periodoSeguimientoModel.find(condiciones)
+        .sort([['fecha_modificacion', -1]])
+        .exec();
     } else if (caso === 5) { // Filtro de unidad
       condiciones.unidades_interes = data.unidades_interes;
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
@@ -106,7 +110,9 @@ export class PeriodoSeguimientoService {
         $regex: new RegExp(`"Id":${unidad.Id}.*"${unidad.Nombre}"`),
         $options: 'i'
       };
-      registros = await this.periodoSeguimientoModel.find(condiciones).exec();
+      registros = await this.periodoSeguimientoModel.find(condiciones)
+        .sort([['fecha_modificacion', -1]])
+        .exec();
     } else if (caso === 8) { // Caso para consultar registros de periodo-seguimiento antiguos
       condiciones.nueva_estructura = null;
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
