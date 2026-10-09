@@ -1,4 +1,5 @@
 import { NestFactory } from '@nestjs/core';
+import { json } from 'express';
 import * as fs from 'fs';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
@@ -27,6 +28,10 @@ async function loadSsmParameters() {
 async function bootstrap() {
   await loadSsmParameters();
   const app = await NestFactory.create(AppModule);
+
+  // El campo `dato` contiene JSON serializado y puede superar los 100 KiB
+  // permitidos por defecto. El límite ampliado se restringe a este recurso.
+  app.use('/identificacion-detalle', json({ limit: '1mb' }));
 
   app.enableCors();
 
