@@ -79,7 +79,7 @@ export class PeriodoSeguimientoController {
     if (!registrosEncontrados) throw new NotFoundException("not found resource")
     res.status(HttpStatus.OK).json(
       {
-        Data: registrosEncontrados.length > 0 ? registrosEncontrados : null,
+        Data: registrosEncontrados,
         Message: "Request succesfull",
         Status: "200",
         Success: true
