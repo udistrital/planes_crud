@@ -57,6 +57,53 @@ export class PeriodoSeguimientoService {
     }
   }
 
+  private parseJsonArray(value: string): any[] {
+    if (!value) {
+      return [];
+    }
+
+    try {
+      const parsedValue = JSON.parse(value);
+      return Array.isArray(parsedValue) ? parsedValue : [];
+    } catch {
+      return [];
+    }
+  }
+
+  private registroContieneUnidad(
+    registro: PeriodoSeguimiento,
+    unidadesBuscadas: any[],
+  ): boolean {
+    if (!Array.isArray(unidadesBuscadas) || unidadesBuscadas.length === 0) {
+      return false;
+    }
+
+    const unidadesRegistro = this.parseJsonArray(registro.unidades_interes);
+
+    return unidadesBuscadas.some((unidadBuscada) =>
+      unidadesRegistro.some((unidadRegistro) =>
+        String(unidadRegistro.Id) === String(unidadBuscada.Id) &&
+        String(unidadRegistro.Nombre).toLowerCase() ===
+          String(unidadBuscada.Nombre).toLowerCase(),
+      ),
+    );
+  }
+
+  private registroContienePlan(
+    registro: PeriodoSeguimiento,
+    planBuscado: any,
+  ): boolean {
+    if (!planBuscado) {
+      return true;
+    }
+
+    const planesRegistro = this.parseJsonArray(registro.planes_interes);
+    return planesRegistro.some(
+      (planRegistro) =>
+        String(planRegistro._id) === String(planBuscado._id),
+    );
+  }
+
   async obtenerRegistrosExistencia(data: PeriodoSeguimientoDto, caso: number): Promise<any[]> {
     var registros;
     var condiciones: any = {
@@ -88,13 +135,14 @@ export class PeriodoSeguimientoService {
       condiciones.fecha_fin = data.fecha_fin;
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
     } else if (caso === 3 ) { // Busca el registro que permita la formulación de un plan para una unidad específica
-      condiciones.unidades_interes = { $in: unidades.map((u) => new RegExp(u, 'i')) };
-      if (plan) {
-        condiciones.planes_interes = { $regex: new RegExp(`"${plan._id}"`), $options: 'i' };
-      }
-      registros = await this.periodoSeguimientoModel.find(condiciones)
+      const registrosCandidatos = await this.periodoSeguimientoModel.find(condiciones)
         .sort([['fecha_modificacion', -1]])
         .exec();
+      registros = registrosCandidatos.filter(
+        (registro) =>
+          this.registroContieneUnidad(registro, unidades_interes) &&
+          this.registroContienePlan(registro, plan),
+      );
     } else if (caso === 5) { // Filtro de unidad
       condiciones.unidades_interes = data.unidades_interes;
       registros = await this.periodoSeguimientoModel.find(condiciones).exec();
