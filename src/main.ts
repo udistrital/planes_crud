@@ -30,7 +30,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // El campo `dato` contiene JSON serializado y puede superar los 100 KiB
-  // permitidos por defecto. El límite ampliado se restringe a este recurso.
+  // permitidos por defecto. El límite ampliado se restringe a estos recursos.
+  app.use('/identificacion', json({ limit: '1mb' }));
   app.use('/identificacion-detalle', json({ limit: '1mb' }));
 
   app.enableCors();

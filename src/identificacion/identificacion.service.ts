@@ -45,10 +45,14 @@ export class IdentificacionService {
 
     }
 
-    async put(id: string, identiDto: IdentificacionDto): Promise<Identificacion> {
+    async put(id: string, identiDto: IdentificacionDto): Promise<Identificacion | Error> {
         try {
+            if (!identiDto || Object.keys(identiDto).length === 0) {
+                throw new Error('El cuerpo de la identificación está vacío');
+            }
             identiDto.fecha_modificacion = new Date();
-            await this.identificacionModel.validate(identiDto);
+            const identificacion = new this.identificacionModel(identiDto);
+            await identificacion.validate();
             await this.identificacionModel.findByIdAndUpdate(id, identiDto, { new: true }).exec();
             return await this.identificacionModel.findById(id).exec();
         } catch (error) {
