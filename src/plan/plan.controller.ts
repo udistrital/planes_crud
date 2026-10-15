@@ -62,12 +62,18 @@ export class PlanController {
   async put(@Res() res, @Param('id') id: string, @Body() planDto: PlanDto) {
 
     const plan = await this.planService.put(id, planDto);
-    //if (!plan) throw new NotFoundException("not found resource");
     if (plan instanceof Error) {
-      return res.status(HttpStatus.OK).json({
+      return res.status(HttpStatus.BAD_REQUEST).json({
         Data: null,
         Message: plan.message,
         Status: "400",
+        Success: false
+      });
+    } else if (!plan) {
+      return res.status(HttpStatus.NOT_FOUND).json({
+        Data: null,
+        Message: "Plan no encontrado",
+        Status: "404",
         Success: false
       });
     } else {
