@@ -17,6 +17,9 @@ import { PeriodoSeguimientoModule } from './periodo-seguimiento/periodo-seguimie
 import { FuentesApropiacionModule } from './fuentes-apropiacion/fuentes-apropiacion.module';
 import { SeguimientoDetalleModule } from './seguimiento-detalle/seguimiento-detalle.module';
 import { IdentificacionDetalleModule } from './identificacion-detalle/identificacion-detalle.module';
+import { EstadoSubmoduloModule } from './estado-submodulo/estado-submodulo.module';
+import { SubmoduloIniciativaModule } from './submodulo-iniciativa/submodulo-iniciativa.module';
+import { ElementoCatalogoModule } from './elemento-catalogo/elemento-catalogo.module';
 
 
 @Module({
@@ -44,6 +47,7 @@ import { IdentificacionDetalleModule } from './identificacion-detalle/identifica
     SeguimientoModule, TipoSeguimientoModule, EstadoSeguimientoModule,
     PeriodoSeguimientoModule, FuentesApropiacionModule,
     SeguimientoDetalleModule, IdentificacionDetalleModule,
+    EstadoSubmoduloModule, SubmoduloIniciativaModule, ElementoCatalogoModule,
   ],
 
   controllers: [AppController],
@@ -51,4 +55,3 @@ import { IdentificacionDetalleModule } from './identificacion-detalle/identifica
 })
 
 export class AppModule { }
-

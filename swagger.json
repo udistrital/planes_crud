@@ -551,7 +551,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/SubgrupoDto"
+                                "$ref": "#/components/schemas/UpdateSubgrupoDto"
                             }
                         }
                     }
@@ -2637,6 +2637,555 @@
                     "identificacion-detalle"
                 ]
             }
+        },
+        "/estado-submodulo": {
+            "post": {
+                "operationId": "EstadoSubmoduloController_crear",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CrearEstadoSubmoduloDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "estado-submodulo"
+                ]
+            },
+            "get": {
+                "operationId": "EstadoSubmoduloController_listar",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "estado-submodulo"
+                ]
+            }
+        },
+        "/estado-submodulo/{id}": {
+            "get": {
+                "operationId": "EstadoSubmoduloController_obtener",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "estado-submodulo"
+                ]
+            },
+            "put": {
+                "operationId": "EstadoSubmoduloController_actualizar",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ActualizarEstadoSubmoduloDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "estado-submodulo"
+                ]
+            }
+        },
+        "/submodulo-iniciativa": {
+            "post": {
+                "operationId": "SubmoduloIniciativaController_crear",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CrearSubmoduloIniciativaDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "submodulo-iniciativa"
+                ]
+            },
+            "get": {
+                "operationId": "SubmoduloIniciativaController_listar",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "submodulo-iniciativa"
+                ]
+            }
+        },
+        "/submodulo-iniciativa/lote": {
+            "post": {
+                "operationId": "SubmoduloIniciativaController_crearLote",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/CrearSubmoduloIniciativaDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "submodulo-iniciativa"
+                ]
+            }
+        },
+        "/submodulo-iniciativa/{id}": {
+            "get": {
+                "operationId": "SubmoduloIniciativaController_obtener",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "submodulo-iniciativa"
+                ]
+            },
+            "put": {
+                "operationId": "SubmoduloIniciativaController_actualizar",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ActualizarSubmoduloIniciativaDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "submodulo-iniciativa"
+                ]
+            }
+        },
+        "/submodulo-iniciativa/{id}/observaciones": {
+            "post": {
+                "operationId": "SubmoduloIniciativaController_agregarObservacion",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AgregarObservacionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "submodulo-iniciativa"
+                ]
+            }
+        },
+        "/elemento-catalogo": {
+            "post": {
+                "operationId": "ElementoCatalogoController_crear",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CrearElementoCatalogoDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "elemento-catalogo"
+                ]
+            },
+            "get": {
+                "operationId": "ElementoCatalogoController_listar",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "elemento-catalogo"
+                ]
+            }
+        },
+        "/elemento-catalogo/lote": {
+            "post": {
+                "operationId": "ElementoCatalogoController_cargarLote",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/CrearElementoCatalogoDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "elemento-catalogo"
+                ]
+            }
+        },
+        "/elemento-catalogo/{id}": {
+            "get": {
+                "operationId": "ElementoCatalogoController_obtener",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "elemento-catalogo"
+                ]
+            },
+            "put": {
+                "operationId": "ElementoCatalogoController_actualizar",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ActualizarElementoCatalogoDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "elemento-catalogo"
+                ]
+            }
         }
     },
     "info": {
@@ -2811,6 +3360,39 @@
                     "fecha_creacion",
                     "fecha_modificacion"
                 ]
+            },
+            "UpdateSubgrupoDto": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "padre": {
+                        "type": "string"
+                    },
+                    "hijos": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "bandera_tabla": {
+                        "type": "boolean"
+                    },
+                    "ref": {
+                        "type": "string"
+                    },
+                    "fecha_creacion": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
             },
             "SubgrupoDetalleDto": {
                 "type": "object",
@@ -3254,6 +3836,191 @@
                     "fecha_creacion",
                     "fecha_modificacion"
                 ]
+            },
+            "CrearEstadoSubmoduloDto": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string",
+                        "example": "Sin formular"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "codigo_abreviacion": {
+                        "type": "string",
+                        "example": "SF_SUB"
+                    },
+                    "color": {
+                        "type": "string",
+                        "example": "#D32F2F",
+                        "description": "Color del semáforo (#RRGGBB)"
+                    },
+                    "activo": {
+                        "type": "boolean",
+                        "default": true
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "codigo_abreviacion",
+                    "color"
+                ]
+            },
+            "ActualizarEstadoSubmoduloDto": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string",
+                        "example": "Sin formular"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "codigo_abreviacion": {
+                        "type": "string",
+                        "example": "SF_SUB"
+                    },
+                    "color": {
+                        "type": "string",
+                        "example": "#D32F2F",
+                        "description": "Color del semáforo (#RRGGBB)"
+                    },
+                    "activo": {
+                        "type": "boolean",
+                        "default": true
+                    }
+                }
+            },
+            "CrearSubmoduloIniciativaDto": {
+                "type": "object",
+                "properties": {
+                    "plan_id": {
+                        "type": "string",
+                        "description": "Id del plan de la iniciativa"
+                    },
+                    "submodulo": {
+                        "type": "string",
+                        "example": "problematica",
+                        "description": "Clave del submódulo"
+                    },
+                    "estado_submodulo_id": {
+                        "type": "string"
+                    },
+                    "dato": {
+                        "type": "object",
+                        "default": {}
+                    }
+                },
+                "required": [
+                    "plan_id",
+                    "submodulo",
+                    "estado_submodulo_id"
+                ]
+            },
+            "ActualizarSubmoduloIniciativaDto": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": "number",
+                        "example": 3,
+                        "description": "Versión que se consultó. Si el submódulo cambió desde entonces, responde 409."
+                    },
+                    "dato": {
+                        "type": "object"
+                    },
+                    "estado_submodulo_id": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "version"
+                ]
+            },
+            "AgregarObservacionDto": {
+                "type": "object",
+                "properties": {
+                    "texto": {
+                        "type": "string",
+                        "example": "Precisar la fuente del dato"
+                    },
+                    "rol": {
+                        "type": "string",
+                        "example": "PLANEACION",
+                        "description": "Rol con el que se escribe"
+                    },
+                    "usuario": {
+                        "type": "string",
+                        "example": "1012345678",
+                        "description": "Documento del usuario"
+                    },
+                    "estado_submodulo_id": {
+                        "type": "string",
+                        "description": "Si se envía, el estado del submódulo cambia en la misma operación (p. ej. a \"Con observaciones\")."
+                    }
+                },
+                "required": [
+                    "texto",
+                    "rol",
+                    "usuario"
+                ]
+            },
+            "CrearElementoCatalogoDto": {
+                "type": "object",
+                "properties": {
+                    "catalogo": {
+                        "type": "string",
+                        "example": "programas_pnd",
+                        "description": "Catálogo al que pertenece"
+                    },
+                    "codigo": {
+                        "type": "string",
+                        "example": "4599",
+                        "description": "Único dentro del catálogo"
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "Fortalecimiento de la gestión y dirección del Sector Educación"
+                    },
+                    "padre": {
+                        "type": "string",
+                        "example": "45",
+                        "description": "Código del elemento padre (en otro catálogo)"
+                    },
+                    "orden": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "activo": {
+                        "type": "boolean",
+                        "default": true
+                    }
+                },
+                "required": [
+                    "catalogo",
+                    "codigo",
+                    "nombre"
+                ]
+            },
+            "ActualizarElementoCatalogoDto": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "padre": {
+                        "type": "string"
+                    },
+                    "orden": {
+                        "type": "number"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    }
+                }
             }
         }
     }
