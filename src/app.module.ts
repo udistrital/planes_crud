@@ -17,6 +17,7 @@ import { PeriodoSeguimientoModule } from './periodo-seguimiento/periodo-seguimie
 import { FuentesApropiacionModule } from './fuentes-apropiacion/fuentes-apropiacion.module';
 import { SeguimientoDetalleModule } from './seguimiento-detalle/seguimiento-detalle.module';
 import { IdentificacionDetalleModule } from './identificacion-detalle/identificacion-detalle.module';
+import { PeriodoSeguimientoIniciativasModule } from './periodo-seguimiento-iniciativas/periodo-seguimiento-iniciativas.module';
 
 
 @Module({
@@ -44,6 +45,7 @@ import { IdentificacionDetalleModule } from './identificacion-detalle/identifica
     SeguimientoModule, TipoSeguimientoModule, EstadoSeguimientoModule,
     PeriodoSeguimientoModule, FuentesApropiacionModule,
     SeguimientoDetalleModule, IdentificacionDetalleModule,
+    PeriodoSeguimientoIniciativasModule
   ],
 
   controllers: [AppController],
