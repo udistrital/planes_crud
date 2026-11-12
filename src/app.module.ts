@@ -20,6 +20,7 @@ import { IdentificacionDetalleModule } from './identificacion-detalle/identifica
 import { EstadoSubmoduloModule } from './estado-submodulo/estado-submodulo.module';
 import { SubmoduloIniciativaModule } from './submodulo-iniciativa/submodulo-iniciativa.module';
 import { ElementoCatalogoModule } from './elemento-catalogo/elemento-catalogo.module';
+import { PeriodoSeguimientoIniciativasModule } from './periodo-seguimiento-iniciativas/periodo-seguimiento-iniciativas.module';
 
 
 @Module({
@@ -48,6 +49,7 @@ import { ElementoCatalogoModule } from './elemento-catalogo/elemento-catalogo.mo
     PeriodoSeguimientoModule, FuentesApropiacionModule,
     SeguimientoDetalleModule, IdentificacionDetalleModule,
     EstadoSubmoduloModule, SubmoduloIniciativaModule, ElementoCatalogoModule,
+    PeriodoSeguimientoIniciativasModule
   ],
 
   controllers: [AppController],

@@ -3186,6 +3186,238 @@
                     "elemento-catalogo"
                 ]
             }
+        },
+        "/periodo-seguimiento-iniciativas": {
+            "post": {
+                "operationId": "PeriodoSeguimientoIniciativasController_post",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PeriodoSeguimientoIniciativasDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento-iniciativas"
+                ]
+            },
+            "get": {
+                "operationId": "PeriodoSeguimientoIniciativasController_getAll",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": false,
+                        "in": "query",
+                        "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "required": false,
+                        "in": "query",
+                        "description": "fields - Fields returned. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "required": false,
+                        "in": "query",
+                        "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": false,
+                        "in": "query",
+                        "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "limit - Limit the size of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "required": false,
+                        "in": "query",
+                        "description": "offset - Start position of result set. Must be an integer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "populate",
+                        "required": false,
+                        "in": "query",
+                        "description": "populate - show subqueries. Must be a boolean",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento-iniciativas"
+                ]
+            }
+        },
+        "/periodo-seguimiento-iniciativas/{id}": {
+            "get": {
+                "operationId": "PeriodoSeguimientoIniciativasController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento-iniciativas"
+                ]
+            },
+            "put": {
+                "operationId": "PeriodoSeguimientoIniciativasController_put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PeriodoSeguimientoIniciativasDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento-iniciativas"
+                ]
+            },
+            "delete": {
+                "operationId": "PeriodoSeguimientoIniciativasController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento-iniciativas"
+                ]
+            }
+        },
+        "/periodo-seguimiento-iniciativas/buscar-unidad/{unidadId}": {
+            "get": {
+                "operationId": "PeriodoSeguimientoIniciativasController_buscarRegistrosPorUnidad",
+                "parameters": [
+                    {
+                        "name": "unidadId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento-iniciativas"
+                ]
+            }
+        },
+        "/periodo-seguimiento-iniciativas/buscar-unidad-planes/{numeroCaso}": {
+            "post": {
+                "operationId": "PeriodoSeguimientoIniciativasController_buscarRegistrosPorUnidad_Plan",
+                "parameters": [
+                    {
+                        "name": "numeroCaso",
+                        "required": true,
+                        "in": "path",
+                        "description": "Numero de caso para buscar registros",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PeriodoSeguimientoIniciativasDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "periodo-seguimiento-iniciativas"
+                ]
+            }
         }
     },
     "info": {
@@ -4021,6 +4253,61 @@
                         "type": "boolean"
                     }
                 }
+            },
+            "PeriodoSeguimientoIniciativasDto": {
+                "type": "object",
+                "properties": {
+                    "fecha_inicio": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_fin": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "periodo_id": {
+                        "type": "string"
+                    },
+                    "tipo_seguimiento_id": {
+                        "type": "string"
+                    },
+                    "activo": {
+                        "type": "boolean"
+                    },
+                    "unidades_interes": {
+                        "type": "string"
+                    },
+                    "planes_interes": {
+                        "type": "string"
+                    },
+                    "nueva_estructura": {
+                        "type": "boolean"
+                    },
+                    "usuario_modificacion": {
+                        "type": "string"
+                    },
+                    "fecha_creacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "fecha_modificacion": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "fecha_inicio",
+                    "fecha_fin",
+                    "periodo_id",
+                    "tipo_seguimiento_id",
+                    "activo",
+                    "unidades_interes",
+                    "planes_interes",
+                    "nueva_estructura",
+                    "usuario_modificacion",
+                    "fecha_creacion",
+                    "fecha_modificacion"
+                ]
             }
         }
     }
