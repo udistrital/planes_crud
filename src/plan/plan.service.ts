@@ -44,12 +44,18 @@ export class PlanService {
 
     }
 
-    async put(id: string, planDto: PlanDto): Promise<Plan> {
+    async put(id: string, planDto: PlanDto): Promise<Plan | Error> {
         try {
+            if (!planDto || Object.keys(planDto).length === 0) {
+                throw new Error('El cuerpo del plan está vacío');
+            }
             planDto.fecha_modificacion = new Date();
-            await this.planModel.validate(planDto);
-            await this.planModel.findByIdAndUpdate(id, planDto, { new: true }).exec();
-            return await this.planModel.findById(id).exec();
+            const plan = new this.planModel(planDto);
+            await plan.validate();
+            return await this.planModel.findByIdAndUpdate(id, planDto, {
+                new: true,
+                runValidators: true,
+            }).exec();
         } catch (error) {
             return error;
         }
