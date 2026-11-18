@@ -14,6 +14,8 @@ export const PATRON_NOMBRE_CATALOGO = /^[a-z0-9_]+$/;
  * - `codigo` es único dentro del catálogo y es lo que guardan los documentos que lo usan.
  * - `padre` es el código del elemento del que depende en otro catálogo (p. ej. el
  *   sector de un programa); vacío si no depende de nada.
+ * - `descripcion` es una ayuda opcional sobre el elemento (p. ej. la definición de
+ *   cada trazador presupuestal); vacía si no tiene.
  */
 @Schema({ collection: 'elemento_catalogo', timestamps: MARCAS_DE_TIEMPO })
 export class ElementoCatalogo {
@@ -28,6 +30,9 @@ export class ElementoCatalogo {
 
   @Prop({ default: '', trim: true })
   padre: string;
+
+  @Prop({ default: '', trim: true })
+  descripcion: string;
 
   @Prop({ default: 0 })
   orden: number;

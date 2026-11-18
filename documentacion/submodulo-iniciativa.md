@@ -38,7 +38,6 @@ Hay un documento por iniciativa y submódulo (índice único `plan_id + submodul
 - `fecha` la pone el servidor y cada observación recibe su propio `_id`.
 - `texto` es obligatorio y admite hasta 4.000 caracteres.
 - Si se envía `estado_submodulo_id`, el estado cambia en la misma operación. El mid lo usa para dejar el submódulo "Con observaciones" cuando comenta Planeación.
-- Las observaciones guardadas antes de que se retiraran `lado` y `ruta` pueden conservarlos; `database local/construccion-proyecto-inversion/limpiar-observaciones.js` los quita.
 - **Quién puede comentar y cuándo lo decide el mid**, no el crud.
 
 ## `estado_submodulo`

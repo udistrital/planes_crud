@@ -4222,6 +4222,11 @@
                         "example": "45",
                         "description": "Código del elemento padre (en otro catálogo)"
                     },
+                    "descripcion": {
+                        "type": "string",
+                        "example": "Busca la identificación y clasificación del presupuesto público…",
+                        "description": "Ayuda sobre el elemento (p. ej. la definición de un trazador)"
+                    },
                     "orden": {
                         "type": "number",
                         "example": 1
@@ -4244,6 +4249,9 @@
                         "type": "string"
                     },
                     "padre": {
+                        "type": "string"
+                    },
+                    "descripcion": {
                         "type": "string"
                     },
                     "orden": {

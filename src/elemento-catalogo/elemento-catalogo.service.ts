@@ -173,6 +173,7 @@ export class ElementoCatalogoService {
       codigo,
       nombre,
       padre: texto(elemento.padre),
+      descripcion: texto(elemento.descripcion),
       orden,
       activo: elemento.activo !== false,
     };

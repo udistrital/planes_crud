@@ -2,7 +2,7 @@
 
 La colección general de catálogos: **todos los catálogos en una sola colección**, `elemento_catalogo` (un documento por elemento). Hoy la usan las iniciativas de inversión: procesos, sectores, programas, productos, regiones, departamentos, municipios, riesgos, etc. Por ahora se cargan los de Identificación y Preparación. El campo `catalogo` dice a cuál pertenece cada elemento.
 
-Se eligió una sola colección porque todos los catálogos tienen la misma forma (código, nombre y padre). Así, un catálogo nuevo no necesita un módulo nuevo: basta con cargar sus elementos. Es el mismo modelo de Parámetros (OAS), así que pasarlos allá después es directo.
+Se eligió una sola colección porque todos los catálogos tienen la misma forma (código, nombre, padre y, si hace falta, una descripción). Así, un catálogo nuevo no necesita un módulo nuevo: basta con cargar sus elementos. Es el mismo modelo de Parámetros (OAS), así que pasarlos allá después es directo.
 
 Los catálogos de **estados y tipos** (`estado-plan`, `estado-submodulo`, `tipo-plan`…) **no van aquí**. Tienen campos propios (como el color), se referencian por `_id` y el código depende de sus valores.
 
@@ -14,6 +14,7 @@ Los catálogos de **estados y tipos** (`estado-plan`, `estado-submodulo`, `tipo-
 | `codigo` | string | Único dentro del catálogo. **Es lo que guardan los documentos que lo usan** |
 | `nombre` | string | Lo que se muestra |
 | `padre` | string | Código del elemento del que depende, en otro catálogo (programa → sector, municipio → departamento). Vacío si no depende de nada |
+| `descripcion` | string | Ayuda opcional sobre el elemento, p. ej. la definición de cada trazador presupuestal, que el formulario muestra junto al nombre. Vacía si no tiene |
 | `orden` | number | Orden de presentación |
 | `activo` | boolean | Borrado lógico. Un elemento que sale del catálogo se desactiva, no se borra, para no romper los documentos que lo usan |
 | `fecha_creacion`, `fecha_modificacion` | Date | Automáticas (`timestamps`) |
@@ -29,7 +30,7 @@ Los catálogos de **estados y tipos** (`estado-plan`, `estado-submodulo`, `tipo-
 | `GET /elemento-catalogo/:id` | Un elemento |
 | `POST /elemento-catalogo` | Crea un elemento. 409 si el código ya existe en ese catálogo |
 | `POST /elemento-catalogo/lote` | Crea o actualiza hasta 1.000 elementos por `catalogo + codigo` en una sola operación (no duplica). Responde `{ recibidos, creados, actualizados, sin_cambios }` |
-| `PUT /elemento-catalogo/:id` | Cambia `nombre`, `padre`, `orden` o `activo`. `catalogo` y `codigo` no cambian |
+| `PUT /elemento-catalogo/:id` | Cambia `nombre`, `padre`, `descripcion`, `orden` o `activo`. `catalogo` y `codigo` no cambian |
 
 Como `estado-submodulo` y `submodulo-iniciativa`, responde con el código HTTP real y el sobre `{ Success, Status, Message, Data }`.
 

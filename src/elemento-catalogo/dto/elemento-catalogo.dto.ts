@@ -21,6 +21,13 @@ export class CrearElementoCatalogoDto {
   })
   readonly padre?: string;
 
+  @ApiPropertyOptional({
+    example: 'Busca la identificación y clasificación del presupuesto público…',
+    description:
+      'Ayuda sobre el elemento (p. ej. la definición de un trazador)',
+  })
+  readonly descripcion?: string;
+
   @ApiPropertyOptional({ example: 1 })
   readonly orden?: number;
 
@@ -35,6 +42,9 @@ export class ActualizarElementoCatalogoDto {
 
   @ApiPropertyOptional()
   readonly padre?: string;
+
+  @ApiPropertyOptional()
+  readonly descripcion?: string;
 
   @ApiPropertyOptional()
   readonly orden?: number;
@@ -63,6 +73,7 @@ export const CAMPOS_CREACION = [
   'codigo',
   'nombre',
   'padre',
+  'descripcion',
   'orden',
   'activo',
 ] as const;
@@ -70,6 +81,7 @@ export const CAMPOS_CREACION = [
 export const CAMPOS_ACTUALIZABLES = [
   'nombre',
   'padre',
+  'descripcion',
   'orden',
   'activo',
 ] as const;

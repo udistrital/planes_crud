@@ -4,7 +4,7 @@ import { MARCAS_DE_TIEMPO } from '../../comun/campos';
 
 /**
  * Catálogo de estados de un submódulo (hoja) de una iniciativa: Sin formular,
- * Formulado, Con observaciones, Sin observaciones... El color es el del semáforo.
+ * Formulando, Formulado, Con observaciones y Aprobado. El color es el del semáforo.
  */
 @Schema({ collection: 'estado_submodulo', timestamps: MARCAS_DE_TIEMPO })
 export class EstadoSubmodulo {

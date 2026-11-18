@@ -69,6 +69,7 @@ describe('ElementoCatalogoService', () => {
             $set: {
               nombre: 'Fomento del desarrollo de competencias',
               padre: '45',
+              descripcion: '',
               orden: 1,
               activo: true,
             },
@@ -77,6 +78,24 @@ describe('ElementoCatalogoService', () => {
         },
       });
       expect(opciones).toEqual({ ordered: false });
+    });
+
+    it('guarda la descripción del elemento, sin espacios sobrantes', async () => {
+      modelo.bulkWrite.mockResolvedValue({
+        upsertedCount: 1,
+        modifiedCount: 0,
+      });
+
+      await servicio.cargarLote([
+        programa({ descripcion: ' Busca cerrar brechas de género. ' }),
+      ]);
+
+      const [[operacion]] = modelo.bulkWrite.mock.calls[0];
+      expect(operacion.updateOne.update.$set).toEqual(
+        expect.objectContaining({
+          descripcion: 'Busca cerrar brechas de género.',
+        }),
+      );
     });
 
     it('conserva activo: false si se envía', async () => {

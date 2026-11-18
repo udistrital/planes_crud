@@ -62,7 +62,7 @@ export const CAMPOS_CREACION = [
   'dato',
 ] as const;
 
-/** Las observaciones no están: solo se agregan, con POST :id/observaciones. */
+/** Campos que cambia el PUT. Las observaciones no van aquí: se agregan con POST :id/observaciones. */
 export const CAMPOS_ACTUALIZABLES = [
   'dato',
   'estado_submodulo_id',

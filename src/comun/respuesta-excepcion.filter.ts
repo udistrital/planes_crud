@@ -19,8 +19,9 @@ interface ErrorTraducido {
 
 /**
  * Responde cualquier error con el sobre { Success, Status, Message, Data } y el
- * código HTTP real (los módulos antiguos responden 200 aunque fallen).
- * Se aplica con @UseFilters solo en los controladores nuevos.
+ * código HTTP real, a diferencia de la mayoría de los módulos del crud, que responden
+ * 200 aunque fallen. Se aplica con @UseFilters en los controladores de
+ * submodulo-iniciativa, estado-submodulo y elemento-catalogo.
  */
 @Catch()
 export class RespuestaExcepcionFilter implements ExceptionFilter {
