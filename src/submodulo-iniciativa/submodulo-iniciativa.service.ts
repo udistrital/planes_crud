@@ -136,6 +136,7 @@ export class SubmoduloIniciativaService {
     const texto = textoLimpio(dto?.texto);
     const rol = textoLimpio(dto?.rol);
     const usuario = textoLimpio(dto?.usuario);
+    const usuario_nombre = textoLimpio(dto?.usuario_nombre);
     if (!texto) {
       throw new BadRequestException('texto es obligatorio.');
     }
@@ -151,6 +152,7 @@ export class SubmoduloIniciativaService {
       texto,
       rol,
       usuario,
+      usuario_nombre,
       fecha: new Date(),
     };
   }

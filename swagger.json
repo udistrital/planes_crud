@@ -3465,6 +3465,9 @@
                     "aplicativo_id": {
                         "type": "string"
                     },
+                    "responsable": {
+                        "type": "string"
+                    },
                     "activo": {
                         "type": "boolean"
                     },
@@ -3502,6 +3505,7 @@
                     "vigencia_aplica",
                     "dependencia_id",
                     "aplicativo_id",
+                    "responsable",
                     "activo",
                     "estado_plan_id",
                     "padre_plan_id",
@@ -4189,6 +4193,11 @@
                         "example": "1012345678",
                         "description": "Documento del usuario"
                     },
+                    "usuario_nombre": {
+                        "type": "string",
+                        "example": "Juan Pérez",
+                        "description": "Nombre del usuario que escribe la observación"
+                    },
                     "estado_submodulo_id": {
                         "type": "string",
                         "description": "Si se envía, el estado del submódulo cambia en la misma operación (p. ej. a \"Con observaciones\")."
@@ -4197,7 +4206,8 @@
                 "required": [
                     "texto",
                     "rol",
-                    "usuario"
+                    "usuario",
+                    "usuario_nombre"
                 ]
             },
             "CrearElementoCatalogoDto": {

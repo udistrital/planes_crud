@@ -34,6 +34,9 @@ export class Plan {
     @Prop({required: true })
     aplicativo_id: string
 
+    @Prop({required: false })
+    responsable: string
+
     @Prop({required: true })
     activo: boolean
 

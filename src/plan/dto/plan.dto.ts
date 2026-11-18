@@ -32,6 +32,9 @@ export class PlanDto{
     readonly aplicativo_id: string;
 
     @ApiProperty()
+    readonly responsable: string;
+
+    @ApiProperty()
     activo: boolean;
 
     @ApiProperty()

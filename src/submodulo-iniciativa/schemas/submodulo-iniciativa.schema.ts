@@ -21,6 +21,9 @@ export class Observacion {
   @Prop({ default: '', trim: true })
   usuario: string;
 
+  @Prop({ default: '', trim: true })
+  usuario_nombre: string;
+
   @Prop({ type: Date })
   fecha: Date;
 }

@@ -12,6 +12,9 @@ export class ObservacionDto {
 
   @ApiProperty({ example: '1012345678', description: 'Documento del usuario' })
   readonly usuario: string;
+
+  @ApiProperty({example: 'Juan Pérez', description: 'Nombre del usuario que escribe la observación' })
+  readonly usuario_nombre: string;
 }
 
 /** Cuerpo de POST /submodulo-iniciativa/:id/observaciones. */
