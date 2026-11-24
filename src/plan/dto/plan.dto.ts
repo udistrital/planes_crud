@@ -34,6 +34,9 @@ export class PlanDto{
     @ApiProperty()
     readonly responsable: string;
 
+    @ApiProperty({ required: false })
+    readonly responsable_nombre: string;
+
     @ApiProperty()
     activo: boolean;
 

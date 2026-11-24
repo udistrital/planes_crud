@@ -3468,6 +3468,9 @@
                     "responsable": {
                         "type": "string"
                     },
+                    "responsable_nombre": {
+                        "type": "string"
+                    },
                     "activo": {
                         "type": "boolean"
                     },

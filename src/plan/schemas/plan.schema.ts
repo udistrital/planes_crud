@@ -37,6 +37,9 @@ export class Plan {
     @Prop({required: false })
     responsable: string
 
+    @Prop({required: false })
+    responsable_nombre: string
+
     @Prop({required: true })
     activo: boolean
 
