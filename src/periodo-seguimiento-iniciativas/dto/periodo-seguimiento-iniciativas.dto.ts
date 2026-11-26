@@ -10,7 +10,7 @@ export class PeriodoSeguimientoIniciativasDto {
     @ApiProperty()
     fecha_fin: Date;
 
-    @ApiProperty()
+    @ApiProperty({ required: false })
     periodo_id: String;
 
     @ApiProperty()

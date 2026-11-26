@@ -4319,7 +4319,6 @@
                 "required": [
                     "fecha_inicio",
                     "fecha_fin",
-                    "periodo_id",
                     "tipo_seguimiento_id",
                     "activo",
                     "unidades_interes",

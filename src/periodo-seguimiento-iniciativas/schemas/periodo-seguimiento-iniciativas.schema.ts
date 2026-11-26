@@ -12,7 +12,7 @@ export class PeriodoSeguimientoIniciativas {
     @Prop({ required: true })
     fecha_fin: Date;
 
-    @Prop({ required: true })
+    @Prop({ required: false })
     periodo_id: String;
 
     @Prop({ required: true })
