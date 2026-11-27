@@ -37,8 +37,8 @@ Hay un documento por iniciativa y submódulo (índice único `plan_id + submodul
 - `rol` es el rol con el que se escribió (p. ej. `PLANEACION`, `JEFE_DEPENDENCIA`) y `usuario`, el documento de quien escribe. Ambos son obligatorios.
 - `fecha` la pone el servidor y cada observación recibe su propio `_id`.
 - `texto` es obligatorio y admite hasta 4.000 caracteres.
-- Si se envía `estado_submodulo_id`, el estado cambia en la misma operación. El mid lo usa para dejar el submódulo "Con observaciones" cuando comenta Planeación.
-- **Quién puede comentar y cuándo lo decide el mid**, no el crud.
+- Si se envía `estado_submodulo_id`, el estado cambia en la misma operación. El mid lo envía en cada observación para dejar el submódulo "Con observaciones".
+- **Quién puede observar y cuándo lo decide el mid**, no el crud.
 
 ## `estado_submodulo`
 

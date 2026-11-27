@@ -43,6 +43,9 @@ export class PlanDto{
     @ApiProperty()
     readonly estado_plan_id : string;
 
+    @ApiProperty({ required: false })
+    readonly motivo_rechazo: string;
+
     @ApiProperty()
     readonly padre_plan_id : string;
 

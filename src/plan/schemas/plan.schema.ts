@@ -47,6 +47,9 @@ export class Plan {
     estado_plan_id: string
 
     @Prop({required: false })
+    motivo_rechazo: string
+
+    @Prop({required: false })
     padre_plan_id: string
 
     @Prop({required: false })
