@@ -3477,6 +3477,9 @@
                     "estado_plan_id": {
                         "type": "string"
                     },
+                    "motivo_rechazo": {
+                        "type": "string"
+                    },
                     "padre_plan_id": {
                         "type": "string"
                     },

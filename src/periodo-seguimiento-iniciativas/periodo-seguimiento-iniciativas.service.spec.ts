@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getModelToken } from '@nestjs/mongoose';
-import { PeriodoSeguimientoIniciativasService, PeriodoSeguimientoService } from './periodo-seguimiento-iniciativas.service';
+import { PeriodoSeguimientoIniciativasService } from './periodo-seguimiento-iniciativas.service';
 import { PeriodoSeguimientoIniciativas } from './schemas/periodo-seguimiento-iniciativas.schema';
 
 describe('PeriodoSeguimientoIniciativasService', () => {

@@ -117,6 +117,7 @@ describe('SubmoduloIniciativaService', () => {
       texto: '  Precisar la fuente.  ',
       rol: 'PLANEACION',
       usuario: '1012345678',
+      usuario_nombre: 'Juan Pérez',
       ...parcial,
     });
 
@@ -134,6 +135,7 @@ describe('SubmoduloIniciativaService', () => {
         texto: 'Precisar la fuente.',
         rol: 'PLANEACION',
         usuario: '1012345678',
+        usuario_nombre: 'Juan Pérez',
         fecha: expect.any(Date),
       });
       expect(cambios.$inc).toBeUndefined();
@@ -155,7 +157,7 @@ describe('SubmoduloIniciativaService', () => {
       });
     });
 
-    it('guarda solo texto, rol, usuario y fecha aunque lleguen otros campos', async () => {
+    it('guarda solo texto, rol, usuario, su nombre y fecha aunque lleguen otros campos', async () => {
       modelo.findByIdAndUpdate.mockReturnValue(consulta({ _id: 'a' }));
 
       await servicio.agregarObservacion('a', {
@@ -170,6 +172,7 @@ describe('SubmoduloIniciativaService', () => {
         'rol',
         'texto',
         'usuario',
+        'usuario_nombre',
       ]);
     });
 

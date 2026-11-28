@@ -1,6 +1,6 @@
 # Submódulos de las iniciativas de inversión (`submodulo-iniciativa`) y estados de submódulo (`estado-submodulo`)
 
-Las usa el mid (`/v1/iniciativa-inversion`) para las iniciativas de inversión formuladas con plantillas de Construcción. No se modificó ninguna colección existente.
+Las usa el mid (`/v1/iniciativa-inversion`) para las iniciativas de inversión formuladas con plantillas de Construcción.
 
 ## `submodulo_iniciativa`
 
@@ -12,7 +12,7 @@ Hay un documento por iniciativa y submódulo (índice único `plan_id + submodul
 | `submodulo` | string | Clave del submódulo en la plantilla (`nombre`, `problematica`…) |
 | `estado_submodulo_id` | string | Id en `estado_submodulo` |
 | `dato` | objeto (Mixed) | JSON legible con las claves de la plantilla; se guarda como objeto, no como texto |
-| `observaciones` | `[{ _id, texto, rol, usuario, fecha }]` | Historial de comentarios sobre el submódulo completo, en orden de registro. Solo se agregan; no se reemplazan ni se borran (ver abajo) |
+| `observaciones` | `[{ _id, texto, rol, usuario, usuario_nombre, fecha }]` | Historial de comentarios sobre el submódulo completo, en orden de registro. Solo se agregan; no se reemplazan ni se borran (ver abajo) |
 | `version` | number | Aumenta en cada actualización de `dato`, estado o `activo` (bloqueo optimista). Agregar una observación no la cambia |
 | `activo` | boolean | Borrado lógico |
 | `fecha_creacion`, `fecha_modificacion` | Date | Automáticas (`timestamps`) |
@@ -24,7 +24,7 @@ Hay un documento por iniciativa y submódulo (índice único `plan_id + submodul
 | `GET /submodulo-iniciativa?query=plan_id:<id>,activo:true` | Lista (filtros genéricos del crud) |
 | `GET /submodulo-iniciativa/:id` | Obtiene una |
 | `PUT /submodulo-iniciativa/:id` | Actualiza `dato`, `estado_submodulo_id` o `activo`. **Exige `version`**. No acepta `observaciones` |
-| `POST /submodulo-iniciativa/:id/observaciones` | Agrega una observación al historial. Cuerpo: `{ texto, rol, usuario, estado_submodulo_id? }`. Responde 201 con el submódulo |
+| `POST /submodulo-iniciativa/:id/observaciones` | Agrega una observación al historial. Cuerpo: `{ texto, rol, usuario, usuario_nombre?, estado_submodulo_id? }`. Responde 201 con el submódulo |
 
 **Bloqueo optimista del `PUT`:**
 - La condición `{ _id, version }` y el incremento `$inc: { version: 1 }` van en la misma operación atómica.
@@ -33,8 +33,8 @@ Hay un documento por iniciativa y submódulo (índice único `plan_id + submodul
 
 **Observaciones (`POST :id/observaciones`):**
 - Se agregan con `$push`, en una sola operación atómica, y **no cambian `version`**. Así un comentario no choca con quien está editando los datos del submódulo.
-- Cada observación es sobre el submódulo completo. Solo se guardan `texto`, `rol`, `usuario` y `fecha`; cualquier otro campo del cuerpo se ignora.
-- `rol` es el rol con el que se escribió (p. ej. `PLANEACION`, `JEFE_DEPENDENCIA`) y `usuario`, el documento de quien escribe. Ambos son obligatorios.
+- Cada observación es sobre el submódulo completo. Solo se guardan `texto`, `rol`, `usuario`, `usuario_nombre` y `fecha`; cualquier otro campo del cuerpo se ignora.
+- `rol` es el rol con el que se escribió (p. ej. `PLANEACION`, `JEFE_DEPENDENCIA`) y `usuario`, el documento de quien escribe. Ambos son obligatorios. `usuario_nombre` es el nombre de quien escribe (lo pone el mid, de Terceros); sin él, la observación se guarda con el nombre vacío.
 - `fecha` la pone el servidor y cada observación recibe su propio `_id`.
 - `texto` es obligatorio y admite hasta 4.000 caracteres.
 - Si se envía `estado_submodulo_id`, el estado cambia en la misma operación. El mid lo envía en cada observación para dejar el submódulo "Con observaciones".
